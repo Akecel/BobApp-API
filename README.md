@@ -1,12 +1,10 @@
 <p align="center">
-   <!--> <img src="https://laravel.com/assets/img/components/logo-laravel.svg"> -->
+    <img src="public/assets/img/logo.png">
 </p>
 
-<p align="center">
 
 # Hyra Backoffice PHP
 
-</p>
 
 ## Index :
 
