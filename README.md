@@ -44,6 +44,8 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
 
+To facilitate frontend development of the backoffice we use [Laravel Collective 5.4](https://laravelcollective.com/)
+
 ### Server requirements : <a name="srequirement"></a>
 
 * PHP >= 7.1.3
