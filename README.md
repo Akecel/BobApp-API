@@ -3,7 +3,7 @@
 </p>
 
 
-# Hyra Backoffice PHP
+# Hyra Back-end PHP
 
 
 ## Index :
@@ -22,7 +22,7 @@ Hyra is a mobile application offering these users a platform to facilitate the r
 
 ### Framework PHP <a name="fwphp"></a>
 
-<strong> Hyra's PHP Backoffice </strong>  is developed with Laravel 5.
+<strong> Hyra's PHP Backoffice & API </strong>  is developed with Laravel 5.
 
 > Current Version :
 ```Laravel 5.7```
