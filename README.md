@@ -12,6 +12,8 @@
 * [Requirement](#requirement)
     * [Framework PHP](#fwphp)
     * [Server](#srequirement)
+* [API](#api)
+* [Database](#db)
 * [Licence](#licence)
 
 ## About Hyra : <a name="about"></a>
