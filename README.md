@@ -1,6 +1,6 @@
-<p align="center">
+<!--<p align="center">
     <img src="public/assets/img/logo.png" style="width : 18px;">
-</p>
+</p>-->
 
 
 # Hyra Back-end PHP
@@ -12,6 +12,7 @@
 * [Requirement](#requirement)
     * [Framework PHP](#fwphp)
     * [Server](#srequirement)
+* [Authentification](#auth)
 * [API](#api)
 * [Database](#db)
 * [Licence](#licence)
@@ -58,6 +59,10 @@ To facilitate frontend development of the backoffice we use [Laravel Collective 
 * XML PHP Extension
 * Ctype PHP Extension
 * JSON PHP Extension
+
+## Authentification : <a name="auth"></a>
+
+Hyra uses Laravel's internal authentication system. Including Illuminate, the basic controllers concerning the authetification as well as the different views and routes, you can read the documentation of this system here : [Authentification](https://laravel.com/docs/5.7/authentication)
 
 ## Licence : <a name="licence"></a>
 
