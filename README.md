@@ -139,8 +139,8 @@ php artisan migrate --seed
 ```
 
 You can check : 
-[Laravel database documentation](https://laravel.com/docs/5.7/database)
-[Eloquent ORM documentation](https://laravel.com/docs/5.7/eloquent)
+* [Laravel database documentation](https://laravel.com/docs/5.7/database)
+* [Eloquent ORM documentation](https://laravel.com/docs/5.7/eloquent)
 
 
 
