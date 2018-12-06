@@ -1,0 +1,42 @@
+version: "3"
+
+services: 
+  php: 
+    image: "php:7.2"
+    volumes: 
+      - ./:/app
+    working_dir: /app
+    command: "php artisan serve --host=0.0.0.0 --port=80"
+    ports: 
+      - "8080:80"
+    networks: 
+      - backend
+  mysql: 
+    image: "mysql:5.7"
+    volumes: 
+      - hyra-db:/var/lib/mysql
+    environment: 
+     MYSQL_ROOT_PASSWORD: "root"
+     MYSQL_DATABASE: "hyra"
+     MYSQL_USER: "hyra"
+     MYSQL_PASSWORD: "hyra"
+    networks: 
+      - backend
+  phpmyadmin:
+    image: "phpmyadmin/phpmyadmin"
+    ports: 
+      - "8000:80"
+    environment: 
+      PMA_HOST: "mysql"
+      PMA_USER: "hyra"
+      PMA_PASSWORD: "hyra"
+    networks: 
+      - backend
+
+
+
+volumes: 
+  hyra-db:
+
+networks: 
+  backend:
