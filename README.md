@@ -9,7 +9,7 @@
 ## Index :
 
 * [Introduction](#intro)
-* [Installation & configuration](#install)
+* [Installation](#install)
 * [Configuration](#config)
 * [Authentification](#auth)
 * [Administration](#admin)
