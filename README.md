@@ -64,6 +64,12 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 
 Clone this repository or create a new Laravel Project and transfert the folders of this repository (exept vendor), for this, follow the [Laravel documentation](https://laravel.com/docs).
 
+And use this command : 
+
+```
+composer update
+```
+
 ## Configuration : <a name="config"></a>
 
 ### DotEnv :
@@ -122,15 +128,19 @@ If you have start with a fresh install of laravel follow the [Laravel Collective
 
 Laravel makes interacting with databases extremely simple across a variety of database backends using either raw SQL, the fluent query builder, and the Eloquent ORM. Currently, Laravel supports four databases:
 
-• MySQL
-• PostgreSQL
-• SQLite
-• SQL Server
+* MySQL
+* PostgreSQL
+* SQLite
+* SQL Server
 
 Hyra's backoffice use the migration system of laravel, after created and conncection your database in .env, you need to use this commande : 
 ```
 php artisan migrate --seed
 ```
+
+You can check : 
+[Laravel database documentation](https://laravel.com/docs/5.7/database)
+[Eloquent ORM documentation](https://laravel.com/docs/5.7/eloquent)
 
 
 
