@@ -4,15 +4,20 @@ services:
   php: 
     build: "./"
     volumes: 
-      - ./:/app
-    working_dir: /app
+      - ./:/var/www
+    working_dir: /var/www
     command: "php artisan serve --host=0.0.0.0 --port=80"
     ports: 
       - "8080:80"
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=mysql"
     networks: 
       - backend
   mysql: 
     image: "mysql:5.7"
+    ports: 
+      - "33061:3306"
     volumes: 
       - hyra-db:/var/lib/mysql
     environment: 

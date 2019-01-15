@@ -128,10 +128,12 @@ Laravel makes interacting with databases extremely simple across a variety of da
 * SQLite
 * SQL Server
 
-Hyra's backoffice use the migration system of laravel, after created and conncection your database in .env, you need to use this commande : 
+Hyra's backoffice use the migration system of laravel, after created and connection your database in .env, you need to use this commande : 
 ```
 php artisan migrate --seed
 ```
+
+> (Don't forget to rename "database/seeds/DatabaseSeeder.php.exemple" without the ".example")
 
 You can check : 
 * [Laravel database documentation](https://laravel.com/docs/5.7/database)
@@ -139,9 +141,20 @@ You can check :
 
 
 
-## Authentification <a name="auth"></a>
+## Backoffice Authentification <a name="auth"></a>
 
 Hyra uses Laravel's internal authentication system. Including Illuminate, the basic controllers concerning the authetification as well as the different views and routes, you can read the documentation of this system here : [Authentification](https://laravel.com/docs/5.7/authentication)
+
+Default user :
+
+> Login :
+```admin@admin.com```
+>
+> Password :
+```password```
+>
+
+
 
 ## Administration <a name="admin"></a>
 

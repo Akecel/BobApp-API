@@ -28,11 +28,11 @@ class UserTableSeeder extends Seeder {
       DB::table('users')->delete();
 
       DB::table('users')->insert([
-          'email' => 'axel.rayer@gmail.com',
-          'password' => bcrypt('pm13080437'),
-          'admin' => 1,
-          'phone_number' => '+33651520836'
-      ]);
+          'name' => 'Admin Admin',
+          'email' => 'admin@admin.com',
+          'password' => bcrypt('password'),
+          'phone_number' => '+33601020304'
+        ]);
     }
   }
 
@@ -43,9 +43,9 @@ class UserTableSeeder extends Seeder {
 
       DB::table('user_info')->insert([
           'user_id' => 1,
-          'lastName' => 'Rayer',
-          'firstName' => 'Axel',
-          'birthdate' => '30/05/1997'
+          'lastName' => 'Admin',
+          'firstName' => 'Admin',
+          'birthdate' => '01/01/2000'
         ]);
     }
   }
@@ -57,13 +57,14 @@ class UserTableSeeder extends Seeder {
 
       DB::table('address')->insert([
           'user_id' => 1,
-          'address' => '12 Rue Guynemer',
-          'postal_code' => '77540',
-          'city' => 'Montry',
+          'address' => '15 rue Jhon Doe',
+          'postal_code' => '75016',
+          'city' => 'Paris',
           'country' => 'France'
         ]);
     }
   }
+
 
   class FolderCategorieTableSeeder extends Seeder {
     public function run()
