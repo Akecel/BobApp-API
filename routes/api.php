@@ -15,6 +15,6 @@ use Illuminate\Http\Request;
 
 Route::namespace('Api')->group(function ($id) {
 
-    //Route::resource('user', 'UserController');
+    Route::resource('user', 'UserController');
     
 });

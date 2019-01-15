@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\UserRepository;
 use Validator;
 use App\User;
+use App\UserInfo;
 
 class UserController extends ApiController
 {

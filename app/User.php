@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $table = 'users';
     public $timestamps = true;
     protected $fillable = array('phone_number', 'email', 'admin');
-    protected $hidden = array('password');
+    protected $hidden = array('password', 'remember_token');
 
     public function userinfo()
     {

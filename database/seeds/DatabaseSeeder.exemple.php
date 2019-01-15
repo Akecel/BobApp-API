@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder {
       DB::table('users')->delete();
 
       DB::table('users')->insert([
-          'name' => 'Admin Admin',
+          'admin' => 1,
           'email' => 'admin@admin.com',
           'password' => bcrypt('password'),
           'phone_number' => '+33601020304'
