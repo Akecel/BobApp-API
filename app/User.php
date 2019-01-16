@@ -75,6 +75,7 @@ class User extends Authenticatable
         $validToken = Session::get('token');
         if($token == $validToken) {
             Session::forget('token');
+            Session::forget('phone_number');
             Auth::login($this);
             return true;
         } else {
