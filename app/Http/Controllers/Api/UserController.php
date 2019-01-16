@@ -41,7 +41,7 @@ class UserController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      
-    DO NOT NEED FOR USER, USER ARE STORE IN AUTHCONTROLLER
+    NOT NEEDED FOR USER, USER ARE STORED IN AUTHCONTROLLER
 
     public function store(Request $request)
     {
