@@ -12,8 +12,8 @@
 * [Installation](#install)
 * [Configuration](#config)
 * [Authentification](#auth)
-* [Administration](#admin)
 * [API](#api)
+* [Administration](#admin)
 * [Licence](#licence)
 
 
@@ -155,14 +155,41 @@ Default user :
 >
 
 
+## API <a name="api"></a>
+
+//
+
+### Authentification
+
+//
+
+#### Twilio
+
+//
+
+#### Configuration
+
+//
+
+### API Authentication
+
+//
+
+#### Passport
+
+//
+
+#### Security
+
+//
+
+### Structure
+
+//
 
 ## Administration <a name="admin"></a>
 
 // ADMINISTATION
-
-## API <a name="api"></a>
-
-// API
 
 ## Licence <a name="licence"></a>
 
