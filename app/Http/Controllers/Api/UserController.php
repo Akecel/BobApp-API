@@ -8,7 +8,6 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\UserRepository;
 use Validator;
 use App\User;
-use App\UserInfo;
 
 class UserController extends ApiController
 {
@@ -32,8 +31,8 @@ class UserController extends ApiController
 
     public function index()
     {
-        $users = User::all();
-        return $this->apiResponseSuccess($users->toArray(), 'Users retrieved successfully.');
+        $users = User::with('userinfo','address')->get();
+        return $this->apiResponseSuccess($users, 'Users retrieved successfully.');
     }
 
     /**
@@ -82,7 +81,7 @@ class UserController extends ApiController
 
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::with('userinfo','address')->find($id);
         if (is_null($user)) {
             return $this->apiResponseError('User not found.');
         }
@@ -98,7 +97,7 @@ class UserController extends ApiController
 
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::with('userinfo','address')->find($id);
         if (is_null($user)) {
             return $this->apiResponseError('User not found.');
         }
