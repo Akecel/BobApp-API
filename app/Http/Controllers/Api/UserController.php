@@ -36,22 +36,12 @@ class UserController extends ApiController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    public function create()
-    {
-        return $this->apiResponseError('Create Error.', 'Nothing to send'); 
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     
+    DO NOT NEED FOR USER, USER ARE STORE IN AUTHCONTROLLER
 
     public function store(Request $request)
     {
@@ -71,6 +61,8 @@ class UserController extends ApiController
         return $this->apiResponseSuccess($success, 'User created successfully.');
     }
 
+    */
+
     /**
      * Display the specified resource.
      *
@@ -79,22 +71,6 @@ class UserController extends ApiController
      */
 
     public function show($id)
-    {
-        $user = User::with('userinfo','address')->find($id);
-        if (is_null($user)) {
-            return $this->apiResponseError('User not found.');
-        }
-        return $this->apiResponseSuccess($user->toArray(), 'User retrieved successfully.');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function edit($id)
     {
         $user = User::with('userinfo','address')->find($id);
         if (is_null($user)) {
@@ -115,13 +91,13 @@ class UserController extends ApiController
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'phone_number' => 'required'
         ]);
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $user->name = $input['name'];
+        $user->phone = $input['phone_number'];
         $user->detail = $input['email'];
         $user->save();
         return $this->apiResponseSuccess($user->toArray(), 'User updated successfully.');
