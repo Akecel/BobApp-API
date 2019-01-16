@@ -57,18 +57,17 @@ class UserController extends ApiController
     {
         $input = $request->all();
         $validator = Validator::make($input, [
-            'name' => 'required|max:255|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'c_password' => 'required|same:password'
+            'phone_number' => 'required|max:255|unique:users',
+            'email' => 'max:255|unique:users',
+            'password' => 'confirmed|min:4|max:6',
+            'c_password' => 'same:password'
         ]);
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $user = $this->userRepository->store($request->all());
-        $success['name'] =  $user->name;
+        $success['phone_number'] =  $user->phone_number;
         $success['email'] =  $user->email;
-        //$user = User::create($input);
+        $user = $this->userRepository->store($request->all());
         return $this->apiResponseSuccess($success, 'User created successfully.');
     }
 

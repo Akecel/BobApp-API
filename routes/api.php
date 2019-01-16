@@ -15,6 +15,9 @@ use Illuminate\Http\Request;
 
 Route::namespace('Api')->group(function ($id) {
 
+    Route::post('user/validation', 'LoginController@validation');
+    Route::post('user/login', 'LoginController@login');
+    
     Route::resource('user', 'UserController');
     
 });
