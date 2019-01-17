@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ use Session;
 class User extends Authenticatable
 {
 
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     public function setPasswordAttribute($password)
     {

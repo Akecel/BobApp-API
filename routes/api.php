@@ -19,10 +19,10 @@ Route::namespace('Api')->group(function ($id) {
     Route::post('user/login', 'AuthController@login');
     Route::get('user/logout', 'AuthController@logout');
 
-   // Route::middleware('auth:api')->group(function () {
+    Route::middleware('auth:api')->group(function () {
 
         Route::resource('user', 'UserController');
 
-    //}); 
+    }); 
     
 });

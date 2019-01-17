@@ -38,7 +38,9 @@ class AuthController extends ApiController {
         $phoneNum = Session::get('phoneNum');
         $user = User::where('phone_number', '=', $phoneNum)->firstOrFail();
         if($user && $user->validateToken($token)) {
-            return $this->apiResponseSuccess($user->toArray(), 'User connected successfully.');
+            $success['token'] =  $user->createToken('MyApp')->accessToken;
+            $success['user'] =  $user;
+            return $this->apiResponseSuccess($success, 'User connected successfully.');
         } else {
             return $this->apiResponseError('Error :  Wrong token or phone number.');
         }

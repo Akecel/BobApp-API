@@ -87,19 +87,17 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $validator = Validator::make($input, [
+        $validator = Validator::make($request->all(), [
             'email' => 'required',
             'phone_number' => 'required'
         ]);
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $user->phone = $input['phone_number'];
-        $user->detail = $input['email'];
-        $user->save();
+        $this->userRepository->update($id, $request->all());
+        $user = User::with('userinfo','address')->find($id);
         return $this->apiResponseSuccess($user->toArray(), 'User updated successfully.');
     }
 
