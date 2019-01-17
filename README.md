@@ -170,7 +170,7 @@ Hyra uses an internal API to communicate with the mobile app. The API uses the l
 | `DELETE` | `/photos/{photo}' | destroy |
 
 For more information about this resource controller system, read the documentation of this system here : 
-*[Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
+* [Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
 
 The API files are stored in the "API" folder itself in the "Controllers" folder :
 
@@ -234,7 +234,7 @@ The users of the application must be able to register or to connect in order to 
 
 To send an SMS from the backend you have to use an external library. The one we chose is called Twilio. Twilio allows you to send / receive text messages and calls.
 
-You can find twilio documentation here :[Twilio Doc](https://www.twilio.com/docs/quickstart)
+You can find twilio documentation here : [Twilio Doc](https://www.twilio.com/docs/quickstart)
 
 #### Configuration
 
