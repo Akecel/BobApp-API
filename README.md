@@ -349,17 +349,44 @@ The first (validation) makes it possible to check if the number received by the 
     }
 ```
 
-### API Authentication
+### API Securisation (Passport)
 
-//
+To secure the endpoints of the API and allow access only to previously authenticated users, Hyra uses Passport which provides a full OAuth2 server implementation for Laravel's application. APIs typically use tokens to authenticate users and do not maintain session state between requests (Expept for the login with twilio). 
+There are some actions to perform to install and configure passport to use, you can find more informations on its use and its installation on the [Passport documentation.](https://laravel.com/docs/5.7/passport)
 
-#### Passport
+Passport directly protects the route thanks to the **auth:api** middleware :
 
-//
+```
 
-#### Security
+    Route::middleware('auth:api')->group(function () {
 
-//
+        // ROUTES
+        
+
+    }); 
+
+
+```
+
+
+
+For this passport requires certain conditions during the request to the API, first, the header of the request must contain :
+
+```
+
+    Content-Type : application/json
+    Accept : application/json
+    Authorization : Bearer $accessToken (The token given by passport when authenticating a user)
+
+```
+
+You must, of course, assign a token to users who authenticate successfully (and keep it in front):
+
+```
+
+    $success['token'] =  $user->createToken('HyrApp')->accessToken;
+
+```
 
 
 ## Licence <a name="licence"></a>
