@@ -26,7 +26,7 @@ class AuthController extends ApiController {
             return $this->apiResponseSuccess($webToken, 'User retrieved successfully.');
         } else
         {
-            return $this->apiResponseError('User not found.');
+            return $this->apiResponseError('User not found or bad number.');
         }
 
     }
