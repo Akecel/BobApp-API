@@ -289,7 +289,48 @@ To send and validate sms and token we need to create two function in ```app/User
 
 #### Use
 
-//
+To use this library we need only two method (validation & login) that we have placed in a controller :
+```
+ app/controllers/api/authcontroller
+ ```
+
+The first (validation) makes it possible to check if the number received by the API (by the mobile application) is already present in the database, if not, to create a user with this number, then to send a sms with a secret token and save both in cache to compare then
+
+```
+    function validation(Request $request)
+    {
+        $input = $request->all();
+        $phoneNum = $input['phone_num'];
+        $user = User::firstOrCreate(['phone_number' => $phoneNum]);
+        if($user)
+        {
+            Session::put('phoneNum', $phoneNum);
+            $user->sendToken();
+            return $this->apiResponseSuccess('Successful token sent', 'User retrieved successfully.');
+        } else
+        {
+            return $this->apiResponseError('User not found or bad number');
+        }
+
+    }
+ ```
+
+ The second (login) allows the comparison between the token register and the received token, if they are identical then the user is logged in
+
+```
+    function login(Request $request)
+    {
+        $input = $request->all();
+        $token = $input['token'];
+        $phoneNum = Session::get('phoneNum');
+        $user = User::where('phone_number', '=', $phoneNum)->firstOrFail();
+        if($user && $user->validateToken($token)) {
+            // VALIDATION (SEE API Authentication & Passport)
+        } else {
+            return $this->apiResponseError('Error :  Wrong token.');
+        }
+    }
+```
 
 ### API Authentication
 
