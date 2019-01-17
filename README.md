@@ -364,7 +364,7 @@ The first (validation) makes it possible to check if the number received by the 
 
 MIT License
 
-Copyright (c) [2019] [Axel Rayer]
+Copyright ©  2019 Axel Rayer
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
