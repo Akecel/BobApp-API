@@ -17,7 +17,6 @@ Route::namespace('Api')->group(function ($id) {
 
     Route::post('user/validation', 'AuthController@validation');
     Route::post('user/login', 'AuthController@login');
-    Route::get('user/logout', 'AuthController@logout');
 
     Route::middleware('auth:api')->group(function () {
 
