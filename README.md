@@ -173,7 +173,8 @@ For more information about this resource controller system, read the documentati
 
 The API files are stored in the "API" folder itself in the "Controllers" folder :
 
-'''bash
+```
+
 hyra-php-backoffice
 │ 
 ├── app
@@ -192,7 +193,7 @@ hyra-php-backoffice
 ├── ...
 └── README.md
 
-'''
+```
 
 ### Authentification
 
