@@ -169,7 +169,8 @@ Hyra uses an internal API to communicate with the mobile app. The API uses the l
 | `PUT/PATCH` | `/photos/{photo}' | update |
 | `DELETE` | `/photos/{photo}' | destroy |
 
-For more information about this resource controller system, read the documentation of this system here : [Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
+For more information about this resource controller system, read the documentation of this system here : 
+*[Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
 
 The API files are stored in the "API" folder itself in the "Controllers" folder :
 
@@ -183,7 +184,7 @@ hyra-php-backoffice
 │   └── Http
 │   │    └── Controllers
 │   │    │    └── API
-│   │    │    │   └── **API FILE'S**
+│   │    │    │   └── API FILE'S
 │   │    │    └── ...
 │   │    └── Middleware
 │   │    └── Kernel.php
@@ -197,7 +198,33 @@ hyra-php-backoffice
 
 ### Authentification
 
-//
+The users of the application must be able to register or to connect in order to secure the data, for this we know how to choose a Mobile Passwordless SMS Authentication to secure and promote the user experience.
+
+```
+| USER | URI | BACKEND |
+| :--- | :--- | :--- |
+
+        ------------------------>
+            Send phone number
+            (+33 00 00 00 00)
+USER                                 BACKEND
+
+        <------------------------
+            Send SMS with token
+                (012345)
+
+        ------------------------>
+            Send the token
+                (012345)
+
+        <------------------------
+                Validation 
+            & Authentification
+
+
+
+```
+        
 
 #### Twilio
 
