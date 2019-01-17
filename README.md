@@ -341,6 +341,8 @@ The first (validation) makes it possible to check if the number received by the 
         $user = User::where('phone_number', '=', $phoneNum)->firstOrFail();
         if($user && $user->validateToken($token)) {
             // VALIDATION (SEE API Authentication & Passport)
+            $success['token'] =  $user->createToken('HyrApp')->accessToken;
+            $success['user'] =  $user;
         } else {
             return $this->apiResponseError('Error :  Wrong token.');
         }
