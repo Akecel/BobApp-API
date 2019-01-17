@@ -360,11 +360,10 @@ Passport directly protects the route thanks to the **auth:api** middleware :
 
     Route::middleware('auth:api')->group(function () {
 
-        // ROUTE
+        // ROUTES
         
 
     }); 
-
 
 ```
 
