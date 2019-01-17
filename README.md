@@ -286,6 +286,21 @@ To send and validate sms and token we need to create two function in ```app/User
     }
 ```
 
+To finish the configuration, it should be noted that we have to activate the sessions for the route API, to modify it:
+
+```
+ app/kernel.php
+ ```
+
+
+ ```
+         'api' => [
+            \Illuminate\Session\Middleware\StartSession::class,
+            'throttle:60,1',
+            'bindings',
+        ],
+ ```
+
 
 #### Use
 
