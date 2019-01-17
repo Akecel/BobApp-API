@@ -11,9 +11,8 @@
 * [Introduction](#intro)
 * [Installation](#install)
 * [Configuration](#config)
-* [Authentification](#auth)
+* [Backoffice](#admin)
 * [API](#api)
-* [Administration](#admin)
 * [Licence](#licence)
 
 
@@ -139,9 +138,9 @@ You can check :
 * [Laravel database documentation](https://laravel.com/docs/5.7/database)
 * [Eloquent ORM documentation](https://laravel.com/docs/5.7/eloquent)
 
+## Backoffice <a name="admin"></a>
 
-
-## Backoffice Authentification <a name="auth"></a>
+### Authentification
 
 Hyra uses Laravel's internal authentication system. Including Illuminate, the basic controllers concerning the authetification as well as the different views and routes, you can read the documentation of this system here : [Authentification](https://laravel.com/docs/5.7/authentication)
 
@@ -154,10 +153,46 @@ Default user :
 ```password```
 >
 
+#### Administration
+
+//
 
 ## API <a name="api"></a>
 
-//
+Hyra uses an internal API to communicate with the mobile app. The API uses the laravel resource controllers system to define its endpoints through pre-defined routes, exemple:
+
+| Verb | URI | Action |
+| :--- | :--- | :--- |
+| `GET` | `/photos' | index |
+| `POST` | `/photos' | store |
+| `GET` | `/photos/{photo}' | show |
+| `PUT/PATCH` | `/photos/{photo}' | update |
+| `DELETE` | `/photos/{photo}' | destroy |
+
+For more information about this resource controller system, read the documentation of this system here : [Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
+
+The API files are stored in the "API" folder itself in the "Controllers" folder :
+
+'''bash
+hyra-php-backoffice
+│ 
+├── app
+│   ├── Console
+│   └── Exeption
+│   └── Http
+│   │    └── Controllers
+│   │    │    └── API
+│   │    │    │   └── **API FILE'S**
+│   │    │    └── ...
+│   │    └── Middleware
+│   │    └── Kernel.php
+│   └── Provider
+│   └── Repositories
+│   └── ...
+├── ...
+└── README.md
+
+'''
 
 ### Authentification
 
@@ -183,13 +218,6 @@ Default user :
 
 //
 
-### Structure
-
-//
-
-## Administration <a name="admin"></a>
-
-// ADMINISTATION
 
 ## Licence <a name="licence"></a>
 
