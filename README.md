@@ -201,25 +201,29 @@ hyra-php-backoffice
 The users of the application must be able to register or to connect in order to secure the data, for this we know how to choose a Mobile Passwordless SMS Authentication to secure and promote the user experience.
 
 ```
-| USER | URI | BACKEND |
-| :--- | :--- | :--- |
+    USER  <-------------------------------------> BACKEND
+(Mobile App)                                   (API & Database)    
 
-        ------------------------>
-            Send phone number
-            (+33 00 00 00 00)
-USER                                 BACKEND
+                            1
+                ------------------------>
+                    Send phone number
+                    (+33 00 00 00 00)
+                                        
 
-        <------------------------
-            Send SMS with token
-                (012345)
+                            2
+                <------------------------
+                    Send SMS with token
+                        (012345)
 
-        ------------------------>
-            Send the token
-                (012345)
+                            3
+                ------------------------>
+                    Send the token
+                        (012345)
 
-        <------------------------
-                Validation 
-            & Authentification
+                            4
+                <------------------------
+                        Validation 
+                    & Authentification
 
 
 
