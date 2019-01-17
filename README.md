@@ -198,7 +198,7 @@ hyra-php-backoffice
 
 ### Authentification
 
-The users of the application must be able to register or to connect in order to secure the data, for this we know how to choose a Mobile Passwordless SMS Authentication to secure and promote the user experience.
+The users of the application must be able to register or to connect in order to secure the data, for that we chose a Mobile Passwordless SMS Authentication to secure and promote the user experience.
 
 ```
     USER  <-------------------------------------> BACKEND
@@ -232,7 +232,7 @@ The users of the application must be able to register or to connect in order to 
 
 #### Twilio
 
-//
+To send an SMS from the backend you have to use an external library. The one we chose is called Twilio. Twilio allows you to send / receive text messages and calls.
 
 #### Configuration
 
