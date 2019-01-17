@@ -48,7 +48,7 @@ class AuthController extends ApiController {
 
     function logout()
     {
-        Auth::logout();
+        //
         return $this->apiResponseSuccess('Disconnection', 'User disconnected successfully.');
     }
 }
