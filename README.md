@@ -196,7 +196,7 @@ hyra-php-backoffice
 
 ```
 
-### Authentification
+### API Authentification
 
 The users of the application must be able to register or to connect in order to secure the data, for that we chose a Mobile Passwordless SMS Authentication to secure and promote the user experience.
 
@@ -234,7 +234,60 @@ The users of the application must be able to register or to connect in order to 
 
 To send an SMS from the backend you have to use an external library. The one we chose is called Twilio. Twilio allows you to send / receive text messages and calls.
 
+You can find twilio documentation here :[Twilio Doc](https://www.twilio.com/docs/quickstart)
+
 #### Configuration
+
+First we need to require the Twilio PHP library using composer: 
+
+```
+composer require twilio/sdk
+```
+
+After that we need to configure twilio in ours .env : 
+
+```
+TWILIO_ACCOUNT_SID=SID
+TWILIO_AUTH_TOKEN=TKEN
+TWILIO_NUMBER=+NUMBER
+```
+
+To send and validate sms and token we need to create two function in ```app/User.php``` model :
+
+```
+    public function sendToken()
+    {
+        $token = mt_rand(100000, 999999);
+        Session::put('token', $token);
+        $sid = $_ENV['TWILIO_ACCOUNT_SID'];
+        $tokenTwillo = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Client($sid, $tokenTwillo);
+        $client->messages->create(
+            $this->phone_number,
+            array(
+                'from' => $_ENV['TWILIO_NUMBER'],
+                'body' => "Votre code secret est : " . $token
+            )
+        );
+
+    }
+
+    public function validateToken($token)
+    {
+        $validToken = Session::get('token');
+        if($token == $validToken) {
+            Session::forget('token');
+            Session::forget('phone_number');
+            Auth::login($this);
+            return true;
+        } else {
+            return false;
+        }
+    }
+```
+
+
+#### Use
 
 //
 
