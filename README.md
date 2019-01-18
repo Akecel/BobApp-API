@@ -1,6 +1,7 @@
-<!--<p align="center">
-    <img src="public/assets/img/logo.png" style="width : 18px;">
-</p>-->
+<p align="center">
+    <img src="public/assets/img/bob.png" style="width : 18px;">
+</p>
+
 
 
 # Bob Back-end PHP
