@@ -32,7 +32,7 @@ class UserController extends Controller
     {
         $users = $this->userRepository->getPaginate($this->nbrPerPage);
         $links = $users->render();
-        return view('administration/indexUser', compact('users', 'links'));
+        return view('users/indexUser', compact('users', 'links'));
     }
 
     /**
@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('administration/createUser');
+        return view('users/createUser');
     }
 
     /**
@@ -55,7 +55,9 @@ class UserController extends Controller
     {
         $this->setAdmin($request);
         $user = $this->userRepository->store($request->all());
-		return redirect('user')->withOk("L'utilisateur " . $user->name . " a été créé.");
+        $this->userRepository->saveUserInfo($user,$request->only('lastName','firstName','birthdate'));
+        $this->userRepository->saveUserAddress($user, $request->only('address','postal_code','country','city'));
+		return redirect('user')->withOk("L'utilisateur a été créé.");
     }
 
     /**
@@ -68,7 +70,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = $this->userRepository->getById($id);
-        return view('administration/showUser',  compact('user'));
+        return view('users/showUser',  compact('user'));
     }
 
     /**
@@ -81,7 +83,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = $this->userRepository->getById($id);
-        return view('administration/editUser',  compact('user'));
+        return view('users/editUser',  compact('user'));
     }
 
     /**
@@ -96,7 +98,9 @@ class UserController extends Controller
     {
         $this->setAdmin($request);
         $this->userRepository->update($id, $request->all());
-        return redirect('user')->withOk("L'utilisateur " . $request->input('name') . " a été modifié.");
+        $this->userRepository->updateUserInfo($id, $request->only('lastName','firstName','birthdate'));
+        $this->userRepository->updateUserAddress($id, $request->only('address','postal_code','country','city'));
+        return redirect('user')->withOk("L'utilisateur a été modifié.");
     }
 
     /**

@@ -27,13 +27,10 @@ Route::middleware('auth')->group(function () {
         Route::namespace('Admin')->group(function ($id) {
 
             Route::resource('user', 'UserController');
-            Route::resource('userinfo', 'UserInfoController');
             Route::resource('file', 'FileController');
             Route::resource('folder', 'FolderController');
-            Route::resource('address', 'AddressController');
-            Route::resource('filefolder', 'FileFolderController');
-            Route::resource('foldercategorie', 'FolderCategorieController');
-            Route::resource('filetype', 'FileTypeController');
+            //Route::resource('foldercategorie', 'FolderCategorieController');
+            //Route::resource('filetype', 'FileTypeController');
             
         });
     }); 

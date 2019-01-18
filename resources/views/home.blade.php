@@ -16,7 +16,7 @@
                                 <div class="card-body">
                                     <div class="mr-12 text-center">Utilisateurs</div>
                                 </div>
-                                <a class="card-footer text-dark clearfix small z-1" href="#">
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('user') !!}">
                                     <span class="text-center">Voir tous</span>
                                     <span class="float-right">
                                         <i class="fa fa-angle-right"></i>
@@ -30,7 +30,7 @@
                                 <div class="card-body">
                                     <div class="mr-12 text-center">Fichiers</div>
                                 </div>
-                                <a class="card-footer text-dark clearfix small z-1" href="#">
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('files') !!}">
                                     <span class="text-center">Voir tous</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
@@ -44,7 +44,7 @@
                                 <div class="card-body">
                                     <div class="mr-12 text-center">Dossiers</div>
                                 </div>
-                                <a class="card-footer text-dark clearfix small z-1" href="#">
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('folders') !!}">
                                     <span class="text-center">Voir tous</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
