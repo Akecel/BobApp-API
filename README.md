@@ -68,7 +68,7 @@ composer update
 
 ### DotEnv :
 
-Laravel utilizes the DotEnv PHP library by Vance Lucas. In a fresh Laravel installation, the root directory of your application will contain a .env.example file. If you clone this repository, this file will be named .env.production, you should rename the file manually to .env. To use Hyra's brackoffice you need to configure this file, to this, follow the  [documentation](https://laravel.com/docs/5.7/configuration#environment-configuration).
+Laravel utilizes the DotEnv PHP library by Vance Lucas. In a fresh Laravel installation, the root directory of your application will contain a .env.example file. If you clone this repository, this file will be named .env.production, you should rename the file manually to .env. To use Bob's brackoffice you need to configure this file, to this, follow the  [documentation](https://laravel.com/docs/5.7/configuration#environment-configuration).
 
 #### Exemple : 
 
@@ -114,7 +114,7 @@ location / {
 
 ### Collective
 
-To facilitate frontend development of the backoffice, Hyra use Laravel Collective 5.4.
+To facilitate frontend development of the backoffice, Bob use Laravel Collective 5.4.
 If you have start with a fresh install of laravel follow the [Laravel Collective HTML](https://laravelcollective.com/docs/master/html) documentation to check your installation.
 
 
@@ -127,7 +127,7 @@ Laravel makes interacting with databases extremely simple across a variety of da
 * SQLite
 * SQL Server
 
-Hyra's backoffice use the migration system of laravel, after created and connection your database in .env, you need to use this commande : 
+Bob's backoffice use the migration system of laravel, after created and connection your database in .env, you need to use this commande : 
 ```
 php artisan migrate --seed
 ```
@@ -176,7 +176,7 @@ The API files are stored in the "API" folder itself in the "Controllers" folder 
 
 ```
 
-hyra-php-backoffice
+Bob-php-backoffice
 │ 
 ├── app
 │   ├── Console
@@ -351,7 +351,7 @@ The first (validation) makes it possible to check if the number received by the 
 
 ### API Securisation (Passport)
 
-To secure the endpoints of the API and allow access only to previously authenticated users, Hyra uses Passport which provides a full OAuth2 server implementation for Laravel's application. APIs typically use tokens to authenticate users and do not maintain session state between requests (Expept for the login with twilio). 
+To secure the endpoints of the API and allow access only to previously authenticated users, Bob uses Passport which provides a full OAuth2 server implementation for Laravel's application. APIs typically use tokens to authenticate users and do not maintain session state between requests (Expept for the login with twilio). 
 There are some actions to perform to install and configure passport to use, you can find more informations on its use and its installation on the [Passport documentation.](https://laravel.com/docs/5.7/passport)
 
 Passport directly protects the route thanks to the **auth:api** middleware :
@@ -383,7 +383,7 @@ You must, of course, assign a token to users who authenticate successfully (and 
 
 ```
 
-    $success['token'] =  $user->createToken('HyrApp')->accessToken;
+    $success['token'] =  $user->createToken('BobApp')->accessToken;
 
 ```
 
