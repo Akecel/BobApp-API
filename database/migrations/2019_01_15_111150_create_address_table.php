@@ -8,7 +8,7 @@ class CreateAddressTable extends Migration {
 	public function up()
 	{
 		Schema::create('address', function(Blueprint $table) {
-			$table->integer('user_id')->unsigned();
+			$table->integer('user_id')->unique()->unsigned();
 			$table->string('address');
 			$table->integer('postal_code');
 			$table->string('city');

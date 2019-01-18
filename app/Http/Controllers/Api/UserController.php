@@ -36,34 +36,6 @@ class UserController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     
-    NOT NEEDED FOR USER, USER ARE STORED IN AUTHCONTROLLER
-
-    public function store(Request $request)
-    {
-        $input = $request->all();
-        $validator = Validator::make($input, [
-            'phone_number' => 'required|max:255|unique:users',
-            'email' => 'max:255|unique:users',
-            'password' => 'confirmed|min:4|max:6',
-            'c_password' => 'same:password'
-        ]);
-        if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
-        }
-        $success['phone_number'] =  $user->phone_number;
-        $success['email'] =  $user->email;
-        $user = $this->userRepository->store($request->all());
-        return $this->apiResponseSuccess($success, 'User created successfully.');
-    }
-
-    */
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -89,14 +61,9 @@ class UserController extends ApiController
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required',
-            'phone_number' => 'required'
-        ]);
-        if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
-        }
         $this->userRepository->update($id, $request->all());
+        $this->userRepository->updateUserInfo($id, $request->only('lastName','firstName','birthdate'));
+        $this->userRepository->updateUserAddress($id, $request->only('address','postal_code','country','city'));
         $user = User::with('userinfo','address')->find($id);
         return $this->apiResponseSuccess($user->toArray(), 'User updated successfully.');
     }

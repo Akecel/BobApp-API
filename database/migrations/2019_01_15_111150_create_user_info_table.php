@@ -8,7 +8,7 @@ class CreateUserInfoTable extends Migration {
 	public function up()
 	{
 		Schema::create('user_info', function(Blueprint $table) {
-			$table->integer('user_id')->unsigned();
+			$table->integer('user_id')->unique()->unsigned();
 			$table->string('lastName');
 			$table->string('firstName');
 			$table->string('birthdate');

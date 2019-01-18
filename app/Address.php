@@ -9,7 +9,7 @@ class Address extends Model
 
     protected $table = 'address';
     public $timestamps = false;
-    protected $fillable = array('address', 'postal_code', 'city', 'country');
+    protected $fillable = array('user_id','address', 'postal_code', 'city', 'country');
 
     public function user()
     {

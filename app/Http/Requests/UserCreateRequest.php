@@ -25,7 +25,6 @@ class UserCreateRequest extends FormRequest
     {
         return [
             'phone_number' => 'required|max:255|unique:users',
-            'email' => 'required|email|max:255'
         ];
     }
 }

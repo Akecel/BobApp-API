@@ -9,7 +9,7 @@ class UserInfo extends Model
 
     protected $table = 'user_info';
     public $timestamps = true;
-    protected $fillable = array('lastName', 'firstName', 'birthdate');
+    protected $fillable = array('user_id','lastName', 'firstName', 'birthdate');
 
     public function user()
     {
