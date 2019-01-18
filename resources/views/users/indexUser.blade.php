@@ -27,7 +27,7 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{!! $user->id !!}</td>
-                                            @isset($user->userinfo->firstName)
+                                            @isset($user->userinfo->lastName)
                                             <td class="text-dark"><strong>{!! $user->userinfo->firstName !!} {!! $user->userinfo->lastName !!}</strong></td>
                                             @else
                                             <td class="text-dark"><strong>Utilisateur Anonyme</strong></td>
