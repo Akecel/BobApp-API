@@ -3,7 +3,7 @@
 </p>-->
 
 
-# Hyra Back-end PHP
+# Bob Back-end PHP
 
 
 ## Index :
@@ -18,13 +18,13 @@
 
 ## Introduction <a name="intro"></a>
 
-### About Hyra
+### About Bob
 
-Hyra is a mobile application offering these users a platform to facilitate the relationship between owner and student looking for accommodation. The application needing to be administered it was necessary to develop a backoffice offering a strong management of the data (user, announcement of housing etc).
+Bob is a mobile application offering these users a platform to facilitate the relationship between owner and student looking for accommodation. The application needing to be administered it was necessary to develop a backoffice offering a strong management of the data (user, announcement of housing etc).
 
 ### Framework PHP :
 
-<strong> Hyra's PHP Backoffice & API </strong>  is developed with Laravel 5.
+<strong> Bob's PHP Backoffice & API </strong>  is developed with Laravel 5.
 
 > Current Version :
 ```Laravel 5.7```
@@ -73,7 +73,7 @@ Laravel utilizes the DotEnv PHP library by Vance Lucas. In a fresh Laravel insta
 #### Exemple : 
 
 ```
-APP_NAME=Hyra-Backoffice
+APP_NAME=Bob-Backoffice
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
@@ -82,7 +82,7 @@ APP_URL=http://localhost
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=8889
-DB_DATABASE=hyra
+DB_DATABASE=bob
 DB_USERNAME=user
 DB_PASSWORD=pswd
 ```
@@ -142,7 +142,7 @@ You can check :
 
 ### Authentification
 
-Hyra uses Laravel's internal authentication system. Including Illuminate, the basic controllers concerning the authetification as well as the different views and routes, you can read the documentation of this system here : [Authentification](https://laravel.com/docs/5.7/authentication)
+Bob uses Laravel's internal authentication system. Including Illuminate, the basic controllers concerning the authetification as well as the different views and routes, you can read the documentation of this system here : [Authentification](https://laravel.com/docs/5.7/authentication)
 
 Default user :
 
@@ -159,7 +159,7 @@ Default user :
 
 ## API <a name="api"></a>
 
-Hyra uses an internal API to communicate with the mobile app. The API uses the laravel resource controllers system to define its endpoints through pre-defined routes, exemple:
+Bob uses an internal API to communicate with the mobile app. The API uses the laravel resource controllers system to define its endpoints through pre-defined routes, exemple:
 
 | Verb | URI | Action |
 | :--- | :--- | :--- |
@@ -341,7 +341,7 @@ The first (validation) makes it possible to check if the number received by the 
         $user = User::where('phone_number', '=', $phoneNum)->firstOrFail();
         if($user && $user->validateToken($token)) {
             // VALIDATION (SEE API Authentication & Passport)
-            $success['token'] =  $user->createToken('HyrApp')->accessToken;
+            $success['token'] =  $user->createToken('BobApp')->accessToken;
             $success['user'] =  $user;
         } else {
             return $this->apiResponseError('Error :  Wrong token.');
