@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\User;
+use App\UserInfo;
 
 class UserRepository extends ResourceRepository
 {
@@ -10,6 +11,10 @@ class UserRepository extends ResourceRepository
     public function __construct(User $user)
 	{
 		$this->model = $user;
+	}
+	public function getAllSelect()
+	{
+		return UserInfo::pluck('lastName', 'user_id');
 	}
 
 	public function updateUserInfo($id, Array $inputs)

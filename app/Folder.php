@@ -9,7 +9,7 @@ class Folder extends Model
 
     protected $table = 'folders';
     public $timestamps = true;
-    protected $fillable = array('name');
+    protected $fillable = array('user_id','name');
 
     public function user()
     {
@@ -20,5 +20,6 @@ class Folder extends Model
     {
         return $this->belongsToMany('App\File');
     }
+    
 
 }
