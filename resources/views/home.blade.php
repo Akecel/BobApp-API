@@ -30,7 +30,7 @@
                                 <div class="card-body">
                                     <div class="mr-12 text-center">Dossiers</div>
                                 </div>
-                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('folders') !!}">
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('folder') !!}">
                                     <span class="text-center">Voir tous</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
@@ -44,7 +44,7 @@
                                 <div class="card-body">
                                     <div class="mr-12 text-center">Fichiers</div>
                                 </div>
-                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('files') !!}">
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('file') !!}">
                                     <span class="text-center">Voir tous</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
