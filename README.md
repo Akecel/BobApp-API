@@ -156,11 +156,50 @@ Default user :
 
 ### Administration
 
-//
+Bob's backoffice uses the laravel resource controllers system to define its endpoints through pre-defined routes, exemple:
+
+| Verb | URI | Action |
+| :--- | :--- | :--- |
+| `GET` | `/photos' | index |
+| `GET` | `/photos/create' | create |
+| `POST` | `/photos' | store |
+| `GET` | `/photos/{photo}' | show |
+| `GET` | `/photos/{photo}/edit' | edit |
+| `PUT/PATCH` | `/photos/{photo}' | update |
+| `DELETE` | `/photos/{photo}' | destroy |
+
+For more information about this resource controller system, read the documentation of this system here : 
+* [Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
+
+All controller of the backoffice are stored in the "Admin" folder itself in the "Controllers" folder :
+
+```
+
+Bob-php-backoffice
+│ 
+├── app
+│   ├── Console
+│   └── Exeption
+│   └── Http
+│   │    └── Controllers
+│   │    │    └── Admin
+│   │    │    │   └── Admin files
+│   │    │    └── ...
+│   │    └── Middleware
+│   │    └── Kernel.php
+│   └── Provider
+│   └── Repositories
+│   └── ...
+├── ...
+└── README.md
+
+```
 
 ## API <a name="api"></a>
 
-Bob uses an internal API to communicate with the mobile app. The API uses the laravel resource controllers system to define its endpoints through pre-defined routes, exemple:
+Bob uses an internal API to communicate with the mobile app. 
+The API uses the laravel resource controllers too (See Backoffice Administration above).
+But APIs require less predefined route :
 
 | Verb | URI | Action |
 | :--- | :--- | :--- |
@@ -185,7 +224,7 @@ Bob-php-backoffice
 │   └── Http
 │   │    └── Controllers
 │   │    │    └── API
-│   │    │    │   └── API FILE'S
+│   │    │    │   └── Api files
 │   │    │    └── ...
 │   │    └── Middleware
 │   │    └── Kernel.php
