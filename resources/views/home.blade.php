@@ -53,7 +53,35 @@
                             </div>
                         </div>
 
+                        <div class="col-xl-4 col-sm-6  mb-4 marin-left-100" style="margin-left: 16.5%;">
+                            <div class="card text-dark bg-light o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="mr-12 text-center">Catégories</div>
+                                </div>
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('categories') !!}">
+                                    <span class="text-center">Voir tous</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
 
+                    
+
+                        <div class="col-xl-4 col-sm-6 mb-4">
+                            <div class="card text-dark bg-light o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="mr-12 text-center">Types</div>
+                                </div>
+                                <a class="card-footer text-dark clearfix small z-1" href="{!! url('type') !!}">
+                                    <span class="text-center">Voir tous</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
 
 
                     </div>

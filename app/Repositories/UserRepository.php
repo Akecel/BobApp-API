@@ -14,7 +14,7 @@ class UserRepository extends ResourceRepository
 	}
 	public function getAllSelect()
 	{
-		return UserInfo::pluck('lastName', 'user_id');
+		return $this->model->pluck('email', 'id');
 	}
 
 	public function updateUserInfo($id, Array $inputs)
