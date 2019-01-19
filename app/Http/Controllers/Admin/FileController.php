@@ -3,9 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Repositories\FileRepository;
+use App\Http\Controllers\Controller as Controller;
 
 class FileController extends Controller 
 {
+
+    /**
+    * Set User Repository and Paginate.
+    * Constructor
+    */
+
+
+    protected $fileRepository;
+    protected $nbrPerPage = 50;
+  
+    public function __construct(FileRepository $fileRepository)
+    {
+        $this->fileRepository = $fileRepository;
+    }
 
   /**
    * Display a listing of the resource.
@@ -14,60 +30,9 @@ class FileController extends Controller
    */
   public function index()
   {
-    
-  }
-
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return Response
-   */
-  public function create()
-  {
-    
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function store(Request $request)
-  {
-    
-  }
-
-  /**
-   * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function show($id)
-  {
-    
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function edit($id)
-  {
-    
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  int  $id
-   * @return Response
-   */
-  public function update($id)
-  {
-    
+    $files = $this->fileRepository->getPaginate($this->nbrPerPage);
+    $links = $files->render();
+    return view('files/indexFile', compact('files', 'links')); 
   }
 
   /**
@@ -78,7 +43,8 @@ class FileController extends Controller
    */
   public function destroy($id)
   {
-    
+    $this->folderRepository->destroy($id);
+		return back();
   }
   
 }
