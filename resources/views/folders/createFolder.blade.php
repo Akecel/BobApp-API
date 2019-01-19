@@ -13,11 +13,11 @@
                                     <div class="col-sm-12">
                                         {!! Form::open(['route' => 'folder.store', 'class' => 'form-horizontal panel']) !!}   
                                         <div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
-                                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom du dossier']) !!}
+                                            {!! Form::text('name', null, ['class' => 'form-control ','required', 'placeholder' => 'Nom du dossier']) !!}
                                             {!! $errors->first('name', '<small class="help-block">:message</small>') !!}
                                         </div>
                                         <div class="form-group {!! $errors->has('user_id') ? 'has-error' : '' !!}">
-                                            {!! Form::select('user_id',['' => 'Selectionnez un utilisateur']+ $users, null, ['class' => 'form-control']) !!}
+                                            {!! Form::select('user_id',['' => 'Selectionnez un utilisateur']+ $users, null, ['class' => 'form-control','required']) !!}
                                             {!! $errors->first('user_id', '<small class="help-block">:message</small>') !!}
                                         </div>
                                         

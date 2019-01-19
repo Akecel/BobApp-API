@@ -11,15 +11,15 @@
 							<div class="panel panel-primary">	
 								<div class="panel-body"> 
 									<div class="col-sm-12">
-											{!! Form::model($folder, ['route' => ['folder.update', $folder->id], 'method' => 'put', 'class' => 'form-horizontal panel']) !!}
+											{!! Form::model($folder, ['route' => ['folder.update', $folder->id], 'method' => 'put', 'class' => 'form-horizontal panel required']) !!}
 
 											<div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
-											<input type="text" name="name" class="form-control" placeholder="Nom" value="{{ $folder->name }}"/>
+											<input type="text" name="name" class="form-control"required placeholder="Nom" value="{{ $folder->name }}"/>
 											{!! $errors->first('name', '<small class="help-block">:message</small>') !!}
 											</div>
 
 											<div class="form-group {!! $errors->has('user_id') ? 'has-error' : '' !!}">
-											{!! Form::select('user_id', $users, null, ['class' => 'form-control']) !!}
+											{!! Form::select('user_id', $users, null, ['class' => 'form-control','required']) !!}
 											{!! $errors->first('user_id', '<small class="help-block">:message</small>') !!}
 											</div>
 
