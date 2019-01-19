@@ -27,11 +27,11 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{!! $user->id !!}</td>
-                                            @isset($user->userinfo->lastName)
+                                            @if (isset($user->userinfo->lastName) && isset($user->userinfo->firstName))
                                             <td class="text-dark"><strong>{!! $user->userinfo->firstName !!} {!! $user->userinfo->lastName !!}</strong></td>
                                             @else
                                             <td class="text-dark"><strong>Utilisateur Anonyme</strong></td>
-                                            @endisset
+                                            @endif
                                             
                                             <td>{!! link_to_route('user.show', 'Voir', [$user->id], ['class' => 'btn btn-secondary btn-block']) !!}</td>
                                             <td>{!! link_to_route('user.edit', 'Modifier', [$user->id], ['class' => 'btn btn-secondary btn-block']) !!}</td>
