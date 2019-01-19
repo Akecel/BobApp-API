@@ -10,10 +10,14 @@
                     <div class="col-sm-12">
                         <div class="panel panel-primary">   
                             <div class="panel-body"> 
-                                <p><strong>Identifiant :</strong> #{!! $folder->id !!}</p>
+                                <p class="text-center"><strong>Informations</strong></p>
+                                <p><strong>Identifiant :</strong> #{{ $folder->id }}</p>
                                 <p><strong>Nom :</strong> {{ $folder->name }}</p>
                                 <p><strong>Utilisateur :</strong> {{ $folder->user->userinfo->firstName }} {{ $folder->user->userinfo->lastName }}</p>
-
+                                <p class="text-center"><strong>Fichiers :</strong></p>
+                                @foreach ($folder->files as $file)
+                                <p><strong> • {!! $file->filetype->name !!} </strong> ( {!! $file->filetype->foldercategorie->name !!} )</p>
+                                @endforeach
 
                             </div>
                         </div>

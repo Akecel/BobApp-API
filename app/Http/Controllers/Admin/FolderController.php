@@ -21,7 +21,7 @@ class FolderController extends Controller
 
   public function __construct(FolderRepository $folderRepository)
   {
-      $this->folderRepository = $folderRepository;
+      $this->folderRepository = $folderRepository; 
   }
 
 
@@ -72,8 +72,8 @@ class FolderController extends Controller
 
   public function show($id)
   {
-    $folder = $this->folderRepository->getById($id);
-    return view('folders/showFolder',  compact('folder'));
+    $folder = $this->folderRepository->getByIdWithFiles($id);
+    return view('folders/showFolder',  compact('folder','file'));
   }
 
   /**

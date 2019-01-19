@@ -12,5 +12,10 @@ class FolderRepository extends ResourceRepository
 		$this->model = $folder;
 	}
 
+	public function getByIdWithFiles($id)
+	{
+		return $this->model->with('files')->find($id);
+	}
+
 
 }
