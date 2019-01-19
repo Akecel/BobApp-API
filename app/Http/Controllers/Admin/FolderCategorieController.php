@@ -15,7 +15,7 @@ class FolderCategorieController extends Controller
 
 
     protected $categoryRepository;
-    protected $nbrPerPage = 5;
+    protected $nbrPerPage = 50;
   
     public function __construct(CategoryRepository $categoryRepository)
     {

@@ -17,7 +17,7 @@ class FolderController extends Controller
 
 
   protected $folderRepository;
-  protected $nbrPerPage = 5;
+  protected $nbrPerPage = 50;
 
   public function __construct(FolderRepository $folderRepository)
   {
