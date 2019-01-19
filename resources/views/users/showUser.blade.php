@@ -10,6 +10,7 @@
                     <div class="col-sm-12">
                         <div class="panel panel-primary">   
                             <div class="panel-body"> 
+                                <p class="text-center"><strong>Informations</strong></p>
                                 <p><strong>Identifiant :</strong> #{!! $user->id !!}</p>
                                 <p><strong>Nom :</strong> {{ $user->userinfo->lastName }}</p>
                                 <p><strong>Prénom :</strong> {{ $user->userinfo->firstName }}</p>
