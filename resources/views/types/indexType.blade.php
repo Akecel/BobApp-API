@@ -28,7 +28,7 @@
                                         <tr>
                                             <td>{!! $type->id !!}</td>
                                             <td class="text-dark"><strong>{!! $type->name !!}</strong></td> 
-                                            <td class="text-dark"><strong>{!! $type->folderCategorie->name !!}</strong></td>                                         
+                                            <td class="text-dark"><strong>{!! $type->folder_categorie->name !!}</strong></td>                                         
                                             <td></td>
                                             <td></td>
                                             <td>

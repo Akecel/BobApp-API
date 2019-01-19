@@ -5,23 +5,22 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
-use App\Repositories\FolderRepository;
-use App\Repositories\UserRepository;
+use App\Repositories\FileRepository;
 use Validator;
-use App\Folder;
+use App\File;
 
-class FolderController extends ApiController
+class FileController extends ApiController
 {
     /**
      * Set User Repository.
      * Constructor
      */
 
-    protected $folderRepository;
+    protected $fileRepository;
 
-    public function __construct(FolderRepository $folderRepository)
+    public function __construct(FileRepository $filesRepository)
     {
-        $this->folderRepository = $folderRepository;
+        $this->filesRepository = $filesRepository;
     }
 
     /**
@@ -40,8 +39,8 @@ class FolderController extends ApiController
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $folder = $this->folderRepository->store($request->all());
-        return $this->apiResponseSuccess($folder, 'Folder created successfully.');
+        $file = $this->fileRepository->store($request->all());
+        return $this->apiResponseSuccess($file, 'File created successfully.');
     }
 
     /**
@@ -53,20 +52,20 @@ class FolderController extends ApiController
 
     public function show($id)
     {
-        $folders = Folder::where('user_id', $id)->with('files')->get();
-        if (is_null($folders)) {
-            return $this->apiResponseError('No folders found.');
+        $files = File::where('user_id', $id)->with('filetype')->get();
+        if (is_null($files)) {
+            return $this->apiResponseError('No files found.');
         }
-        return $this->apiResponseSuccess($folders->toArray(), 'All folders retrieved successfully.');
+        return $this->apiResponseSuccess($files->toArray(), 'All files retrieved successfully.');
     }
 
     public function edit($id)
     {
-        $folders = Folder::find($id)->with('files')->get();
-        if (is_null($folders)) {
-            return $this->apiResponseError('Folder not found.');
+        $files = File::find($id)->with('filetype')->get();
+        if (is_null($files)) {
+            return $this->apiResponseError('File not found.');
         }
-        return $this->apiResponseSuccess($folders->toArray(), 'Folder retrieved successfully.');
+        return $this->apiResponseSuccess($files->toArray(), 'File retrieved successfully.');
     }
 
     /**

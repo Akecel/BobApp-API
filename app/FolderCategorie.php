@@ -11,7 +11,7 @@ class FolderCategorie extends Model
     public $timestamps = false;
     protected $fillable = array('name');
 
-    public function filestypes()
+    public function files_types()
     {
         return $this->hasMany('App\FileType');
     }

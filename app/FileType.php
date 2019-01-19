@@ -11,7 +11,7 @@ class FileType extends Model
     public $timestamps = false;
     protected $fillable = array('name');
 
-    public function foldercategorie()
+    public function folder_categorie()
     {
         return $this->belongsTo('App\FolderCategorie');
     }

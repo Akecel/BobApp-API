@@ -18,9 +18,17 @@ Route::namespace('Api')->group(function ($id) {
     Route::post('user/validation', 'AuthController@validation');
     Route::post('user/login', 'AuthController@login');
 
-    Route::middleware('auth:api')->group(function () {
+    Route::middleware('auth:api')->group(function ($id) {
 
         Route::resource('user', 'UserController');
+
+        Route::resource('folder', 'FolderController');
+
+        Route::resource('file', 'FileController');
+        
+        Route::resource('type', 'FileTypeController');
+        
+        Route::resource('categories', 'FolderCategorieController');
 
     }); 
     
