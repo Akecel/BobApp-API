@@ -53,7 +53,7 @@ class FolderController extends ApiController
 
     public function show($id)
     {
-        $folders = Folder::where('user_id', $id)->with('files')->get();
+        $folders = Folder::where('user_id', $id)->with('files','user')->get();
         if (is_null($folders)) {
             return $this->apiResponseError('No folders found.');
         }
@@ -62,7 +62,7 @@ class FolderController extends ApiController
 
     public function edit($id)
     {
-        $folders = Folder::find($id)->with('files')->get();
+        $folders = Folder::find($id)->with('files','user')->get();
         if (is_null($folders)) {
             return $this->apiResponseError('Folder not found.');
         }
@@ -100,7 +100,7 @@ class FolderController extends ApiController
     public function destroy($id)
     {
         $this->folderRepository->destroy($id);
-        return $this->apiResponseSuccess($user->toArray(), 'Folder deleted successfully.');
+        return $this->apiResponseSuccess($folder->toArray(), 'Folder deleted successfully.');
     }
     
 }

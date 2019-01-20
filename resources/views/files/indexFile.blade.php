@@ -27,8 +27,8 @@
                                     @foreach ($files as $file)
                                         <tr>
                                             <td>{!! $file->id !!}</td>
-                                            <td class="text-dark"><strong>{!! $file->filetype->name !!}</strong></td> 
-                                            <td class="text-dark"><strong>{!! $file->filetype->folder_categorie->name !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $file->file_type->name !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $file->file_type->folder_categorie->name !!}</strong></td> 
                                             <td class="text-dark"><strong>{!! $file->user->userinfo->firstName !!} {!! $file->user->userinfo->lastName !!}</strong></td>                                           
                                             <td></td>
                                             <td>

@@ -52,7 +52,7 @@ class FileController extends ApiController
 
     public function show($id)
     {
-        $files = File::where('user_id', $id)->with('filetype')->get();
+        $files = File::where('user_id', $id)->with('user','file_type','folders')->get();
         if (is_null($files)) {
             return $this->apiResponseError('No files found.');
         }
@@ -61,7 +61,7 @@ class FileController extends ApiController
 
     public function edit($id)
     {
-        $files = File::find($id)->with('filetype')->get();
+        $files = File::find($id)->with('user','file_type','folders')->get();
         if (is_null($files)) {
             return $this->apiResponseError('File not found.');
         }
@@ -84,8 +84,8 @@ class FileController extends ApiController
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $this->folderRepository->update($id, $request->all());
-        $folder = Folder::with('files')->find($id);
+        $this->fileRepository->update($id, $request->all());
+        $file = Folder::with('files')->find($id);
         return $this->apiResponseSuccess($folder->toArray(), 'Folder updated successfully.');
     }
 
@@ -98,8 +98,8 @@ class FileController extends ApiController
 
     public function destroy($id)
     {
-        $this->folderRepository->destroy($id);
-        return $this->apiResponseSuccess($user->toArray(), 'Folder deleted successfully.');
+        $this->fileRepository->destroy($id);
+        return $this->apiResponseSuccess('File', 'File deleted successfully.');
     }
     
 }

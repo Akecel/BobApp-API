@@ -21,9 +21,8 @@ class File extends Model
         return $this->belongsToMany('App\Folder');
     }
 
-    public function filetype()
+    public function file_type()
     {
         return $this->belongsTo('App\FileType');
     }
-
 }

@@ -78,7 +78,7 @@ class UserController extends ApiController
     public function destroy($id)
     {
         $this->userRepository->destroy($id);
-        return $this->apiResponseSuccess($user->toArray(), 'User deleted successfully.');
+        return $this->apiResponseSuccess('User', 'User deleted successfully.');
     }
     
 }

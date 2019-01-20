@@ -16,7 +16,7 @@
                                 <p><strong>Utilisateur :</strong> {{ $folder->user->userinfo->firstName }} {{ $folder->user->userinfo->lastName }}</p>
                                 <p class="text-center"><strong>Fichiers :</strong></p>
                                 @foreach ($folder->files as $file)
-                                <p><strong> • {!! $file->filetype->name !!} </strong> ( {!! $file->filetype->foldercategorie->name !!} )</p>
+                                <p><strong> • {!! $file->file_type->name !!} </strong> ( {!! $file->file_type->folder_categorie->name !!} )</p>
                                 @endforeach
 
                             </div>

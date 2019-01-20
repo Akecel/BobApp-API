@@ -28,7 +28,7 @@ Route::namespace('Api')->group(function ($id) {
         
         Route::resource('type', 'FileTypeController');
         
-        Route::resource('categories', 'FolderCategorieController');
+        Route::resource('categorie', 'FolderCategorieController');
 
     }); 
     
