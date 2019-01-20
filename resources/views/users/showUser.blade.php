@@ -12,12 +12,12 @@
                             <div class="panel-body"> 
                                 <p class="text-center"><strong>Informations</strong></p>
                                 <p><strong>Identifiant :</strong> #{!! $user->id !!}</p>
-                                <p><strong>Nom :</strong> {{ $user->userinfo->lastName }}</p>
-                                <p><strong>Prénom :</strong> {{ $user->userinfo->firstName }}</p>
+                                <p><strong>Nom :</strong> {{ $user->lastName }}</p>
+                                <p><strong>Prénom :</strong> {{ $user->firstName }}</p>
                                 <p><strong>Email :</strong> {{ $user->email }}</p>
                                 <p><strong>Téléphone :</strong> {{ $user->phone_number }}</p>
-                                <p><strong>Date de naissance :</strong> {{ $user->userinfo->birthdate }}</p>
-                                <p><strong>Adresse :</strong> {{ $user->address->address }} / {{ $user->address->postal_code }} {{ $user->address->city }} / {{ $user->address->country }}</p>
+                                <p><strong>Date de naissance :</strong> {{ $user->birthdate }}</p>
+                                <p><strong>Adresse :</strong> {{ $user->address }} / {{ $user->postal_code }} {{ $user->city }} / {{ $user->country }}</p>
                                 <p> <strong>Rôle :</strong>
                                 @if($user->admin == 1)
                                     Administrateur

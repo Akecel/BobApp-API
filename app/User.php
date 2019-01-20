@@ -24,13 +24,8 @@ class User extends Authenticatable
 
     protected $table = 'users';
     public $timestamps = true;
-    protected $fillable = array('phone_number', 'email', 'admin');
+    protected $fillable = array('phone_number', 'email', 'admin','lastName', 'firstName', 'birthdate','address', 'postal_code', 'city', 'country');
     protected $hidden = array('password', 'remember_token');
-
-    public function userinfo()
-    {
-        return $this->hasOne('App\UserInfo');
-    }
 
     public function files()
     {
@@ -40,11 +35,6 @@ class User extends Authenticatable
     public function folders()
     {
         return $this->hasMany('App\Folder');
-    }
-
-    public function address()
-    {
-        return $this->hasOne('App\Address');
     }
 
     public function filestypes()

@@ -31,7 +31,7 @@ class UserController extends ApiController
 
     public function index()
     {
-        $users = User::with('userinfo','address')->get();
+        $users = User::all();
         return $this->apiResponseSuccess($users, 'Users retrieved successfully.');
     }
 
@@ -44,7 +44,7 @@ class UserController extends ApiController
 
     public function show($id)
     {
-        $user = User::with('userinfo','address')->find($id);
+        $user = User::find($id);
         if (is_null($user)) {
             return $this->apiResponseError('User not found.');
         }
@@ -62,9 +62,7 @@ class UserController extends ApiController
     public function update(Request $request, $id)
     {
         $this->userRepository->update($id, $request->all());
-        $this->userRepository->updateUserInfo($id, $request->only('lastName','firstName','birthdate'));
-        $this->userRepository->updateUserAddress($id, $request->only('address','postal_code','country','city'));
-        $user = User::with('userinfo','address')->find($id);
+        $user = User::find($id);
         return $this->apiResponseSuccess($user->toArray(), 'User updated successfully.');
     }
 

@@ -55,8 +55,6 @@ class UserController extends Controller
     {
         $this->setAdmin($request);
         $user = $this->userRepository->store($request->all());
-        $this->userRepository->saveUserInfo($user,$request->only('lastName','firstName','birthdate'));
-        $this->userRepository->saveUserAddress($user, $request->only('address','postal_code','country','city'));
 		return redirect('user')->withOk("L'utilisateur a été créé.");
     }
 
@@ -98,8 +96,6 @@ class UserController extends Controller
     {
         $this->setAdmin($request);
         $this->userRepository->update($id, $request->all());
-        $this->userRepository->updateUserInfo($id, $request->only('lastName','firstName','birthdate'));
-        $this->userRepository->updateUserAddress($id, $request->only('address','postal_code','country','city'));
         return redirect('user')->withOk("L'utilisateur a été modifié.");
     }
 

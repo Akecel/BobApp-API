@@ -27,8 +27,8 @@
                                     @foreach ($users as $user)
                                         <tr>
                                             <td>{!! $user->id !!}</td>
-                                            @if (isset($user->userinfo->lastName) && isset($user->userinfo->firstName))
-                                            <td class="text-dark"><strong>{!! $user->userinfo->firstName !!} {!! $user->userinfo->lastName !!}</strong></td>
+                                            @if (isset($user->lastName) && isset($user->firstName))
+                                            <td class="text-dark"><strong>{!! $user->firstName !!} {!! $user->lastName !!}</strong></td>
                                             @else
                                             <td class="text-dark"><strong>Utilisateur Anonyme</strong></td>
                                             @endif

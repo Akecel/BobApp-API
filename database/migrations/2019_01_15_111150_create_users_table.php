@@ -12,6 +12,13 @@ class CreateUsersTable extends Migration {
 			$table->string('phone_number')->unique();
 			$table->string('email')->default('NULL');
 			$table->string('password', 60)->default('NULL');
+			$table->string('lastName');
+			$table->string('firstName');
+			$table->string('birthdate');
+			$table->string('address');
+			$table->integer('postal_code');
+			$table->string('city');
+			$table->string('country');
 			$table->boolean('admin')->default(0);
 			$table->rememberToken('rememberToken');
 			$table->timestamps();
