@@ -27,9 +27,9 @@
                                     @foreach ($files as $file)
                                         <tr>
                                             <td>{!! $file->id !!}</td>
-                                            <td class="text-dark"><strong>{!! $file->file_type->name !!}</strong></td> 
-                                            <td class="text-dark"><strong>{!! $file->file_type->folder_categorie->name !!}</strong></td> 
-                                            <td class="text-dark"><strong>{!! $file->user->userinfo->firstName !!} {!! $file->user->userinfo->lastName !!}</strong></td>                                           
+                                            <td class="text-dark"><strong>{!! $file->file_type->title !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $file->file_type->folder_categorie->title !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $file->user->firstName !!} {!! $file->user->lastName !!}</strong></td>                                           
                                             <td></td>
                                             <td>
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['file.destroy', $file->id]]) !!}

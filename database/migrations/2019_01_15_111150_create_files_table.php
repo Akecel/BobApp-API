@@ -11,7 +11,7 @@ class CreateFilesTable extends Migration {
 			$table->increments('id');
 			$table->string('url')->unique();
 			$table->integer('user_id')->unsigned();
-			$table->integer('filetype_id')->unsigned();
+			$table->integer('file_type_id')->unsigned();
 			$table->timestamps();
 		});
 	}

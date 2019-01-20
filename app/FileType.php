@@ -9,7 +9,7 @@ class FileType extends Model
 
     protected $table = 'files_types';
     public $timestamps = false;
-    protected $fillable = array('name');
+    protected $fillable = array('title');
 
     public function folder_categorie()
     {

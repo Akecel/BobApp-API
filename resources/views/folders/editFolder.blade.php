@@ -13,9 +13,9 @@
 									<div class="col-sm-12">
 											{!! Form::model($folder, ['route' => ['folder.update', $folder->id], 'method' => 'put', 'class' => 'form-horizontal panel required']) !!}
 
-											<div class="form-group {!! $errors->has('name') ? 'has-error' : '' !!}">
-											<input type="text" name="name" class="form-control"required placeholder="Nom" value="{{ $folder->name }}"/>
-											{!! $errors->first('name', '<small class="help-block">:message</small>') !!}
+											<div class="form-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+											<input type="text" name="title" class="form-control"required placeholder="Nom" value="{{ $folder->title }}"/>
+											{!! $errors->first('title', '<small class="help-block">:message</small>') !!}
 											</div>
 
 											<div class="form-group {!! $errors->has('user_id') ? 'has-error' : '' !!}">

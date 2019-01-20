@@ -8,27 +8,17 @@ class CreateForeignKeys extends Migration {
 
 	public function up()
 	{
-		Schema::table('user_info', function(Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('users')
-						->onDelete('cascade')
-						->onUpdate('cascade');
-		});
 		Schema::table('files', function(Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('cascade')
 						->onUpdate('cascade');
 		});
 		Schema::table('files', function(Blueprint $table) {
-			$table->foreign('filetype_id')->references('id')->on('files_types')
+			$table->foreign('file_type_id')->references('id')->on('files_types')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
 		Schema::table('folders', function(Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('users')
-						->onDelete('cascade')
-						->onUpdate('cascade');
-		});
-		Schema::table('address', function(Blueprint $table) {
 			$table->foreign('user_id')->references('id')->on('users')
 						->onDelete('cascade')
 						->onUpdate('cascade');
@@ -44,7 +34,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('files_types', function(Blueprint $table) {
-			$table->foreign('foldercategorie_id')->references('id')->on('folders_categories')
+			$table->foreign('folder_categorie_id')->references('id')->on('folders_categories')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -52,20 +42,14 @@ class CreateForeignKeys extends Migration {
 
 	public function down()
 	{
-		Schema::table('user_info', function(Blueprint $table) {
-			$table->dropForeign('user_info_user_id_foreign');
-		});
 		Schema::table('files', function(Blueprint $table) {
 			$table->dropForeign('files_user_id_foreign');
 		});
 		Schema::table('files', function(Blueprint $table) {
-			$table->dropForeign('files_filetype_id_foreign');
+			$table->dropForeign('files_file_type_id_foreign');
 		});
 		Schema::table('folders', function(Blueprint $table) {
 			$table->dropForeign('folders_user_id_foreign');
-		});
-		Schema::table('address', function(Blueprint $table) {
-			$table->dropForeign('address_user_id_foreign');
 		});
 		Schema::table('file_folder', function(Blueprint $table) {
 			$table->dropForeign('file_folder_file_id_foreign');
@@ -74,7 +58,7 @@ class CreateForeignKeys extends Migration {
 			$table->dropForeign('file_folder_folder_id_foreign');
 		});
 		Schema::table('files_types', function(Blueprint $table) {
-			$table->dropForeign('files_types_foldercategorie_id_foreign');
+			$table->dropForeign('files_types_folder_categorie_id_foreign');
 		});
 	}
 }

@@ -12,11 +12,11 @@
                             <div class="panel-body"> 
                                 <p class="text-center"><strong>Informations</strong></p>
                                 <p><strong>Identifiant :</strong> #{{ $folder->id }}</p>
-                                <p><strong>Nom :</strong> {{ $folder->name }}</p>
+                                <p><strong>Nom :</strong> {{ $folder->title }}</p>
                                 <p><strong>Utilisateur :</strong> {{ $folder->user->userinfo->firstName }} {{ $folder->user->userinfo->lastName }}</p>
                                 <p class="text-center"><strong>Fichiers :</strong></p>
                                 @foreach ($folder->files as $file)
-                                <p><strong> • {!! $file->file_type->name !!} </strong> ( {!! $file->file_type->folder_categorie->name !!} )</p>
+                                <p><strong> • {!! $file->file_type->title !!} </strong> ( {!! $file->file_type->folder_categorie->title !!} )</p>
                                 @endforeach
 
                             </div>

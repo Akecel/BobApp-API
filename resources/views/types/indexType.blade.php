@@ -27,8 +27,8 @@
                                     @foreach ($types as $type)
                                         <tr>
                                             <td>{!! $type->id !!}</td>
-                                            <td class="text-dark"><strong>{!! $type->name !!}</strong></td> 
-                                            <td class="text-dark"><strong>{!! $type->folder_categorie->name !!}</strong></td>                                         
+                                            <td class="text-dark"><strong>{!! $type->title !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $type->folder_categorie->title !!}</strong></td>                                         
                                             <td></td>
                                             <td></td>
                                             <td>

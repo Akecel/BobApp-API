@@ -27,7 +27,7 @@
                                     @foreach ($categories as $category)
                                         <tr>
                                             <td>{!! $category->id !!}</td>
-                                            <td class="text-dark"><strong>{!! $category->name !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $category->title !!}</strong></td> 
                                             <td></td>                                           
                                             <td></td>
                                             <td></td>

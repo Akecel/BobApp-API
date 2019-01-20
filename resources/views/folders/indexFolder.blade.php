@@ -27,8 +27,8 @@
                                     @foreach ($folders as $folder)
                                         <tr>
                                             <td>{!! $folder->id !!}</td>
-                                            <td class="text-dark"><strong>{!! $folder->name !!}</strong></td> 
-                                            <td class="text-dark"><strong>{!! $folder->user->userinfo->firstName !!} {!! $folder->user->userinfo->lastName !!}</strong></td>                                           
+                                            <td class="text-dark"><strong>{!! $folder->title !!}</strong></td> 
+                                            <td class="text-dark"><strong>{!! $folder->user->firstName !!} {!! $folder->user->lastName !!}</strong></td>                                           
                                             <td>{!! link_to_route('folder.show', 'Voir', [$folder->id], ['class' => 'btn btn-secondary btn-block']) !!}</td>
                                             <td>{!! link_to_route('folder.edit', 'Modifier', [$folder->id], ['class' => 'btn btn-secondary btn-block']) !!}</td>
                                             <td>
