@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\UserRepository;
 use Validator;
 use App\User;
-use App\UserInfo;
-use App\Address;
 use Session;
 
 class AuthController extends ApiController {
@@ -21,9 +19,7 @@ class AuthController extends ApiController {
         $phoneNum = $input['phone_num'];
         $user = User::firstOrCreate(['phone_number' => $phoneNum]);
         $id = $user['id'];
-        $userInfo = UserInfo::firstOrCreate(['user_id' => $id]);
-        $address= Address::firstOrCreate(['user_id' => $id]);
-        if($user && $userInfo && $address)
+        if($user)
         {
             Session::put('phoneNum', $phoneNum);
             $user->sendToken();
