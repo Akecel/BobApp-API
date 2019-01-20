@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder {
           'phone_number' => '+33601020304',
           'lastName' => 'Admin',
           'firstName' => 'Admin',
-          'birthdate' => '01/01/2000',
+          'birthdate' => '2000-01-01',
           'address' => '15 rue Jhon Doe',
           'postal_code' => '75016',
           'city' => 'Paris',
