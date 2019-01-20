@@ -17,7 +17,7 @@
                                 <p><strong>Email :</strong> {{ $user->email }}</p>
                                 <p><strong>Téléphone :</strong> {{ $user->phone_number }}</p>
                                 <p><strong>Date de naissance :</strong> {{ $user->birthdate }}</p>
-                                <p><strong>Adresse :</strong> {{ $user->address }} / {{ $user->postal_code }} {{ $user->city }} / {{ $user->country }}</p>
+                                <p><strong>Adresse :</strong> {{ $user->address }} / {{ $user->postcode }} {{ $user->city }} / {{ $user->country }}</p>
                                 <p> <strong>Rôle :</strong>
                                 @if($user->admin == 1)
                                     Administrateur

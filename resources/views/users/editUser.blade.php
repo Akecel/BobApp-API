@@ -43,9 +43,9 @@
 											{!! $errors->first('address', '<small class="help-block">:message</small>') !!}
 											</div>
 
-											<div class="form-group {!! $errors->has('postal_code') ? 'has-error' : '' !!}">
-											<input type="text" name="postal_code" class="form-control" required placeholder="Code postal" value="{{ $user->postal_code }}"/>
-											{!! $errors->first('postal_code', '<small class="help-block">:message</small>') !!}
+											<div class="form-group {!! $errors->has('postcode') ? 'has-error' : '' !!}">
+											<input type="text" name="postcode" class="form-control" required placeholder="Code postal" value="{{ $user->postcode }}"/>
+											{!! $errors->first('postcode', '<small class="help-block">:message</small>') !!}
 											</div>
 
 											<div class="form-group {!! $errors->has('city') ? 'has-error' : '' !!}">
