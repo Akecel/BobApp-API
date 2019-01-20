@@ -15,8 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         Eloquent::unguard();
         $this->call('UserTableSeeder');
-        $this->call('UserInfoTableSeeder');
-        $this->call('AddressTableSeeder');
         $this->call('FolderCategorieTableSeeder');
         $this->call('FileTypeTableSeeder');
     }
@@ -31,32 +29,10 @@ class UserTableSeeder extends Seeder {
           'admin' => 1,
           'email' => 'admin@admin.com',
           'password' => bcrypt('password'),
-          'phone_number' => '+33601020304'
-        ]);
-    }
-  }
-
-  class UserInfoTableSeeder extends Seeder {
-    public function run()
-    {
-      DB::table('user_info')->delete();
-
-      DB::table('user_info')->insert([
-          'user_id' => 1,
+          'phone_number' => '+33601020304',
           'lastName' => 'Admin',
           'firstName' => 'Admin',
-          'birthdate' => '01/01/2000'
-        ]);
-    }
-  }
-
-  class AddressTableSeeder extends Seeder {
-    public function run()
-    {
-      DB::table('address')->delete();
-
-      DB::table('address')->insert([
-          'user_id' => 1,
+          'birthdate' => '01/01/2000',
           'address' => '15 rue Jhon Doe',
           'postal_code' => '75016',
           'city' => 'Paris',
