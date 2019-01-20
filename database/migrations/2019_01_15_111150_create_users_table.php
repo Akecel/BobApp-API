@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
 			$table->string('firstName')->default('NULL');
 			$table->string('birthdate')->default('NULL');
 			$table->string('address')->default('NULL');
-			$table->integer('postcode')->default('NULL');
+			$table->string('postcode')->default('NULL');
 			$table->string('city')->default('NULL');
 			$table->string('country')->default('NULL');
 			$table->boolean('admin')->default(0);
