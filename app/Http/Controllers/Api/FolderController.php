@@ -34,7 +34,7 @@ class FolderController extends ApiController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
             'user_id' => 'required|max:255'
         ]);
         if($validator->fails()){
@@ -80,7 +80,7 @@ class FolderController extends ApiController
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
+            'title' => 'required|max:255',
         ]);
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
