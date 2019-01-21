@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FolderRepository;
-use App\Repositories\UserRepository;
 use Validator;
 use App\Folder;
 
@@ -85,7 +84,8 @@ class FolderController extends ApiController
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $this->folderRepository->update($id, $request->all());
+        $folder = $this->folderRepository->update($id, $request->all());
+        Folder::find($id)->files()->sync(array_unique($request['files']));
         $folder = Folder::with('files')->find($id);
         return $this->apiResponseSuccess($folder->toArray(), 'Folder updated successfully.');
     }
