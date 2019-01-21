@@ -86,7 +86,7 @@ class FolderController extends ApiController
         }
         $folder = $this->folderRepository->update($id, $request->all());
         Folder::find($id)->files()->sync(array_unique($request['files']));
-        $folder = Folder::with('files')->find($id);
+        $folder = Folder::with('files','user')->find($id);
         return $this->apiResponseSuccess($folder->toArray(), 'Folder updated successfully.');
     }
 

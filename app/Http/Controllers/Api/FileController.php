@@ -69,6 +69,21 @@ class FileController extends ApiController
         return $this->apiResponseSuccess($files->toArray(), 'File retrieved successfully.');
     }
 
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function update(Request $request, $id)
+    {
+        File::find($id)->files()->sync(array_unique($request['files']));
+        $file = File::with('folder','file_type','user')->find($id);
+        return $this->apiResponseSuccess($folder->toArray(), 'Folder updated successfully.');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
