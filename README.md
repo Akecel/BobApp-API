@@ -14,6 +14,7 @@
 * [Configuration](#config)
 * [Backoffice](#admin)
 * [API](#api)
+* [Testing](#test)
 * [Licence](#licence)
 
 
@@ -118,6 +119,14 @@ location / {
 To facilitate frontend development of the backoffice, Bob use Laravel Collective 5.4.
 If you have start with a fresh install of laravel follow the [Laravel Collective HTML](https://laravelcollective.com/docs/master/html) documentation to check your installation.
 
+### Files Gestions
+
+For file management, we use Laravel management so we have to make an order for linked storage/public to public/storage.
+
+```
+php artisan storage:link
+```
+
 
 ### Database <a name="db"></a> :
 
@@ -194,6 +203,24 @@ Bob-php-backoffice
 └── README.md
 
 ```
+
+### Telescope 
+
+To increase the versatility of administration and monitor API requests. Bob uses Telescope by laravel :
+```
+composer require laravel/telescope
+```
+
+```
+php artisan telescope:install
+```
+
+```
+php artisan migrate
+```
+
+For more information about telescope and how it works.
+See the [Telescope Documentation](https://laravel.com/docs/5.7/telescope)
 
 ## API <a name="api"></a>
 
@@ -294,7 +321,7 @@ TWILIO_NUMBER=+NUMBER
 
 To send and validate sms and token we need to create two function in ```app/User.php``` model :
 
-```
+```php
     public function sendToken()
     {
         $token = mt_rand(100000, 999999);
@@ -333,7 +360,7 @@ To finish the configuration, it should be noted that we have to activate the ses
  ```
 
 
- ```
+ ```php
          'api' => [
             \Illuminate\Session\Middleware\StartSession::class,
             'throttle:60,1',
@@ -351,7 +378,7 @@ To use this library we need only two method (validation & login) that we have pl
 
 The first (validation) makes it possible to check if the number received by the API (by the mobile application) is already present in the database, if not, to create a user with this number, then to send a sms with a secret token and save both in cache to compare then
 
-```
+```php
     function validation(Request $request)
     {
         $input = $request->all();
@@ -372,7 +399,7 @@ The first (validation) makes it possible to check if the number received by the 
 
  The second (login) allows the comparison between the token register and the received token, if they are identical then the user is logged in
 
-```
+```php
     function login(Request $request)
     {
         $input = $request->all();
@@ -396,7 +423,7 @@ There are some actions to perform to install and configure passport to use, you 
 
 Passport directly protects the route thanks to the **auth:api** middleware :
 
-```
+```php
 
     Route::middleware('auth:api')->group(function () {
 
@@ -421,12 +448,15 @@ For this passport requires certain conditions during the request to the API, fir
 
 You must, of course, assign a token to users who authenticate successfully (and keep it in front):
 
-```
+```php
 
     $success['token'] =  $user->createToken('BobApp')->accessToken;
 
 ```
 
+## Testing <a name="test"></a>
+
+//
 
 ## Licence <a name="licence"></a>
 
