@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FileRepository;
 use Validator;
 use App\File;
+use App\User;
+use App\FileType;
 
 class FileController extends ApiController
 {
@@ -18,9 +20,9 @@ class FileController extends ApiController
 
     protected $fileRepository;
 
-    public function __construct(FileRepository $filesRepository)
+    public function __construct(FileRepository $fileRepository)
     {
-        $this->filesRepository = $filesRepository;
+        $this->fileRepository = $fileRepository;
     }
 
     /**
@@ -33,15 +35,32 @@ class FileController extends ApiController
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'url' => 'required|max:255',
             'file_type_id' => 'required|max:255',
-            'user_id' => 'required|max:255'
+            'user_id' => 'required|max:255',
+            'file_input' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $file = $this->fileRepository->store($request->all());
-        return $this->apiResponseSuccess($file, 'File created successfully.');
+        $user_id = $request['user_id'];
+        $file_type_id = $request['file_type_id'];
+        $user = User::where('id', $user_id)->first();
+        $type = FileType::where('id', $file_type_id)->first();
+
+        $image = $request->file('file_input');
+        $name = $type['title'] . '.' . $user['lastName'] . $user['firstName'] . '.' .$image->getClientOriginalExtension();
+        $destinationPath = "assets/img";
+        $image->move($destinationPath, $name);
+        $request['url'] =$_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name;
+
+        $store = $this->fileRepository->store($request->all());
+
+        if($request->has('foders')) {
+            $file->folders()->sync(array_unique($request['folders']));
+        }
+        $file = File::with('folders','file_type','user')->find($store['id']);
+        return $this->apiResponseSuccess($file, 'File uploaded successfully.');
+
     }
 
     /**
@@ -79,9 +98,9 @@ class FileController extends ApiController
 
     public function update(Request $request, $id)
     {
-        File::find($id)->files()->sync(array_unique($request['files']));
+        File::find($id)->folders()->sync(array_unique($request['files']));
         $file = File::with('folder','file_type','user')->find($id);
-        return $this->apiResponseSuccess($folder->toArray(), 'Folder updated successfully.');
+        return $this->apiResponseSuccess($file->toArray(), 'Folder updated successfully.');
     }
 
     /**

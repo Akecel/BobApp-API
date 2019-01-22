@@ -9,7 +9,7 @@ class File extends Model
 
     protected $table = 'files';
     public $timestamps = true;
-    protected $fillable = array('url');
+    protected $fillable = array('url','user_id','file_type_id');
 
     public function user()
     {
