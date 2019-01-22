@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,8 @@ class AuthController extends ApiController {
         $phoneNum = $input['phone_num'];
         $user = User::firstOrCreate(['phone_number' => $phoneNum]);
         $id = $user['id'];
+        $directory = "/user_files_" . $id;
+        Storage::disk('public')->makeDirectory($directory);
         if($user)
         {
             Session::put('phoneNum', $phoneNum);
