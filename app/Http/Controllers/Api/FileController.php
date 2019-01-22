@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FileRepository;
@@ -48,8 +49,8 @@ class FileController extends ApiController
         $type = FileType::where('id', $file_type_id)->first();
 
         $image = $request->file('file_input');
-        $name = $type['title'] . '.' . $user['lastName'] . $user['firstName'] . '.' .$image->getClientOriginalExtension();
-        $destinationPath = "assets/img";
+        $name = $type['title'] . '.' . $user['lastName'] . $user['firstName'] . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
+        $destinationPath = "storage/user_files_" . $user_id;
         $image->move($destinationPath, $name);
         $request['url'] =$_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name;
 
@@ -112,6 +113,9 @@ class FileController extends ApiController
 
     public function destroy($id)
     {
+        $file = File::find($id);
+        $url = explode($_ENV['APP_URL'] . "/storage/",$file['url']);
+        Storage::disk('public')->delete($url[1]);
         $this->fileRepository->destroy($id);
         return $this->apiResponseSuccess('File', 'File deleted successfully.');
     }
