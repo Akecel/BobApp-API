@@ -204,24 +204,6 @@ Bob-php-backoffice
 
 ```
 
-### Telescope 
-
-To increase the versatility of administration and monitor API requests. Bob uses Telescope by laravel :
-```
-composer require laravel/telescope
-```
-
-```
-php artisan telescope:install
-```
-
-```
-php artisan migrate
-```
-
-For more information about telescope and how it works.
-See the [Telescope Documentation](https://laravel.com/docs/5.7/telescope)
-
 ## API <a name="api"></a>
 
 Bob uses an internal API to communicate with the mobile app. 
