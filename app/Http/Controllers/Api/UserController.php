@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\UserRepository;
@@ -75,6 +76,7 @@ class UserController extends ApiController
 
     public function destroy($id)
     {
+        Storage::deleteDirectory('user_files_' . $id);
         $this->userRepository->destroy($id);
         return $this->apiResponseSuccess('User', 'User deleted successfully.');
     }
