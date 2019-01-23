@@ -206,7 +206,13 @@ Bob-php-backoffice
 
 ## API <a name="api"></a>
 
-Bob uses an internal API to communicate with the mobile app. 
+### REST Standart
+
+Bob's API is used to securely transmit data and communicate between the backend and the mobile application. The API is based on the REST standart, so it respects its features. 
+You can Read the [Bob'API use documentation](https://documenter.getpostman.com/view/5724091/RztfvWwT)
+
+### Controller
+
 The API uses the laravel resource controllers too (See Backoffice Administration above).
 But APIs require less predefined route :
 
