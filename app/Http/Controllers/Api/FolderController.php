@@ -61,7 +61,7 @@ class FolderController extends ApiController
 
     public function edit($id)
     {
-        $folders = Folder::find($id)->with('files','user')->get();
+        $folders = Folder::with('files','user')->find($id);
         if (is_null($folders)) {
             return $this->apiResponseError('Folder not found.');
         }
