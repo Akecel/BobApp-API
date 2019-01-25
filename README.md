@@ -444,7 +444,8 @@ You must, of course, assign a token to users who authenticate successfully (and 
 
 ## Testing <a name="test"></a>
 
-//
+Laravel is built with testing in mind. In fact, support for testing with PHPUnit is included out of the box and a phpunit.xml file is already set up for application. The framework also ships with convenient helper methods that allow to expressively test applications.
+[See more](https://laravel.com/docs/5.7/testing)
 
 ## Licence <a name="licence"></a>
 
