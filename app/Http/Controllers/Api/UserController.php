@@ -32,7 +32,7 @@ class UserController extends ApiController
 
     public function index()
     {
-        $users = User::all();
+        $users = User::with('files', 'folders')->get();
         return $this->apiResponseSuccess($users, 'Users retrieved successfully.');
     }
 
@@ -45,7 +45,7 @@ class UserController extends ApiController
 
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::with('files', 'folders')->find($id);
         if (is_null($user)) {
             return $this->apiResponseError('User not found.');
         }
