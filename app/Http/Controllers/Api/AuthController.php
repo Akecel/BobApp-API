@@ -19,9 +19,6 @@ class AuthController extends ApiController {
         $input = $request->all();
         $phoneNum = $input['phone_num'];
         $user = User::firstOrCreate(['phone_number' => $phoneNum]);
-        $id = $user['id'];
-        $directory = "/user_files_" . $id;
-        Storage::disk('public')->makeDirectory($directory);
         if($user)
         {
             Session::put('phoneNum', $phoneNum);
@@ -42,6 +39,9 @@ class AuthController extends ApiController {
         $phoneNum = Session::get('phoneNum');
         $user = User::where('phone_number', '=', $phoneNum)->firstOrFail();
         if($user && $user->validateToken($token)) {
+            $id = $user['id'];
+            $directory = "/user_files_" . $id;
+            Storage::disk('public')->makeDirectory($directory);
             $success['token'] =  $user->createToken('BobApp')->accessToken;
             $success['user'] =  $user;
             return $this->apiResponseSuccess($success, 'User connected successfully.');
