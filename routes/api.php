@@ -18,18 +18,35 @@ Route::namespace('Api')->group(function ($id) {
     Route::post('user/validation', 'AuthController@validation');
     Route::post('user/login', 'AuthController@login');
 
-    Route::middleware('auth:api')->group(function ($id) {
+}); 
 
-        Route::resource('user', 'UserController');
 
-        Route::resource('folder', 'FolderController');
+Route::middleware('auth:api')->group(function ($id) {
 
-        Route::resource('file', 'FileController');
+    Route::namespace('Api\v1')->group(function ($id) {
+
+        Route::resource('v1/user', 'UserController');
+
+        Route::resource('v1/folder', 'FolderController');
+
+        Route::resource('v1/file', 'FileController');
         
-        Route::resource('type', 'FileTypeController');
+        Route::resource('v1/type', 'FileTypeController');
         
-        Route::resource('categorie', 'FolderCategorieController');
+        Route::resource('v1/categorie', 'FolderCategorieController');
 
     }); 
+
+    Route::namespace('Api\v2')->group(function ($id) {
+
+        Route::apiResources([
+            'v2/user' => 'UserController',
+            'v2/folder' => 'FolderController',
+            'v2/file' => 'FileController',
+            'v2/type' => 'FileTypeController',
+            'v2/categorie' => 'FolderCategorieController'
+        ]);
+
+    });
     
 });
