@@ -25,15 +25,13 @@ Route::middleware('auth:api')->group(function ($id) {
 
     Route::namespace('Api\v1')->group(function ($id) {
 
-        Route::resource('v1/user', 'UserController');
-
-        Route::resource('v1/folder', 'FolderController');
-
-        Route::resource('v1/file', 'FileController');
-        
-        Route::resource('v1/type', 'FileTypeController');
-        
-        Route::resource('v1/categorie', 'FolderCategorieController');
+        Route::resources([
+            'v1/user' => 'user\UserController',
+            'v1/folder' => 'folder\FolderController',
+            'v1/file' => 'file\FileController',
+            'v1/type' => 'type\FileTypeController',
+            'v1/categorie' => 'category\FolderCategorieController'
+        ]);
 
     }); 
 
