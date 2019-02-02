@@ -40,11 +40,11 @@ Route::middleware('auth:api')->group(function ($id) {
     Route::namespace('Api\v2')->group(function ($id) {
 
         Route::apiResources([
-            'v2/user' => 'UserController',
-            'v2/folder' => 'FolderController',
-            'v2/file' => 'FileController',
-            'v2/type' => 'FileTypeController',
-            'v2/categorie' => 'FolderCategorieController'
+            'v2/user' => 'user\UserController',
+            'v2/folder' => 'folder\FolderController',
+            'v2/file' => 'file\FileController',
+            'v2/type' => 'type\FileTypeController',
+            'v2/categorie' => 'category\FolderCategorieController'
         ]);
 
     });
