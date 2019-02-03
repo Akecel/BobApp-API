@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,12 +13,12 @@ class FileType extends Model
 
     public function folder_categorie()
     {
-        return $this->belongsTo('App\FolderCategorie');
+        return $this->belongsTo('App\Models\FolderCategorie');
     }
 
     public function files()
     {
-        return $this->hasMany('App\File');
+        return $this->hasMany('App\Models\File');
     }
 
 }

@@ -10,9 +10,9 @@ use App\Repositories\FileRepository;
 use App\Http\Resources\File\File as FileResource;
 use App\Http\Resources\File\FileCollection;
 use Validator;
-use App\File;
-use App\User;
-use App\FileType;
+use App\Models\File;
+use App\Models\User;
+use App\Models\FileType;
 
 class FileController extends ApiController
 {

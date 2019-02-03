@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Folder;
+use App\Models\Folder;
 
 class FolderRepository extends ResourceRepository
 {

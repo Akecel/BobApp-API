@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,16 +13,16 @@ class File extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function folders()
     {
-        return $this->belongsToMany('App\Folder');
+        return $this->belongsToMany('App\Models\Folder');
     }
 
     public function file_type()
     {
-        return $this->belongsTo('App\FileType');
+        return $this->belongsTo('App\Models\FileType');
     }
 }

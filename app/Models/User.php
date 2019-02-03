@@ -1,12 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Twilio\Rest\Client;
 use Session;
@@ -29,17 +27,17 @@ class User extends Authenticatable
 
     public function files()
     {
-        return $this->hasMany('App\File');
+        return $this->hasMany('App\Models\File');
     }
 
     public function folders()
     {
-        return $this->hasMany('App\Folder');
+        return $this->hasMany('App\Models\Folder');
     }
 
     public function filestypes()
     {
-        return $this->hasManyThrough('App\FileType');
+        return $this->hasManyThrough('App\Models\FileType');
     }
 
 

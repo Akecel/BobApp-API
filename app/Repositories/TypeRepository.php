@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\FileType;
+use App\Models\FileType;
 
 class TypeRepository extends ResourceRepository
 {

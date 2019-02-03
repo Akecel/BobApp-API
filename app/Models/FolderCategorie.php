@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class FolderCategorie extends Model
 
     public function files_types()
     {
-        return $this->hasMany('App\FileType');
+        return $this->hasMany('App\Models\FileType');
     }
 
 }

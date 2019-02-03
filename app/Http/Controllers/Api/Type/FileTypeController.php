@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Type;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\TypeRepository;
-use App\FileType;
+use App\Models\FileType;
 
 class FileTypeController extends ApiController
 {

@@ -9,7 +9,7 @@ use App\Repositories\FolderRepository;
 use App\Http\Resources\Folder\Folder as FolderResource;
 use App\Http\Resources\Folder\FolderCollection;
 use Validator;
-use App\Folder;
+use App\Models\Folder;
 
 class FolderController extends ApiController
 {

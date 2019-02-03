@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\FolderCategorie;
+use App\Models\FolderCategorie;
 
 class CategoryRepository extends ResourceRepository
 {

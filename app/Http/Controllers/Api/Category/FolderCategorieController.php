@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\CategoryRepository;
-use App\FolderCategorie;
+use App\Models\FolderCategorie;
 
 class FolderCategorieController extends ApiController
 {

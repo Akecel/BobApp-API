@@ -10,7 +10,7 @@ use App\Repositories\UserRepository;
 use App\Http\Resources\User\User as UserResource;
 use App\Http\Resources\User\UserCollection;
 use Validator;
-use App\User;
+use App\Models\User;
 
 class UserController extends ApiController
 {
