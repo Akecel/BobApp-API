@@ -97,7 +97,7 @@ Route::namespace('Api')->group(function ($id) {
             ]
         );
         Route::get(
-            'file/{folder}/user',
+            'file/{file}/user',
             [
                 'uses' => 'File\FileRelationshipController' . '@user',
                 'as' => 'file.user',
