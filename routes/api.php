@@ -15,10 +15,18 @@ use Illuminate\Http\Request;
 
 Route::namespace('Api')->group(function ($id) {
 
+    /**
+    * Authentification.
+    */
+
     Route::post('user/validation', 'AuthController@validation');
     Route::post('user/login', 'AuthController@login');
 
     Route::middleware('auth:api')->group(function ($id) {
+
+        /**
+        * Api Resource.
+        */
 
         Route::apiResources([
             'user' => 'User\UserController',
@@ -27,6 +35,10 @@ Route::namespace('Api')->group(function ($id) {
             'type' => 'Type\FileTypeControllers',
             'categorie' => 'Category\FolderCategorieController'
         ]);
+
+        /**
+        * User.
+        */
 
         Route::get(
             'user/{user}/relationships/folder',
@@ -58,6 +70,10 @@ Route::namespace('Api')->group(function ($id) {
             ]
         );
 
+        /**
+        * Folder.
+        */
+
 
         Route::get(
             'folder/{folder}/relationships/user',
@@ -88,6 +104,10 @@ Route::namespace('Api')->group(function ($id) {
             ]
         );
 
+        /**
+        * File.
+        */
+
 
         Route::get(
             'file/{file}/relationships/user',
@@ -117,6 +137,16 @@ Route::namespace('Api')->group(function ($id) {
                 'as' => 'file.folders',
             ]
         );
+
+
+        /**
+        * Type.
+        */
+
+
+        /**
+        * Category.
+        */
 
     }); 
 }); 
