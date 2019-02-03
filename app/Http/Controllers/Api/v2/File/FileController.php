@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FileRepository;
+use App\Http\Resources\File\File as FileResource;
+use App\Http\Resources\File\FileCollection;
 use Validator;
 use App\File;
 use App\User;
@@ -24,6 +26,19 @@ class FileController extends ApiController
     public function __construct(FileRepository $fileRepository)
     {
         $this->fileRepository = $fileRepository;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+
+    public function index()
+    {
+        $files = new FileCollection(File::get());
+        return $this->apiResponseSuccess($files, 'File retrieved successfully.');
     }
 
     /**
@@ -71,22 +86,13 @@ class FileController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show(File $file)
     {
-        $files = File::where('user_id', $id)->with('user','file_type','folders')->get();
-        if (is_null($files)) {
-            return $this->apiResponseError('No files found.');
+        $file = new FileResource($file);
+        if (is_null($file)) {
+            return $this->apiResponseError('No file found.');
         }
-        return $this->apiResponseSuccess($files->toArray(), 'All files retrieved successfully.');
-    }
-
-    public function edit($id)
-    {
-        $files = File::find($id)->with('user','file_type','folders')->get();
-        if (is_null($files)) {
-            return $this->apiResponseError('File not found.');
-        }
-        return $this->apiResponseSuccess($files->toArray(), 'File retrieved successfully.');
+        return $this->apiResponseSuccess($file, 'File retrieved successfully.');
     }
 
         /**

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FolderRepository;
+use App\Http\Resources\Folder\Folder as FolderResource;
+use App\Http\Resources\Folder\FolderCollection;
 use Validator;
 use App\Folder;
 
@@ -21,6 +23,18 @@ class FolderController extends ApiController
     public function __construct(FolderRepository $folderRepository)
     {
         $this->folderRepository = $folderRepository;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function index()
+    {
+        $folders = new FolderCollection(Folder::get());
+        return $this->apiResponseSuccess($folders, 'Folders retrieved successfully.');
     }
 
     /**
@@ -50,22 +64,13 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show(Folder $folder)
     {
-        $folders = Folder::where('user_id', $id)->with('files','user')->get();
+        $folders = new FolderResource($folder);
         if (is_null($folders)) {
             return $this->apiResponseError('No folders found.');
         }
-        return $this->apiResponseSuccess($folders->toArray(), 'All folders retrieved successfully.');
-    }
-
-    public function edit($id)
-    {
-        $folders = Folder::with('files','user')->find($id);
-        if (is_null($folders)) {
-            return $this->apiResponseError('Folder not found.');
-        }
-        return $this->apiResponseSuccess($folders->toArray(), 'Folder retrieved successfully.');
+        return $this->apiResponseSuccess($folders, 'All folders retrieved successfully.');
     }
 
     /**

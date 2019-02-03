@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\UserRepository;
+use App\Http\Resources\User\User as UserResource;
+use App\Http\Resources\User\UserCollection;
 use Validator;
 use App\User;
 
@@ -32,7 +34,7 @@ class UserController extends ApiController
 
     public function index()
     {
-        $users = User::with('files', 'folders')->get();
+        $users = new UserCollection(User::get());
         return $this->apiResponseSuccess($users, 'Users retrieved successfully.');
     }
 
@@ -43,13 +45,13 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::with('files', 'folders')->find($id);
+        $user = new UserResource($user);
         if (is_null($user)) {
             return $this->apiResponseError('User not found.');
         }
-        return $this->apiResponseSuccess($user->toArray(), 'User retrieved successfully.');
+        return $this->apiResponseSuccess($user, 'User retrieved successfully.');
     }
 
     /**
