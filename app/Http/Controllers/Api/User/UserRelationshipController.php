@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v2\User;
+namespace App\Http\Controllers\Api\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Folder\FolderCollection;

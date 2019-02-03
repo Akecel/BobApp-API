@@ -26,7 +26,7 @@ class File extends JsonResource
             ],
             'relationships' => new FileRelationshipResource($this),
             'links' => [
-                'self' => route('v2.file.show', ['file' => $this->id]),
+                'self' => route('file.show', ['file' => $this->id]),
             ],
         ];
     }

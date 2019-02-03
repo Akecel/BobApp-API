@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1;
+namespace App\Http\Controllers\Api\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiController as ApiController;

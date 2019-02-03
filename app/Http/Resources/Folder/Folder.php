@@ -26,7 +26,7 @@ class Folder extends JsonResource
             ],
             'relationships' => new FolderRelationshipResource($this),
             'links' => [
-                'self' => route('v2.folder.show', ['folder' => $this->id]),
+                'self' => route('folder.show', ['folder' => $this->id]),
             ],
         ];
     }
