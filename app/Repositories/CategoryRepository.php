@@ -7,9 +7,9 @@ use App\Models\FolderCategory;
 class CategoryRepository extends ResourceRepository
 {
 
-    public function __construct(FolderCategory $folderCategorie)
+    public function __construct(FolderCategory $folderCategory)
 	{
-		$this->model = $folderCategorie;
+		$this->model = $folderCategory;
 	}
 
 

@@ -34,6 +34,9 @@ class FolderController extends ApiController
     public function index()
     {
         $folders = new FolderCollection(Folder::get());
+        if (is_null($folders)) {
+            return $this->apiResponseError('No folder found.');
+        }
         return $this->apiResponseSuccess($folders, 'Folders retrieved successfully.');
     }
 
@@ -53,7 +56,8 @@ class FolderController extends ApiController
         if($validator->fails()){
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
-        $folder = $this->folderRepository->store($request->all());
+        $store = $this->folderRepository->store($request->all());
+        $folder = new FolderResource($store);
         return $this->apiResponseSuccess($folder, 'Folder created successfully.');
     }
 
@@ -91,8 +95,8 @@ class FolderController extends ApiController
         }
         $folder = $this->folderRepository->update($id, $request->all());
         Folder::find($id)->files()->sync(array_unique($request['files']));
-        $folder = Folder::with('files','user')->find($id);
-        return $this->apiResponseSuccess($folder->toArray(), 'Folder updated successfully.');
+        $folder = new FolderResource(Folder::find($id));
+        return $this->apiResponseSuccess($folder, 'Folder updated successfully.');
     }
 
     /**
@@ -105,7 +109,7 @@ class FolderController extends ApiController
     public function destroy($id)
     {
         $this->folderRepository->destroy($id);
-        return $this->apiResponseSuccess($folder->toArray(), 'Folder deleted successfully.');
+        return $this->apiResponse204();
     }
     
 }

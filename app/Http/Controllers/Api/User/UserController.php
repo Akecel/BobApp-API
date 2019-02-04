@@ -39,6 +39,27 @@ class UserController extends ApiController
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return $this->apiResponseError('Validation Error.', $validator->errors());       
+        }
+        $this->setAdmin($request);
+        $store = $this->userRepository->store($request->all());
+        $user = new UserResource($store);
+        return $this->apiResponseSuccess($user, 'User created successfully.');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -64,9 +85,16 @@ class UserController extends ApiController
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return $this->apiResponseError('Validation Error.', $validator->errors());       
+        }
+        $this->setAdmin($request);
         $this->userRepository->update($id, $request->all());
-        $user = User::find($id);
-        return $this->apiResponseSuccess($user->toArray(), 'User updated successfully.');
+        $user = new UserResource(User::find($id));
+        return $this->apiResponseSuccess($user, 'User updated successfully.');
     }
 
     /**
@@ -80,7 +108,19 @@ class UserController extends ApiController
     {
         Storage::deleteDirectory('user_files_' . $id);
         $this->userRepository->destroy($id);
-        return $this->apiResponseSuccess('User', 'User deleted successfully.');
+        return $this->apiResponse204();
+    }
+
+    /**
+     * Set user as Admin.
+     */
+
+    private function setAdmin($request)
+    {
+        if(!$request->has('admin'))
+        {
+            $request->merge(['admin' => 0]);
+        }       
     }
     
 }

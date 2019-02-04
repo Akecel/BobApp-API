@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\UserRepository;
+use App\Http\Resources\User\User as UserResource;
 use Validator;
 use App\Models\User;
 use Session;
@@ -24,6 +25,7 @@ class AuthController extends ApiController {
             $user->sendToken();
             $webToken = Session::get('token');
             return $this->apiResponseSuccess($webToken, 'User retrieved successfully.');
+            //return $this->apiResponse200();
         } else
         {
             return $this->apiResponseError('User not found or bad number.');
@@ -42,10 +44,10 @@ class AuthController extends ApiController {
             $directory = "/user_files_" . $id;
             Storage::disk('public')->makeDirectory($directory);
             $success['token'] =  $user->createToken('BobApp')->accessToken;
-            $success['user'] =  $user;
+            $success['user'] =  new UserResource($user);
             return $this->apiResponseSuccess($success, 'User connected successfully.');
         } else {
-            return $this->apiResponseError('Error :  Wrong token or phone number.');
+            return $this->apiResponseError('Wrong token or phone number.');
         }
     }
 

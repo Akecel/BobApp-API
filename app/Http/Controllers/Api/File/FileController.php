@@ -38,7 +38,10 @@ class FileController extends ApiController
     public function index()
     {
         $files = new FileCollection(File::get());
-        return $this->apiResponseSuccess($files, 'File retrieved successfully.');
+        if (is_null($files)) {
+            return $this->apiResponseError('No file found.');
+        }
+        return $this->apiResponseSuccess($files, 'Files retrieved successfully.');
     }
 
     /**
@@ -71,10 +74,10 @@ class FileController extends ApiController
 
         $store = $this->fileRepository->store($request->all());
 
-        if($request->has('foders')) {
+        if($request->has('folders')) {
             $file->folders()->sync(array_unique($request['folders']));
         }
-        $file = File::with('folders','file_type','user')->find($store['id']);
+        $file = new FileResource($store);
         return $this->apiResponseSuccess($file, 'File uploaded successfully.');
 
     }
@@ -105,9 +108,12 @@ class FileController extends ApiController
 
     public function update(Request $request, $id)
     {
-        File::find($id)->folders()->sync(array_unique($request['files']));
-        $file = File::with('folder','file_type','user')->find($id);
-        return $this->apiResponseSuccess($file->toArray(), 'Folder updated successfully.');
+        $try = File::find($id)->folders()->sync(array_unique($request['folders']));
+        if (is_null($try)) {
+            return $this->apiResponseError('Update Error.');
+        }
+        $file = new FileResource(File::find($id));
+        return $this->apiResponseSuccess($file, 'File updated successfully.');
     }
 
     /**
@@ -120,10 +126,13 @@ class FileController extends ApiController
     public function destroy($id)
     {
         $file = File::find($id);
+        if (is_null($file)) {
+            return $this->apiResponseError('Delete Error.');
+        }
         $url = explode($_ENV['APP_URL'] . "/storage/",$file['url']);
         Storage::disk('public')->delete($url[1]);
-        $this->fileRepository->destroy($id);
-        return $this->apiResponseSuccess('File', 'File deleted successfully.');
+        $try = $this->fileRepository->destroy($id);
+        return $this->apiResponse204();
     }
     
 }

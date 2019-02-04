@@ -34,9 +34,30 @@ class FileTypeController extends ApiController
     {
         $types = new FileTypeCollection(FileType::get());
         if (is_null($types)) {
-            return $this->apiResponseError('No file type found.');
+            return $this->apiResponseError('No type found.');
         }
         return $this->apiResponseSuccess($types, 'Types retrieved successfully.');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'folder_category_id' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return $this->apiResponseError('Validation Error.', $validator->errors());       
+        }
+        $store = $this->typeRepository->store($request->all());
+        $type = new FileTypeResource($store);
+        return $this->apiResponseSuccess($type, 'Type created successfully.');
     }
 
     /**
@@ -50,9 +71,44 @@ class FileTypeController extends ApiController
     {
         $type = new FileTypeResource($type);
         if (is_null($type)) {
-            return $this->apiResponseError('No file type found.');
+            return $this->apiResponseError('No type found.');
         }
         return $this->apiResponseSuccess($type, 'Type retrieved successfully.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'folder_category_id' => 'required|max:255'
+        ]);
+        if($validator->fails()){
+            return $this->apiResponseError('Validation Error.', $validator->errors());       
+        }
+        $this->typeRepository->update($id, $request->all());
+        $type = new FileTypeResource(FileType::find($id));
+        return $this->apiResponseSuccess($type, 'Type updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function destroy($id)
+    {
+        $this->typeRepository->destroy($id);
+        return $this->apiResponse204();
     }
     
 

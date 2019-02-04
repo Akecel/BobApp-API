@@ -14,11 +14,27 @@ class ApiController extends Controller
     public function apiResponseSuccess($result, $message)
     {
       $response = [
-            'success' => true,
             'data'    => $result,
-            'message' => $message,
+            'meta' => [
+                'success' => true,
+                'message' => $message
+            ],
         ];
         return response()->json($response, 200);
+    }
+
+    /**
+     * Set the success no content responses of the API.
+     */
+
+    public function apiResponse204()
+    {
+        return response()->json(null, 204);
+    }
+
+    public function apiResponse200()
+    {
+        return response()->json(null, 200);
     }
 
     /**
@@ -28,12 +44,22 @@ class ApiController extends Controller
     public function apiResponseError($error, $msgError = [], $code = 404)
     {
       $response = [
-            'success' => false,
-            'message' => $error,
+          'error'=> [
+            'status' => $code,
+            'title' => $error,
+            'source' => [
+                'pointer' => url()->current()
+            ],
+          ],
+          'meta'=> [
+            'success' => false
+          ]
+            
         ];
         if(!empty($msgError)){
             $response['data'] = $msgError;
         }
         return response()->json($response, $code);
     }
+
 }
