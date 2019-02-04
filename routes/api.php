@@ -43,7 +43,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'user/{user}/relationships/folder',
             [
-                'uses' => 'User\UserRelationshipController' . '@folders',
+                'uses' => 'User\UserRelationshipController' . '@userRelationshipFolder',
                 'as' => 'user.relationships.folders',
             ]
         );
@@ -58,7 +58,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'user/{user}/relationships/file',
             [
-                'uses' => 'User\UserRelationshipController' . '@file',
+                'uses' => 'User\UserRelationshipController' . '@userRelationshipFile',
                 'as' => 'user.relationships.files',
             ]
         );
@@ -78,7 +78,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'folder/{folder}/relationships/user',
             [
-                'uses' => 'Folder\FolderRelationshipController' . '@user',
+                'uses' => 'Folder\FolderRelationshipController' . '@folderRelationshipUser',
                 'as' => 'folder.relationships.user',
             ]
         );
@@ -92,7 +92,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'folder/{folder}/relationships/file',
             [
-                'uses' => 'Folder\FolderRelationshipController' . '@files',
+                'uses' => 'Folder\FolderRelationshipController' . '@folderRelationshipFile',
                 'as' => 'folder.relationships.files',
             ]
         );
@@ -112,7 +112,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'file/{file}/relationships/user',
             [
-                'uses' => 'Folder\FolderRelationshipController' . '@user',
+                'uses' => 'File\FileRelationshipController' . '@fileRelationshipUser',
                 'as' => 'file.relationships.user',
             ]
         );
@@ -126,7 +126,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'file/{file}/relationships/folder',
             [
-                'uses' => 'File\FileRelationshipController' . '@folders',
+                'uses' => 'File\FileRelationshipController' . '@fileRelationshipFolder',
                 'as' => 'file.relationships.folders',
             ]
         );
@@ -141,7 +141,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'file/{file}/relationships/type',
             [
-                'uses' => 'File\FileRelationshipController' . '@type',
+                'uses' => 'File\FileRelationshipController' . '@fileRelationshipType',
                 'as' => 'file.relationships.type',
             ]
         );
@@ -161,7 +161,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'type/{type}/relationships/category',
             [
-                'uses' => 'FileType\FileTypeRelationshipController' . '@category',
+                'uses' => 'FileType\FileTypeRelationshipController' . '@typeRelationshipCategory',
                 'as' => 'type.relationships.category',
             ]
         );
@@ -175,7 +175,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'type/{type}/relationships/file',
             [
-                'uses' => 'FileType\FileTypeRelationshipController' . '@files',
+                'uses' => 'FileType\FileTypeRelationshipController' . '@typeRelationshipFile',
                 'as' => 'type.relationships.files',
             ]
         );
@@ -195,7 +195,7 @@ Route::namespace('Api')->group(function ($id) {
         Route::get(
             'category/{category}/relationships/type',
             [
-                'uses' => 'FolderCategory\FolderCategoryRelationshipController' . '@types',
+                'uses' => 'FolderCategory\FolderCategoryRelationshipController' . '@categoryRelationshipType',
                 'as' => 'category.relationships.types',
             ]
         );

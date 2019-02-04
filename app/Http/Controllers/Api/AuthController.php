@@ -14,6 +14,12 @@ use Session;
 
 class AuthController extends ApiController {
 
+    /**
+     * 
+     * Select or create user and send token
+     *
+     */
+
     function validation(Request $request)
     {
         $input = $request->all();
@@ -32,6 +38,12 @@ class AuthController extends ApiController {
         }
 
     }
+
+    /**
+     * 
+     * Login user.
+     *
+     */
 
     function login(Request $request)
     {
