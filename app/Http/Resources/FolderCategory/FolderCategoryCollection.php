@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\FolderCategory;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
 
-class UserCollection extends ResourceCollection
+class FolderCategoryCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.

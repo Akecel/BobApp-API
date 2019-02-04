@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\FolderCategorie;
+use App\Models\FolderCategory;
 
 class CategoryRepository extends ResourceRepository
 {
 
-    public function __construct(FolderCategorie $folderCategorie)
+    public function __construct(FolderCategory $folderCategorie)
 	{
 		$this->model = $folderCategorie;
 	}

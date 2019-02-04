@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\FolderCategory;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserIdentifierResource extends JsonResource
+class FolderCategoryIdentifierResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,7 @@ class UserIdentifierResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'user', 
+            'type' => 'category',
             'id' => (string)$this->id,
         ];
     }

@@ -32,8 +32,8 @@ Route::namespace('Api')->group(function ($id) {
             'user' => 'User\UserController',
             'file' => 'File\FileController',
             'folder' => 'Folder\FolderController',
-            'type' => 'Type\FileTypeControllers',
-            'categorie' => 'Category\FolderCategorieController'
+            'type' => 'FileType\FileTypeController',
+            'category' => 'FolderCategory\FolderCategoryController'
         ]);
 
         /**
@@ -138,15 +138,74 @@ Route::namespace('Api')->group(function ($id) {
             ]
         );
 
+        Route::get(
+            'file/{file}/relationships/type',
+            [
+                'uses' => 'File\FileRelationshipController' . '@type',
+                'as' => 'file.relationships.type',
+            ]
+        );
+        Route::get(
+            'file/{file}/type',
+            [
+                'uses' => 'File\FileRelationshipController' . '@type',
+                'as' => 'file.type',
+            ]
+        );
+
 
         /**
         * Type.
         */
 
+        Route::get(
+            'type/{type}/relationships/category',
+            [
+                'uses' => 'FileType\FileTypeRelationshipController' . '@category',
+                'as' => 'type.relationships.category',
+            ]
+        );
+        Route::get(
+            'type/{type}/category',
+            [
+                'uses' => 'FileType\FileTypeRelationshipController' . '@category',
+                'as' => 'type.category',
+            ]
+        );
+        Route::get(
+            'type/{type}/relationships/file',
+            [
+                'uses' => 'FileType\FileTypeRelationshipController' . '@files',
+                'as' => 'type.relationships.files',
+            ]
+        );
+        Route::get(
+            'type/{type}/file',
+            [
+                'uses' => 'FileType\FileTypeRelationshipController' . '@files',
+                'as' => 'type.files',
+            ]
+        );
+
 
         /**
         * Category.
         */
+
+        Route::get(
+            'category/{category}/relationships/type',
+            [
+                'uses' => 'FolderCategory\FolderCategoryRelationshipController' . '@types',
+                'as' => 'category.relationships.types',
+            ]
+        );
+        Route::get(
+            'category/{category}/type',
+            [
+                'uses' => 'FolderCategory\FolderCategoryRelationshipController' . '@types',
+                'as' => 'category.types',
+            ]
+        );
 
     }); 
 }); 

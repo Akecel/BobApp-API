@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FolderCategorie extends Model 
+class FolderCategory extends Model 
 {
 
     protected $table = 'folders_categories';

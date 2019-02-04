@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\User;
+namespace App\Http\Resources\FileType;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserIdentifierResource extends JsonResource
+class FileTypeIdentifierResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,7 @@ class UserIdentifierResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'type' => 'user', 
+            'type' => 'file_type',
             'id' => (string)$this->id,
         ];
     }

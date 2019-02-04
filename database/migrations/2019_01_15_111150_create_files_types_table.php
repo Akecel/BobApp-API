@@ -10,7 +10,7 @@ class CreateFilesTypesTable extends Migration {
 		Schema::create('files_types', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('title');
-			$table->integer('folder_categorie_id')->unsigned();
+			$table->integer('folder_category_id')->unsigned();
 		});
 	}
 

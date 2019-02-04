@@ -2,6 +2,7 @@
 namespace App\Http\Resources\File;
 
 use App\Http\Resources\User\UserIdentifierResource;
+use App\Http\Resources\FileType\FileTypeIdentifierResource;
 use App\Http\Resources\Folder\FolderIdentifierResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,6 +23,13 @@ class FileRelationshipResource extends JsonResource
                     'related' => route('file.user', ['file' => $this->id]),
                 ],
                 'data' =>  new UserIdentifierResource($this->user),
+            ],
+            'type' => [
+                'links' => [
+                    'self' => route('file.relationships.type', ['file' => $this->id]),
+                    'related' => route('file.type', ['file' => $this->id]),
+                ],
+                'data' => new FileTypeIdentifierResource($this->file_type),
             ],
             'folders' => [
                 'links' => [
