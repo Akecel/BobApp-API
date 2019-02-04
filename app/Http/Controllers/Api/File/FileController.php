@@ -98,7 +98,7 @@ class FileController extends ApiController
         return $this->apiResponseSuccess($file, 'File retrieved successfully.');
     }
 
-        /**
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
