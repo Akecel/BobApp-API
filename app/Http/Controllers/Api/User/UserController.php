@@ -32,10 +32,13 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = new UserCollection(User::get());
-        return $this->apiResponseSuccess($users, 'Users retrieved successfully.');
+        if ($request->has('include')) {
+            $withs = explode(',', $request->include);
+        }
+        $users = new UserCollection(User::with($withs)->get());
+        return $this->apiResponseSuccess($users);
     }
 
     /**
@@ -56,7 +59,7 @@ class UserController extends ApiController
         $this->setAdmin($request);
         $store = $this->userRepository->store($request->all());
         $user = new UserResource($store);
-        return $this->apiResponseSuccess($user, 'User created successfully.');
+        return $this->apiResponseSuccess($user);
     }
 
     /**
@@ -72,7 +75,7 @@ class UserController extends ApiController
         if (is_null($user)) {
             return $this->apiResponseError('User not found.');
         }
-        return $this->apiResponseSuccess($user, 'User retrieved successfully.');
+        return $this->apiResponseSuccess($user);
     }
 
     /**
@@ -94,7 +97,7 @@ class UserController extends ApiController
         $this->setAdmin($request);
         $this->userRepository->update($id, $request->all());
         $user = new UserResource(User::find($id));
-        return $this->apiResponseSuccess($user, 'User updated successfully.');
+        return $this->apiResponseSuccess($user);
     }
 
     /**

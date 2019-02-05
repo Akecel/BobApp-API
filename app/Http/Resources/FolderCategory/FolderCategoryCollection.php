@@ -15,6 +15,11 @@ class FolderCategoryCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return $this->collection;
+        return[
+            'data' => $this->collection,
+            'links' => [
+                'self' => url()->current(),
+            ]
+        ];
     }
 }

@@ -11,16 +11,9 @@ class ApiController extends Controller
      * Set the success response of the API.
      */
 
-    public function apiResponseSuccess($result, $message)
+    public function apiResponseSuccess($result)
     {
-      $response = [
-            'data'    => $result,
-            'meta' => [
-                'success' => true,
-                'message' => $message
-            ],
-        ];
-        return response()->json($response, 200);
+        return response()->json($result, 200);
     }
 
     /**
