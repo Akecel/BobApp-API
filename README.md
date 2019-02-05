@@ -141,6 +141,10 @@ You can check :
 
 ## API <a name="api"></a>
 
+Bob API has its own documentation explaining each endpoint, how they work, their specifications and possible customizations :
+
+* [Bob API Postman Documentation](https://documenter.getpostman.com/view/5724091/RztfvWwT)
+
 ### Standard and specifications
 
 #### REST Stantard
