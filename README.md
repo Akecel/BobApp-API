@@ -1,8 +1,8 @@
 
 <p align="center">
     <img src="public/assets/img/bob.png" style="width : 18px;">
-  <h2 align="center">Backend Bob-App</h2>
-  <p align="center">Documentation • Backend • API • Database </p>
+  <h2 align="center">Bob-App [ Backend • API ]</h2>
+  <p align="center">Documentation • Backend PHP </p>
 </p>
 
 
@@ -11,7 +11,6 @@
 * [Introduction](#intro)
 * [Installation](#install)
 * [Configuration](#config)
-* [Backoffice](#admin)
 * [API](#api)
 * [Testing](#test)
 * [Licence](#licence)
@@ -21,12 +20,11 @@
 
 ### About Bob
 
-Bob is a mobile application offering these users a platform to facilitate the relationship between owner and student looking for accommodation. The application needing to be administered it was necessary to develop a backoffice offering a strong management of the data (user, announcement of housing etc).
+The Bob mobile app is a personal assistant offering the ability to easily create and personalize complete rental records as well as formatting them to stand out from other candidates. This is the Backend documentation for this application.
 
 ### Framework PHP :
 
-<strong> Bob's PHP Backoffice & API </strong>  is developed with Laravel 5.
-
+<strong> Bob's Backend </strong>  is writed in PHP & developed with Laravel 5.
 > Current Version :
 ```Laravel 5.7```
 >
@@ -82,7 +80,7 @@ APP_URL=http://localhost
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
-DB_PORT=8889
+DB_PORT=3306
 DB_DATABASE=bob
 DB_USERNAME=user
 DB_PASSWORD=pswd
@@ -113,11 +111,6 @@ location / {
 }
 ```
 
-### Collective
-
-To facilitate frontend development of the backoffice, Bob use Laravel Collective 5.4.
-If you have start with a fresh install of laravel follow the [Laravel Collective HTML](https://laravelcollective.com/docs/master/html) documentation to check your installation.
-
 ### Files Gestions
 
 For file management, we use Laravel management so we have to make an order for linked storage/public to public/storage.
@@ -141,90 +134,36 @@ Bob's backoffice use the migration system of laravel, after created and connecti
 php artisan migrate --seed
 ```
 
-> (Don't forget to rename "database/seeds/DatabaseSeeder.php.exemple" without the ".example")
-
 You can check : 
 * [Laravel database documentation](https://laravel.com/docs/5.7/database)
 * [Eloquent ORM documentation](https://laravel.com/docs/5.7/eloquent)
 
-## Backoffice <a name="admin"></a>
-
-### Authentification
-
-Bob uses Laravel's internal authentication system. Including Illuminate, the basic controllers concerning the authetification as well as the different views and routes, you can read the documentation of this system here : [Authentification](https://laravel.com/docs/5.7/authentication)
-
-Default user :
-
-> Login :
-```admin@admin.com```
->
-> Password :
-```password```
->
-
-### Administration
-
-Bob's backoffice uses the laravel resource controllers system to define its endpoints through pre-defined routes, exemple:
-
-| Verb | URI | Action |
-| :--- | :--- | :--- |
-| `GET` | `/photos' | index |
-| `GET` | `/photos/create' | create |
-| `POST` | `/photos' | store |
-| `GET` | `/photos/{photo}' | show |
-| `GET` | `/photos/{photo}/edit' | edit |
-| `PUT/PATCH` | `/photos/{photo}' | update |
-| `DELETE` | `/photos/{photo}' | destroy |
-
-For more information about this resource controller system, read the documentation of this system here : 
-* [Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
-
-All controller of the backoffice are stored in the "Admin" folder itself in the "Controllers" folder :
-
-```
-
-Bob-php-backoffice
-│ 
-├── app
-│   ├── Console
-│   └── Exeption
-│   └── Http
-│   │    └── Controllers
-│   │    │    └── Admin
-│   │    │    │   └── Admin files
-│   │    │    └── ...
-│   │    └── Middleware
-│   │    └── Kernel.php
-│   └── Provider
-│   └── Repositories
-│   └── ...
-├── ...
-└── README.md
-
-```
 
 ## API <a name="api"></a>
 
-### REST Standart
+### Standard and specifications
 
-Bob's API is used to securely transmit data and communicate between the backend and the mobile application. The API is based on the REST standart, so it respects its features. 
-You can Read the [Bob'API use documentation](https://documenter.getpostman.com/view/5724091/RztfvWwT)
+#### REST Stantard
+
+Bob's API is used to securely transmit data and communicate between the backend and the mobile application. The API is based on the [REST standart ](https://www.w3.org/2001/sw/wiki/REST), so it respects its features. 
+
+#### JSON:API Specification
+
+The API also respect the [json:api](https://jsonapi.org/) specification in order to formatting and organize data in the response of the client's request.
 
 ### Controller
-
-The API uses the laravel resource controllers too (See Backoffice Administration above).
-But APIs require less predefined route :
+The API uses the Laravel API Resource controllers system to define its endpoints through pre-defined routes as required by the REST standard, example:
 
 | Verb | URI | Action |
 | :--- | :--- | :--- |
-| `GET` | `/photos' | index |
-| `POST` | `/photos' | store |
-| `GET` | `/photos/{photo}' | show |
-| `PUT/PATCH` | `/photos/{photo}' | update |
-| `DELETE` | `/photos/{photo}' | destroy |
+| `GET` | `/users' | index |
+| `POST` | `/users' | store |
+| `GET` | `/users/{user}' | show |
+| `PUT/PATCH` | `/users/{user}' | update |
+| `DELETE` | `/users/{user}' | destroy |
 
 For more information about this resource controller system, read the documentation of this system here : 
-* [Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
+* [API Resource Controllers](https://laravel.com/docs/5.7/controllers#resource-controllers)
 
 The API files are stored in the "API" folder itself in the "Controllers" folder :
 
@@ -239,8 +178,8 @@ Bob-php-backoffice
 │   │    └── Controllers
 │   │    │    └── API
 │   │    │    │   └── Api files
-│   │    │    └── ...
 │   │    └── Middleware
+│   │    └── Resource
 │   │    └── Kernel.php
 │   └── Provider
 │   └── Repositories
@@ -249,6 +188,12 @@ Bob-php-backoffice
 └── README.md
 
 ```
+
+### API Resource 
+
+Bob's API uses the Laravel Eloquent API Resource system to manage resource and collection and formatign them for response.
+* [API Resources](https://laravel.com/docs/5.7/eloquent-resources)
+
 
 ### API Authentification
 
@@ -286,19 +231,19 @@ The users of the application must be able to register or to connect in order to 
 
 #### Twilio
 
-To send an SMS from the backend you have to use an external library. The one we chose is called Twilio. Twilio allows you to send / receive text messages and calls.
+To send an SMS from the backend backend have to use an external library. The one we chose is called Twilio. Twilio allows you to send / receive text messages and calls.
 
 You can find twilio documentation here : [Twilio Doc](https://www.twilio.com/docs/quickstart)
 
 #### Configuration
 
-First we need to require the Twilio PHP library using composer: 
+Install Twilio PHP library using composer: 
 
 ```
 composer require twilio/sdk
 ```
 
-After that we need to configure twilio in ours .env : 
+Dotenv configuration : 
 
 ```
 TWILIO_ACCOUNT_SID=SID
@@ -306,101 +251,14 @@ TWILIO_AUTH_TOKEN=TKEN
 TWILIO_NUMBER=+NUMBER
 ```
 
-To send and validate sms and token we need to create two function in ```app/User.php``` model :
+Functions in ```app/User.php``` model :
 
 ```php
-    public function sendToken()
-    {
-        $token = mt_rand(100000, 999999);
-        Session::put('token', $token);
-        $sid = $_ENV['TWILIO_ACCOUNT_SID'];
-        $tokenTwillo = $_ENV['TWILIO_AUTH_TOKEN'];
-        $client = new Client($sid, $tokenTwillo);
-        $client->messages->create(
-            $this->phone_number,
-            array(
-                'from' => $_ENV['TWILIO_NUMBER'],
-                'body' => "Votre code secret est : " . $token
-            )
-        );
 
-    }
+    function sendToken()
 
-    public function validateToken($token)
-    {
-        $validToken = Session::get('token');
-        if($token == $validToken) {
-            Session::forget('token');
-            Session::forget('phone_number');
-            Auth::login($this);
-            return true;
-        } else {
-            return false;
-        }
-    }
-```
+    function validateToken($token)
 
-To finish the configuration, it should be noted that we have to activate the sessions for the route API, to modify it:
-
-```
- app/kernel.php
- ```
-
-
- ```php
-         'api' => [
-            \Illuminate\Session\Middleware\StartSession::class,
-            'throttle:60,1',
-            'bindings',
-        ],
- ```
-
-
-#### Use
-
-To use this library we need only two method (validation & login) that we have placed in a controller :
-```
- app/controllers/api/authcontroller
- ```
-
-The first (validation) makes it possible to check if the number received by the API (by the mobile application) is already present in the database, if not, to create a user with this number, then to send a sms with a secret token and save both in cache to compare then
-
-```php
-    function validation(Request $request)
-    {
-        $input = $request->all();
-        $phoneNum = $input['phone_num'];
-        $user = User::firstOrCreate(['phone_number' => $phoneNum]);
-        if($user)
-        {
-            Session::put('phoneNum', $phoneNum);
-            $user->sendToken();
-            return $this->apiResponseSuccess('Successful token sent', 'User retrieved successfully.');
-        } else
-        {
-            return $this->apiResponseError('User not found or bad number');
-        }
-
-    }
- ```
-
- The second (login) allows the comparison between the token register and the received token, if they are identical then the user is logged in
-
-```php
-    function login(Request $request)
-    {
-        $input = $request->all();
-        $token = $input['token'];
-        $phoneNum = Session::get('phoneNum');
-        $user = User::where('phone_number', '=', $phoneNum)->firstOrFail();
-        if($user && $user->validateToken($token)) {
-            // VALIDATION (SEE API Authentication & Passport)
-            $success['token'] =  $user->createToken('BobApp')->accessToken;
-            $success['user'] =  $user;
-        } else {
-            return $this->apiResponseError('Error :  Wrong token.');
-        }
-    }
 ```
 
 ### API Securisation (Passport)
@@ -432,8 +290,7 @@ For this passport requires certain conditions during the request to the API, fir
     Authorization : Bearer $accessToken (The token given by passport when authenticating a user)
 
 ```
-
-You must, of course, assign a token to users who authenticate successfully (and keep it in front):
+Passport assign a token to users who authenticate successfully (and keep it in front):
 
 ```php
 
