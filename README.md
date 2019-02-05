@@ -4,7 +4,6 @@
   <h2 align="center">Backend Bob-App</h2>
   <p align="center">Documentation • Backend • API • Database </p>
 </p>
-s
 
 
 ## Index :
