@@ -254,11 +254,9 @@ TWILIO_NUMBER=+NUMBER
 Functions in ```app/User.php``` model :
 
 ```php
-
     function sendToken()
 
     function validateToken($token)
-
 ```
 
 ### API Securisation (Passport)
@@ -269,14 +267,12 @@ There are some actions to perform to install and configure passport to use, you 
 Passport directly protects the route thanks to the **auth:api** middleware :
 
 ```php
-
     Route::middleware('auth:api')->group(function () {
 
         // ROUTES
         
 
     }); 
-
 ```
 
 
@@ -284,18 +280,14 @@ Passport directly protects the route thanks to the **auth:api** middleware :
 For this passport requires certain conditions during the request to the API, first, the header of the request must contain :
 
 ```
-
     Content-Type : application/json
     Accept : application/json
     Authorization : Bearer $accessToken (The token given by passport when authenticating a user)
-
 ```
 Passport assign a token to users who authenticate successfully (and keep it in front):
 
 ```php
-
     $success['token'] =  $user->createToken('BobApp')->accessToken;
-
 ```
 
 ## Testing <a name="test"></a>
