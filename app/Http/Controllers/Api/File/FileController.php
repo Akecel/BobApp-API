@@ -73,10 +73,6 @@ class FileController extends ApiController
         $request['url'] =$_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name;
 
         $store = $this->fileRepository->store($request->all());
-
-        if($request->has('folders')) {
-            $file->folders()->sync(array_unique($request['folders']));
-        }
         $file = new FileResource($store);
         return $this->apiResponseSuccess($file, 'File uploaded successfully.');
 
@@ -108,10 +104,7 @@ class FileController extends ApiController
 
     public function update(Request $request, $id)
     {
-        $try = File::find($id)->folders()->sync(array_unique($request['folders']));
-        if (is_null($try)) {
-            return $this->apiResponseError('Update Error.');
-        }
+        $update = $this->fileRepository->update($id, $request->all());
         $file = new FileResource(File::find($id));
         return $this->apiResponseSuccess($file, 'File updated successfully.');
     }

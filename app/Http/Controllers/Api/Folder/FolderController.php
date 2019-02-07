@@ -94,7 +94,7 @@ class FolderController extends ApiController
             return $this->apiResponseError('Validation Error.', $validator->errors());       
         }
         $folder = $this->folderRepository->update($id, $request->all());
-        Folder::find($id)->files()->sync(array_unique($request['files']));
+        Folder::find($id)->files()->sync($request['files']);
         $folder = new FolderResource(Folder::find($id));
         return $this->apiResponseSuccess($folder, 'Folder updated successfully.');
     }
