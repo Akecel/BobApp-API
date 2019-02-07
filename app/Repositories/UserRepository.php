@@ -11,9 +11,5 @@ class UserRepository extends ResourceRepository
 	{
 		$this->model = $user;
 	}
-	public function getAllSelect()
-	{
-		return $this->model->pluck('email', 'id');
-	}
 
 }
