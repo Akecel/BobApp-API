@@ -7,34 +7,56 @@ use App\Http\Controllers\Controller;
 
 class ApiController extends Controller
 {
-    /**
-     * Set the success response of the API.
-     */
+    // 200 Ok
 
-    public function apiResponseSuccess($result)
+    public function apiResponse200($result)
     {
         return response()->json($result, 200);
     }
 
-    /**
-     * Set the success no content responses of the API.
-     */
+    // 201 Created
+
+    public function apiResponse201($result)
+    {
+        return response()->json($result, 201);
+    }
+
+    // 202 Accepted
+
+    public function apiResponse202($result)
+    {
+        return response()->json($result, 202);
+    }
+
+    // 204 No Content
 
     public function apiResponse204()
     {
         return response()->json(null, 204);
     }
 
-    public function apiResponse200()
+    // 403 Forbidden
+
+    public function apiResponse403($error, $msgError = [], $code = 403)
     {
-        return response()->json(null, 200);
+        $response = [
+            'error'=> [
+              'status' => $code,
+              'title' => $error,
+              'source' => [
+                  'pointer' => url()->current()
+              ],
+            ]    
+          ];
+          if(!empty($msgError)){
+              $response['data'] = $msgError;
+          }
+          return response()->json($response, $code);
     }
 
-    /**
-     * Set the error response of the API.
-     */
+    // 404 Not Found
 
-    public function apiResponseError($error, $msgError = [], $code = 404)
+    public function apiResponse404($error, $msgError = [], $code = 404)
     {
       $response = [
           'error'=> [
@@ -43,11 +65,26 @@ class ApiController extends Controller
             'source' => [
                 'pointer' => url()->current()
             ],
-          ],
-          'meta'=> [
-            'success' => false
-          ]
-            
+          ],   
+        ];
+        if(!empty($msgError)){
+            $response['data'] = $msgError;
+        }
+        return response()->json($response, $code);
+    }
+
+    // 409 Conflict
+
+    public function apiResponse409($error, $msgError = [], $code = 409)
+    {
+      $response = [
+          'error'=> [
+            'status' => $code,
+            'title' => $error,
+            'source' => [
+                'pointer' => url()->current()
+            ],
+          ], 
         ];
         if(!empty($msgError)){
             $response['data'] = $msgError;
