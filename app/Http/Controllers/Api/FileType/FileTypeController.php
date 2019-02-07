@@ -36,7 +36,7 @@ class FileTypeController extends ApiController
         if (is_null($types)) {
             return $this->apiResponseError('No type found.');
         }
-        return $this->apiResponseSuccess($types, 'Types retrieved successfully.');
+        return $this->apiResponseSuccess($types);
     }
 
     /**
@@ -57,7 +57,7 @@ class FileTypeController extends ApiController
         }
         $store = $this->typeRepository->store($request->all());
         $type = new FileTypeResource($store);
-        return $this->apiResponseSuccess($type, 'Type created successfully.');
+        return $this->apiResponseSuccess($type);
     }
 
     /**
@@ -73,7 +73,7 @@ class FileTypeController extends ApiController
         if (is_null($type)) {
             return $this->apiResponseError('No type found.');
         }
-        return $this->apiResponseSuccess($type, 'Type retrieved successfully.');
+        return $this->apiResponseSuccess($type);
     }
 
     /**
@@ -95,7 +95,7 @@ class FileTypeController extends ApiController
         }
         $this->typeRepository->update($id, $request->all());
         $type = new FileTypeResource(FileType::find($id));
-        return $this->apiResponseSuccess($type, 'Type updated successfully.');
+        return $this->apiResponseSuccess($type);
     }
 
     /**

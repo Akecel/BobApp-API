@@ -41,7 +41,7 @@ class FileController extends ApiController
         if (is_null($files)) {
             return $this->apiResponseError('No file found.');
         }
-        return $this->apiResponseSuccess($files, 'Files retrieved successfully.');
+        return $this->apiResponseSuccess($files);
     }
 
     /**
@@ -74,7 +74,7 @@ class FileController extends ApiController
 
         $store = $this->fileRepository->store($request->all());
         $file = new FileResource($store);
-        return $this->apiResponseSuccess($file, 'File uploaded successfully.');
+        return $this->apiResponseSuccess($file);
 
     }
 
@@ -91,7 +91,7 @@ class FileController extends ApiController
         if (is_null($file)) {
             return $this->apiResponseError('No file found.');
         }
-        return $this->apiResponseSuccess($file, 'File retrieved successfully.');
+        return $this->apiResponseSuccess($file);
     }
 
     /**
@@ -106,7 +106,7 @@ class FileController extends ApiController
     {
         $update = $this->fileRepository->update($id, $request->all());
         $file = new FileResource(File::find($id));
-        return $this->apiResponseSuccess($file, 'File updated successfully.');
+        return $this->apiResponseSuccess($file);
     }
 
     /**

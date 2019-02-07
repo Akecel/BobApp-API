@@ -36,7 +36,7 @@ class FolderCategoryController extends ApiController
         if (is_null($categories)) {
             return $this->apiResponseError('No category found.');
         }
-        return $this->apiResponseSuccess($categories, 'Categories retrieved successfully.');
+        return $this->apiResponseSuccess($categories);
     }
 
     /**
@@ -56,7 +56,7 @@ class FolderCategoryController extends ApiController
         }
         $store = $this->categoryRepository->store($request->all());
         $category = new FolderCategoryResource($store);
-        return $this->apiResponseSuccess($category, 'Category created successfully.');
+        return $this->apiResponseSuccess($category);
     }
 
     /**
@@ -72,7 +72,7 @@ class FolderCategoryController extends ApiController
         if (is_null($category)) {
             return $this->apiResponseError('No category found.');
         }
-        return $this->apiResponseSuccess($category, 'Category retrieved successfully.');
+        return $this->apiResponseSuccess($category);
     }
 
     /**
@@ -93,7 +93,7 @@ class FolderCategoryController extends ApiController
         }
         $this->categoryRepository->update($id, $request->all());
         $category = new FolderCategoryResource(FolderCategory::find($id));
-        return $this->apiResponseSuccess($category, 'Category updated successfully.');
+        return $this->apiResponseSuccess($category);
     }
 
     /**

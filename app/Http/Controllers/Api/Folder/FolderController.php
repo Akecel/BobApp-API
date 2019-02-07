@@ -37,7 +37,7 @@ class FolderController extends ApiController
         if (is_null($folders)) {
             return $this->apiResponseError('No folder found.');
         }
-        return $this->apiResponseSuccess($folders, 'Folders retrieved successfully.');
+        return $this->apiResponseSuccess($folders);
     }
 
     /**
@@ -58,7 +58,7 @@ class FolderController extends ApiController
         }
         $store = $this->folderRepository->store($request->all());
         $folder = new FolderResource($store);
-        return $this->apiResponseSuccess($folder, 'Folder created successfully.');
+        return $this->apiResponseSuccess($folder);
     }
 
     /**
@@ -74,7 +74,7 @@ class FolderController extends ApiController
         if (is_null($folders)) {
             return $this->apiResponseError('No folders found.');
         }
-        return $this->apiResponseSuccess($folders, 'All folders retrieved successfully.');
+        return $this->apiResponseSuccess($folders);
     }
 
     /**
@@ -96,7 +96,7 @@ class FolderController extends ApiController
         $folder = $this->folderRepository->update($id, $request->all());
         Folder::find($id)->files()->sync($request['files']);
         $folder = new FolderResource(Folder::find($id));
-        return $this->apiResponseSuccess($folder, 'Folder updated successfully.');
+        return $this->apiResponseSuccess($folder);
     }
 
     /**
