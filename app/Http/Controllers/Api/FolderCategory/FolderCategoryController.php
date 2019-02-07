@@ -34,9 +34,9 @@ class FolderCategoryController extends ApiController
     {
         $categories = new FolderCategoryCollection(FolderCategory::get());
         if (is_null($categories)) {
-            return $this->apiResponseError('No category found.');
+            return $this->apiResponse404('No category found');
         }
-        return $this->apiResponseSuccess($categories);
+        return $this->apiResponse200($categories);
     }
 
     /**
@@ -52,11 +52,11 @@ class FolderCategoryController extends ApiController
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $store = $this->categoryRepository->store($request->all());
         $category = new FolderCategoryResource($store);
-        return $this->apiResponseSuccess($category);
+        return $this->apiResponse201($category);
     }
 
     /**
@@ -70,9 +70,9 @@ class FolderCategoryController extends ApiController
     {
         $category = new FolderCategoryResource($category);
         if (is_null($category)) {
-            return $this->apiResponseError('No category found.');
+            return $this->apiResponse404('No category found');
         }
-        return $this->apiResponseSuccess($category);
+        return $this->apiResponse200($category);
     }
 
     /**
@@ -89,11 +89,11 @@ class FolderCategoryController extends ApiController
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $this->categoryRepository->update($id, $request->all());
         $category = new FolderCategoryResource(FolderCategory::find($id));
-        return $this->apiResponseSuccess($category);
+        return $this->apiResponse200($category);
     }
 
     /**
@@ -105,6 +105,10 @@ class FolderCategoryController extends ApiController
 
     public function destroy($id)
     {
+        $category = FolderCategory::find($id);
+        if (is_null($category)) {
+            return $this->apiResponse404('Category do not exist');
+        }
         $this->categoryRepository->destroy($id);
         return $this->apiResponse204();
     }

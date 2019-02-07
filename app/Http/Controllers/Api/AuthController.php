@@ -30,11 +30,10 @@ class AuthController extends ApiController {
             Session::put('phoneNum', $phoneNum);
             $user->sendToken();
             $webToken = Session::get('token');
-            return $this->apiResponseSuccess($webToken);
-            //return $this->apiResponse200();
+            return $this->apiResponse200($webToken);
         } else
         {
-            return $this->apiResponseError('User not found or bad number.');
+            return $this->apiResponse404('User not found');
         }
 
     }
@@ -57,9 +56,9 @@ class AuthController extends ApiController {
             Storage::disk('public')->makeDirectory($directory);
             $success['token'] =  $user->createToken('BobApp')->accessToken;
             $success['user'] =  new UserResource($user);
-            return $this->apiResponseSuccess($success);
+            return $this->apiResponse200($success);
         } else {
-            return $this->apiResponseError('Wrong token or phone number.');
+            return $this->apiResponse404('Wrong token');
         }
     }
 

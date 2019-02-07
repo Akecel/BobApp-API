@@ -38,7 +38,7 @@ class UserController extends ApiController
             $withs = explode(',', $request->include);
         }
         $users = new UserCollection(User::with($withs)->get());
-        return $this->apiResponseSuccess($users);
+        return $this->apiResponse200($users);
     }
 
     /**
@@ -54,12 +54,12 @@ class UserController extends ApiController
             'phone_number' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $this->setAdmin($request);
         $store = $this->userRepository->store($request->all());
         $user = new UserResource($store);
-        return $this->apiResponseSuccess($user);
+        return $this->apiResponse201($user);
     }
 
     /**
@@ -73,9 +73,9 @@ class UserController extends ApiController
     {
         $user = new UserResource($user);
         if (is_null($user)) {
-            return $this->apiResponseError('User not found.');
+            return $this->apiResponse404('User not found');
         }
-        return $this->apiResponseSuccess($user);
+        return $this->apiResponse200($user);
     }
 
     /**
@@ -92,12 +92,12 @@ class UserController extends ApiController
             'phone_number' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $this->setAdmin($request);
         $this->userRepository->update($id, $request->all());
         $user = new UserResource(User::find($id));
-        return $this->apiResponseSuccess($user);
+        return $this->apiResponse200($user);
     }
 
     /**
@@ -109,6 +109,10 @@ class UserController extends ApiController
 
     public function destroy($id)
     {
+        $user = User::find($id);
+        if (is_null($user)) {
+            return $this->apiResponse404('User do not exist');
+        }
         Storage::deleteDirectory('user_files_' . $id);
         $this->userRepository->destroy($id);
         return $this->apiResponse204();

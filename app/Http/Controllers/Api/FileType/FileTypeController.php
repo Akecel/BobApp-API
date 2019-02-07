@@ -34,9 +34,9 @@ class FileTypeController extends ApiController
     {
         $types = new FileTypeCollection(FileType::get());
         if (is_null($types)) {
-            return $this->apiResponseError('No type found.');
+            return $this->apiResponse404('No type found');
         }
-        return $this->apiResponseSuccess($types);
+        return $this->apiResponse200($types);
     }
 
     /**
@@ -53,11 +53,11 @@ class FileTypeController extends ApiController
             'folder_category_id' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $store = $this->typeRepository->store($request->all());
         $type = new FileTypeResource($store);
-        return $this->apiResponseSuccess($type);
+        return $this->apiResponse201($type);
     }
 
     /**
@@ -71,9 +71,9 @@ class FileTypeController extends ApiController
     {
         $type = new FileTypeResource($type);
         if (is_null($type)) {
-            return $this->apiResponseError('No type found.');
+            return $this->apiResponse404('No type found');
         }
-        return $this->apiResponseSuccess($type);
+        return $this->apiResponse200($type);
     }
 
     /**
@@ -91,11 +91,11 @@ class FileTypeController extends ApiController
             'folder_category_id' => 'required|max:255'
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $this->typeRepository->update($id, $request->all());
         $type = new FileTypeResource(FileType::find($id));
-        return $this->apiResponseSuccess($type);
+        return $this->apiResponse200($type);
     }
 
     /**
@@ -107,6 +107,10 @@ class FileTypeController extends ApiController
 
     public function destroy($id)
     {
+        $filetype = FileType::find($id);
+        if (is_null($filetype)) {
+            return $this->apiResponse404('Type do not exist');
+        }
         $this->typeRepository->destroy($id);
         return $this->apiResponse204();
     }

@@ -35,9 +35,9 @@ class FolderController extends ApiController
     {
         $folders = new FolderCollection(Folder::get());
         if (is_null($folders)) {
-            return $this->apiResponseError('No folder found.');
+            return $this->apiResponse404('No folder found');
         }
-        return $this->apiResponseSuccess($folders);
+        return $this->apiResponse200($folders);
     }
 
     /**
@@ -54,11 +54,11 @@ class FolderController extends ApiController
             'user_id' => 'required|max:255'
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $store = $this->folderRepository->store($request->all());
         $folder = new FolderResource($store);
-        return $this->apiResponseSuccess($folder);
+        return $this->apiResponse201($folder);
     }
 
     /**
@@ -72,9 +72,9 @@ class FolderController extends ApiController
     {
         $folders = new FolderResource($folder);
         if (is_null($folders)) {
-            return $this->apiResponseError('No folders found.');
+            return $this->apiResponse404('No folders found');
         }
-        return $this->apiResponseSuccess($folders);
+        return $this->apiResponse200($folders);
     }
 
     /**
@@ -91,12 +91,12 @@ class FolderController extends ApiController
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $folder = $this->folderRepository->update($id, $request->all());
         Folder::find($id)->files()->sync($request['files']);
         $folder = new FolderResource(Folder::find($id));
-        return $this->apiResponseSuccess($folder);
+        return $this->apiResponse200($folder);
     }
 
     /**
@@ -108,6 +108,10 @@ class FolderController extends ApiController
 
     public function destroy($id)
     {
+        $folder = Folder::find($id);
+        if (is_null($folder)) {
+            return $this->apiResponse404('Folder do not exist');
+        }
         $this->folderRepository->destroy($id);
         return $this->apiResponse204();
     }

@@ -39,9 +39,9 @@ class FileController extends ApiController
     {
         $files = new FileCollection(File::get());
         if (is_null($files)) {
-            return $this->apiResponseError('No file found.');
+            return $this->apiResponse404('No file found');
         }
-        return $this->apiResponseSuccess($files);
+        return $this->apiResponse200($files);
     }
 
     /**
@@ -59,7 +59,7 @@ class FileController extends ApiController
             'file_input' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if($validator->fails()){
-            return $this->apiResponseError('Validation Error.', $validator->errors());       
+            return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $user_id = $request['user_id'];
         $file_type_id = $request['file_type_id'];
@@ -74,7 +74,7 @@ class FileController extends ApiController
 
         $store = $this->fileRepository->store($request->all());
         $file = new FileResource($store);
-        return $this->apiResponseSuccess($file);
+        return $this->apiResponse201($file);
 
     }
 
@@ -89,9 +89,9 @@ class FileController extends ApiController
     {
         $file = new FileResource($file);
         if (is_null($file)) {
-            return $this->apiResponseError('No file found.');
+            return $this->apiResponse404('No file found');
         }
-        return $this->apiResponseSuccess($file);
+        return $this->apiResponse200($file);
     }
 
     /**
@@ -106,7 +106,7 @@ class FileController extends ApiController
     {
         $update = $this->fileRepository->update($id, $request->all());
         $file = new FileResource(File::find($id));
-        return $this->apiResponseSuccess($file);
+        return $this->apiResponse200($file);
     }
 
     /**
@@ -120,11 +120,11 @@ class FileController extends ApiController
     {
         $file = File::find($id);
         if (is_null($file)) {
-            return $this->apiResponseError('Delete Error.');
+            return $this->apiResponse404('File do not exist');
         }
         $url = explode($_ENV['APP_URL'] . "/storage/",$file['url']);
         Storage::disk('public')->delete($url[1]);
-        $try = $this->fileRepository->destroy($id);
+        $this->fileRepository->destroy($id);
         return $this->apiResponse204();
     }
     
