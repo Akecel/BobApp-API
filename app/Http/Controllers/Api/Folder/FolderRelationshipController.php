@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\User\User as UserResource;
 use App\Http\Resources\File\FileCollection;
 use App\Http\Resources\Folder\FolderRelationshipResource;
-
 use App\Models\Folder;
 
 class FolderRelationshipController extends Controller

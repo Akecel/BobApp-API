@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\FolderCategory\FolderCategory as FolderCategoryResource;
 use App\Http\Resources\File\FileCollection;
 use App\Http\Resources\FileType\FileTypeRelationshipResource;
-
 use App\Models\FileType;
 
 class FileTypeRelationshipController extends Controller

@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Api\Folder;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
 use App\Http\Controllers\Api\ApiController as ApiController;
+
 use App\Repositories\FolderRepository;
 use App\Http\Resources\Folder\Folder as FolderResource;
 use App\Http\Resources\Folder\FolderCollection;
-use Validator;
 use App\Models\Folder;
 
 class FolderController extends ApiController

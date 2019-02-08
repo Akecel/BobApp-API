@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\File;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Validator;
+
 use App\Http\Controllers\Api\ApiController as ApiController;
+
 use App\Repositories\FileRepository;
 use App\Http\Resources\File\File as FileResource;
 use App\Http\Resources\File\FileCollection;
-use Validator;
-use App\Models\File;
-use App\Models\User;
-use App\Models\FileType;
+use App\Models\{File, User, FileType};
 
 class FileController extends ApiController
 {

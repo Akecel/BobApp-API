@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\FolderCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FileType\FileTypeCollection;
 use App\Http\Resources\FileCategory\FolderCategoryRelationshipResource;
-
 use App\Models\FolderCategory;
 
 class FolderCategoryRelationshipController extends Controller

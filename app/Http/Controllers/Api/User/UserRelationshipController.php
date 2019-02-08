@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Folder\FolderCollection;
 use App\Http\Resources\File\FileCollection;
 use App\Http\Resources\User\UserRelationshipResource;
-
 use App\Models\User;
 
 class UserRelationshipController extends Controller
 {
+
     /**
      * 
      * Display all relationships of resources.
@@ -19,6 +19,7 @@ class UserRelationshipController extends Controller
 
     public function folders(User $user)
     {
+        $this->authorize('manage', $user);
         return new FolderCollection($user->folders);
     }
 
@@ -30,6 +31,7 @@ class UserRelationshipController extends Controller
 
     public function userRelationshipFolder(User $user)
     {
+        $this->authorize('manage', $user);
         $relationship = (new UserRelationshipResource($user))->jsonSerialize();
         return array_reverse($relationship['folders']);
     }
@@ -42,6 +44,7 @@ class UserRelationshipController extends Controller
 
     public function files(User $user)
     {
+        $this->authorize('manage', $user);
         return new FileCollection($user->files);
     }
 
@@ -53,6 +56,7 @@ class UserRelationshipController extends Controller
 
     public function userRelationshipFile(User $user)
     {
+        $this->authorize('manage', $user);
         $relationship = (new UserRelationshipResource($user))->jsonSerialize();
         return array_reverse($relationship['files']);
     }

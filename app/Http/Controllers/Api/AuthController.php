@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Api\ApiController as ApiController;
+use Validator;
+use Session;
+
+use App\Http\Controllers\Api\ApiController;
+
+use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Http\Resources\User\User as UserResource;
-use Validator;
-use App\Models\User;
-use Session;
+
 
 class AuthController extends ApiController {
 

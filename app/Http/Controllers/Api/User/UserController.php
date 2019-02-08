@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Api\User;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Api\ApiController as ApiController;
+use Validator;
+
+use App\Http\Controllers\Api\ApiController;
+
 use App\Repositories\UserRepository;
 use App\Http\Resources\User\User as UserResource;
 use App\Http\Resources\User\UserCollection;
-use Validator;
 use App\Models\User;
 
 class UserController extends ApiController
@@ -32,12 +34,14 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
-        $users = new UserCollection(User::with($withs)->get());
+        $this->authorize('adminManage', $user);
+        //if ($request->has('include')) {
+           // $withs = explode(',', $request->include);
+        //}
+        //$users = new UserCollection(User::with($withs)->get());
+        $users = new UserCollection(User::get());
         return $this->apiResponse200($users);
     }
 
@@ -48,8 +52,9 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
+        $this->authorize('manage', $user);
         $validator = Validator::make($request->all(), [
             'phone_number' => 'required|max:255',
         ]);
@@ -71,6 +76,7 @@ class UserController extends ApiController
 
     public function show(User $user)
     {
+        $this->authorize('manage', $user);
         $user = new UserResource($user);
         if (is_null($user)) {
             return $this->apiResponse404('User not found');
@@ -86,8 +92,9 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
+        $this->authorize('manage', $user);
         $validator = Validator::make($request->all(), [
             'phone_number' => 'required|max:255',
         ]);
@@ -95,8 +102,8 @@ class UserController extends ApiController
             return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $this->setAdmin($request);
-        $this->userRepository->update($id, $request->all());
-        $user = new UserResource(User::find($id));
+        $this->userRepository->update($user->id, $request->all());
+        $user = new UserResource(User::find($user->id));
         return $this->apiResponse200($user);
     }
 
@@ -107,14 +114,15 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
+        $this->authorize('manage', $user);
+        $user = User::find($user->id);
         if (is_null($user)) {
             return $this->apiResponse404('User do not exist');
         }
-        Storage::deleteDirectory('user_files_' . $id);
-        $this->userRepository->destroy($id);
+        Storage::deleteDirectory('user_files_' . $user->id);
+        $this->userRepository->destroy($user->id);
         return $this->apiResponse204();
     }
 
@@ -122,8 +130,9 @@ class UserController extends ApiController
      * Set user as Admin.
      */
 
-    private function setAdmin($request)
+    private function setAdmin($request, User $user)
     {
+        $this->authorize('adminManage', $user);
         if(!$request->has('admin'))
         {
             $request->merge(['admin' => 0]);

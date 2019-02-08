@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api\FolderCategory;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
+
 use App\Http\Controllers\Api\ApiController as ApiController;
+
 use App\Repositories\CategoryRepository;
 use App\Http\Resources\FolderCategory\FolderCategory as FolderCategoryResource;
 use App\Http\Resources\FolderCategory\FolderCategoryCollection;

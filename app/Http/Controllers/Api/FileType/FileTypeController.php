@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api\FileType;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Validator;
+
 use App\Http\Controllers\Api\ApiController as ApiController;
+
 use App\Repositories\TypeRepository;
 use App\Http\Resources\FileType\FileType as FileTypeResource;
 use App\Http\Resources\FileType\FileTypeCollection;

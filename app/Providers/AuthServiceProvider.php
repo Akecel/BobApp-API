@@ -6,6 +6,9 @@ use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\Models\ {User, File, Folder, FileType, FolderCategory} ;
+use App\Policies\{UserPolicy, FilePolicy, FolderPolicy, FileTypePolicy, FolderCategoryPolicy};
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -15,6 +18,11 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
+        File::class => FilePolicy::class,
+        Folder::class => FolderPolicy::class,
+        FileType::class => FileTypePolicy::class,
+        FolderCategory::class => FolderCategory::class,
     ];
 
     /**
