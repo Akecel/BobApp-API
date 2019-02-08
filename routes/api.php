@@ -22,6 +22,7 @@ Route::namespace('Api')->group(function ($id) {
     Route::post('user/validation', 'AuthController@validation');
     Route::post('user/login', 'AuthController@login');
 
+
     Route::middleware('auth:api')->group(function ($id) {
 
         /**
@@ -47,6 +48,7 @@ Route::namespace('Api')->group(function ($id) {
                 'as' => 'user.relationships.folders',
             ]
         );
+
         Route::get(
             'user/{user}/folder',
             [
@@ -69,6 +71,10 @@ Route::namespace('Api')->group(function ($id) {
                 'as' => 'user.files',
             ]
         );
+
+
+
+
 
         /**
         * Folder.
