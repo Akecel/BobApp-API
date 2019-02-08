@@ -41,6 +41,7 @@ class FileTypeRelationshipController extends Controller
 
     public function files(FileType $type)
     {
+        $this->authorize('adminManage', $type);
         return new FileCollection($type->files);
     }
 
@@ -52,6 +53,7 @@ class FileTypeRelationshipController extends Controller
 
     public function typeRelationshipFile(FileType $type)
     {
+        $this->authorize('adminManage', $type);
         $relationship = (new FileTypeRelationshipResource($type))->jsonSerialize();
         return array_reverse($relationship['files']);
     }

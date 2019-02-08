@@ -35,8 +35,9 @@ class FileController extends ApiController
      */
 
 
-    public function index()
+    public function index(File $file)
     {
+        $this->authorize('adminManage', $file);
         $files = new FileCollection(File::get());
         if (is_null($files)) {
             return $this->apiResponse404('No file found');
@@ -87,6 +88,7 @@ class FileController extends ApiController
 
     public function show(File $file)
     {
+        $this->authorize('manage', $file);
         $file = new FileResource($file);
         if (is_null($file)) {
             return $this->apiResponse404('No file found');
@@ -102,8 +104,10 @@ class FileController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, File $file)
     {
+        $this->authorize('manage', $file);
+        $id = $file->id;
         $update = $this->fileRepository->update($id, $request->all());
         $file = new FileResource(File::find($id));
         return $this->apiResponse200($file);
@@ -116,8 +120,10 @@ class FileController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy(File $file)
     {
+        $this->authorize('manage', $file);
+        $id = $file->id;
         $file = File::find($id);
         if (is_null($file)) {
             return $this->apiResponse404('File do not exist');

@@ -49,8 +49,9 @@ class FileTypeController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(Request $request, FileType $type)
     {
+        $this->authorize('adminManage', $type);
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'folder_category_id' => 'required|max:255',
@@ -87,11 +88,12 @@ class FileTypeController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, FileType $type)
     {
+        $this->authorize('adminManage', $type);
+        $id = $type->id;
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
-            'folder_category_id' => 'required|max:255'
         ]);
         if($validator->fails()){
             return $this->apiResponse403('Validation Error', $validator->errors());       
@@ -108,8 +110,10 @@ class FileTypeController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy(FileType $type)
     {
+        $this->authorize('adminManage', $type);
+        $id = $type->id;
         $filetype = FileType::find($id);
         if (is_null($filetype)) {
             return $this->apiResponse404('Type do not exist');

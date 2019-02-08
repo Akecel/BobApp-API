@@ -32,8 +32,9 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Folder $folder)
     {
+        $this->authorize('adminManage', $folder);
         $folders = new FolderCollection(Folder::get());
         if (is_null($folders)) {
             return $this->apiResponse404('No folder found');
@@ -71,6 +72,7 @@ class FolderController extends ApiController
 
     public function show(Folder $folder)
     {
+        $this->authorize('manage', $folder);
         $folders = new FolderResource($folder);
         if (is_null($folders)) {
             return $this->apiResponse404('No folders found');
@@ -86,8 +88,10 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Folder $folder)
     {
+        $this->authorize('manage', $folder);
+        $id = $folder->id;
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
         ]);
@@ -107,8 +111,10 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy(Folder $folder)
     {
+        $this->authorize('manage', $folder);
+        $id = $folder->id;
         $folder = Folder::find($id);
         if (is_null($folder)) {
             return $this->apiResponse404('Folder do not exist');

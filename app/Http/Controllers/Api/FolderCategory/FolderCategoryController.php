@@ -49,8 +49,9 @@ class FolderCategoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(Request $request, FolderCategory $category)
     {
+        $this->authorize('adminManage', $category);
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
         ]);
@@ -86,8 +87,10 @@ class FolderCategoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, FolderCategory $category)
     {
+        $this->authorize('adminManage', $category);
+        $id = $category->id;
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
         ]);
@@ -106,8 +109,10 @@ class FolderCategoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function destroy($id)
+    public function destroy(FolderCategory $category)
     {
+        $this->authorize('adminManage', $category);
+        $id = $category->id;
         $category = FolderCategory::find($id);
         if (is_null($category)) {
             return $this->apiResponse404('Category do not exist');

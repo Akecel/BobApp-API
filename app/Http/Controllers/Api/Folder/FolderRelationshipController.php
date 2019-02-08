@@ -18,6 +18,7 @@ class FolderRelationshipController extends Controller
 
     public function user(Folder $folder)
     {
+        $this->authorize('manage', $folder);
         return new UserResource($folder->user);
     }
 
@@ -29,6 +30,7 @@ class FolderRelationshipController extends Controller
 
     public function folderRelationshipUser(Folder $folder)
     {
+        $this->authorize('manage', $folder);
         $relationship = (new FolderRelationshipResource($folder))->jsonSerialize();
         return array_reverse($relationship['user']);
     }
@@ -41,6 +43,7 @@ class FolderRelationshipController extends Controller
 
     public function files(Folder $folder)
     {
+        $this->authorize('manage', $folder);
         return new FileCollection($folder->files);
     }
 
@@ -52,6 +55,7 @@ class FolderRelationshipController extends Controller
 
     public function folderRelationshipFile(Folder $folder)
     {
+        $this->authorize('manage', $folder);
         $relationship = (new FolderRelationshipResource($folder))->jsonSerialize();
         return array_reverse($relationship['files']);
     }

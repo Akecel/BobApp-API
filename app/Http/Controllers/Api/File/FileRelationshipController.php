@@ -19,6 +19,7 @@ class FileRelationshipController extends Controller
 
     public function user(File $file)
     {
+        $this->authorize('manage', $file);
         return new UserResource($file->user);
     }
 
@@ -30,6 +31,7 @@ class FileRelationshipController extends Controller
 
     public function fileRelationshipUser(File $file)
     {
+        $this->authorize('manage', $file);
         $relationship = (new FileRelationshipResource($file))->jsonSerialize();
         return array_reverse($relationship['user']);
     }
@@ -42,6 +44,7 @@ class FileRelationshipController extends Controller
 
     public function folders(File $file)
     {
+        $this->authorize('manage', $file);
         return new FolderCollection($file->folders);
     }
 
@@ -53,6 +56,7 @@ class FileRelationshipController extends Controller
 
     public function fileRelationshipFolder(File $file)
     {
+        $this->authorize('manage', $file);
         $relationship = (new FileRelationshipResource($file))->jsonSerialize();
         return array_reverse($relationship['folders']);
     }
@@ -65,6 +69,7 @@ class FileRelationshipController extends Controller
 
     public function type(File $file)
     {
+        $this->authorize('manage', $file);
         return new FileTypeResource($file->file_type);
     }
 
@@ -76,6 +81,7 @@ class FileRelationshipController extends Controller
 
     public function fileRelationshipType(File $file)
     {
+        $this->authorize('manage', $file);
         $relationship = (new FileRelationshipResource($file))->jsonSerialize();
         return array_reverse($relationship['type']);
     }

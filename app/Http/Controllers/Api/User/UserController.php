@@ -54,7 +54,7 @@ class UserController extends ApiController
 
     public function store(Request $request, User $user)
     {
-        $this->authorize('manage', $user);
+        $this->authorize('adminManage', $user);
         $validator = Validator::make($request->all(), [
             'phone_number' => 'required|max:255',
         ]);
@@ -101,7 +101,7 @@ class UserController extends ApiController
         if($validator->fails()){
             return $this->apiResponse403('Validation Error', $validator->errors());       
         }
-        $this->setAdmin($request);
+        $this->setAdmin($request, $user);
         $this->userRepository->update($user->id, $request->all());
         $user = new UserResource(User::find($user->id));
         return $this->apiResponse200($user);
@@ -117,6 +117,7 @@ class UserController extends ApiController
     public function destroy(User $user)
     {
         $this->authorize('manage', $user);
+        $id = 
         $user = User::find($user->id);
         if (is_null($user)) {
             return $this->apiResponse404('User do not exist');
@@ -130,7 +131,7 @@ class UserController extends ApiController
      * Set user as Admin.
      */
 
-    private function setAdmin($request, User $user)
+    private function setAdmin($request, $user)
     {
         $this->authorize('adminManage', $user);
         if(!$request->has('admin'))
