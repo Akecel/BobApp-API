@@ -19,8 +19,9 @@ Route::namespace('Api')->group(function ($id) {
     * Authentification.
     */
 
-    Route::post('user/validation', 'AuthController@validation');
-    Route::post('user/login', 'AuthController@login');
+    Route::post('validation', 'AuthController@validation');
+    Route::post('login', 'AuthController@login');
+    Route::post('signin', 'AuthController@signin');
 
 
     Route::middleware('auth:api')->group(function ($id) {

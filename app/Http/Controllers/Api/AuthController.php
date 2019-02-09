@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Validator;
@@ -43,7 +44,7 @@ class AuthController extends ApiController {
 
     /**
      * 
-     * Login user.
+     * Login user (Mobile).
      *
      */
 
@@ -63,6 +64,24 @@ class AuthController extends ApiController {
         } else {
             return $this->apiResponse404('Wrong token');
         }
+    }
+
+    /**
+     * 
+     * Login user (Backoffice).
+     *
+     */
+
+
+    public function signin(Request $request){ 
+        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
+            $user = Auth::user(); 
+            $success['token'] =  $user->createToken('BobApp')->accessToken;
+            return $this->apiResponse200($success);
+        } 
+        else{ 
+            return $this->apiResponse403('Wrong login or password');
+        } 
     }
 
 }
