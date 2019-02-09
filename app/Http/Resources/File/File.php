@@ -21,6 +21,9 @@ class File extends JsonResource
             'id' => (string)$this->id,
             'attributes' => [
                 'url' => $this->url,
+                'name' => $this->when(isset($this->other_file->name), function () {
+                    return $this->other_file->name;
+                }),
                 'created_at' => (string)$this->created_at,
                 'updated_at' => (string)$this->updated_at,
             ],

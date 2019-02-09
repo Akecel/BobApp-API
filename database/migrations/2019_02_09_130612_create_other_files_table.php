@@ -15,7 +15,7 @@ class CreateOtherFilesTable extends Migration
     {
         Schema::create('other_files', function (Blueprint $table) {
             $table->string('name');
-            $table->integer('file_id')->unsigned();
+            $table->integer('file_id')->unique()->unsigned();
 
         });
     }
