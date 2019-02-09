@@ -38,6 +38,11 @@ class CreateForeignKeys extends Migration {
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
+		Schema::table('other_files', function(Blueprint $table) {
+			$table->foreign('file_id')->references('id')->on('files')
+						->onDelete('cascade')
+						->onUpdate('cascade');
+		});
 	}
 
 	public function down()
@@ -59,6 +64,9 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('files_types', function(Blueprint $table) {
 			$table->dropForeign('files_types_folder_categorie_id_foreign');
+		});
+		Schema::table('other_files', function(Blueprint $table) {
+			$table->dropForeign('other_files_file_id_foreign');
 		});
 	}
 }
