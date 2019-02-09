@@ -74,6 +74,9 @@ class FileController extends ApiController
         $request['url'] =$_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name;
 
         $store = $this->fileRepository->store($request->all());
+        if($request->has('name')) {
+        $this->fileRepository->saveOtherFile($store,$request->only('name'));
+        }
         $file = new FileResource($store);
         return $this->apiResponse201($file);
 
@@ -109,6 +112,9 @@ class FileController extends ApiController
         $this->authorize('manage', $file);
         $id = $file->id;
         $update = $this->fileRepository->update($id, $request->all());
+        if($request->has('name')) {
+        $this->fileRepository->updateOtherFile($id,$request->only('name'));
+        }
         $file = new FileResource(File::find($id));
         return $this->apiResponse200($file);
     }
