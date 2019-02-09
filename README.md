@@ -143,7 +143,7 @@ You can check :
 
 Bob API has its own documentation explaining each endpoint, how they work, their specifications and possible customizations :
 
-* [Bob API Postman Documentation](https://documenter.getpostman.com/view/5724091/RztfvWwT)
+* [Bob API Postman Documentation](https://documenter.getpostman.com/view/5724091/Rztpr8RM)
 
 ### Standard and specifications
 
