@@ -37,10 +37,6 @@ class UserController extends ApiController
     public function index(Request $request, User $user)
     {
         $this->authorize('adminManage', $user);
-        //if ($request->has('include')) {
-           // $withs = explode(',', $request->include);
-        //}
-        //$users = new UserCollection(User::with($withs)->get());
         $users = new UserCollection(User::get());
         return $this->apiResponse200($users);
     }

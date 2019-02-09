@@ -15,25 +15,11 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $included = $this->withIncluded($this);
-
         return[
             'data' => $this->collection,
             'links' => [
                 'self' => url()->current(),
             ],
-            $this->mergeWhen($included->isNotEmpty(), [
-                'included' => $included
-            ])
         ];
-    }
-
-    private function withIncluded($include)
-    {
-        return $include->collection->flatMap(
-            function ($resource) {
-                return $resource->whenLoaded('folders');
-            }
-        )->unique('id');
     }
 }
