@@ -70,10 +70,9 @@ class FileController extends ApiController
         $image = $request->file('file_input');
         $name = $type['title'] . '.' . $user['lastName'] . $user['firstName'] . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
         $destinationPath = "storage/user_files_" . $user_id;
-        $image->move($destinationPath, $name);
-        $request['url'] =$_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name;
-
+        $request['url'] = encrypt($_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name);
         $store = $this->fileRepository->store($request->all());
+        $image->move($destinationPath, $name);
         if($request->has('name')) {
         $this->fileRepository->saveOtherFile($store,$request->only('name'));
         }

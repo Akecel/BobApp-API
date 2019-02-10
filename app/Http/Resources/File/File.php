@@ -20,7 +20,7 @@ class File extends JsonResource
             'type' => 'file',
             'id' => (string)$this->id,
             'attributes' => [
-                'url' => $this->url,
+                'url' => decrypt($this->url),
                 'name' => $this->when(isset($this->other_file->name), function () {
                     return $this->other_file->name;
                 }),
