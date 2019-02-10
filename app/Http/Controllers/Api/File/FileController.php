@@ -12,7 +12,7 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FileRepository;
 use App\Http\Resources\File\File as FileResource;
 use App\Http\Resources\File\FileCollection;
-use App\Models\{File, User, FileType};
+use App\Models\{File, User};
 
 class FileController extends ApiController
 {
@@ -65,10 +65,8 @@ class FileController extends ApiController
         $user_id = $request['user_id'];
         $file_type_id = $request['file_type_id'];
         $user = User::where('id', $user_id)->first();
-        $type = FileType::where('id', $file_type_id)->first();
-
         $image = $request->file('file_input');
-        $name = $type['title'] . '.' . $user['lastName'] . $user['firstName'] . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
+        $name = $file_type_id . '.' . $user['lastName'] . $user['firstName'] . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
         $destinationPath = "storage/user_files_" . $user_id;
         $request['url'] = encrypt($_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name);
         $store = $this->fileRepository->store($request->all());
@@ -133,7 +131,7 @@ class FileController extends ApiController
         if (is_null($file)) {
             return $this->apiResponse404('File do not exist');
         }
-        $url = explode($_ENV['APP_URL'] . "/storage/",$file['url']);
+        $url = explode($_ENV['APP_URL'] . "/storage/",decrypt($file['url']));
         Storage::disk('public')->delete($url[1]);
         $this->fileRepository->destroy($id);
         return $this->apiResponse204();

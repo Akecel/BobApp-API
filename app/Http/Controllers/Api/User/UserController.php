@@ -57,8 +57,11 @@ class UserController extends ApiController
         if($validator->fails()){
             return $this->apiResponse403('Validation Error', $validator->errors());       
         }
-        $this->setAdmin($request);
+        $this->setAdmin($request,$user);
         $store = $this->userRepository->store($request->all());
+        $id = $store['id'];
+        $directory = "/user_files_" . $id;
+        Storage::disk('public')->makeDirectory($directory);
         $user = new UserResource($store);
         return $this->apiResponse201($user);
     }
@@ -127,7 +130,7 @@ class UserController extends ApiController
      * Set user as Admin.
      */
 
-    private function setAdmin($request, $user)
+    private function setAdmin(Request $request, User $user)
     {
         $this->authorize('adminManage', $user);
         if(!$request->has('admin'))
