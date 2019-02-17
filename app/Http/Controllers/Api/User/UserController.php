@@ -77,10 +77,14 @@ class UserController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function show(User $user)
+    public function show(Request $request, User $user)
     {
         $this->authorize('manage', $user);
-        $user = new UserResource($user);
+        $withs = [];
+        if ($request->has('include')) {
+            $withs = explode(',', $request->include);
+        }
+        $user = new UserResource(User::with($withs)->find($user->id));
         if (is_null($user)) {
             return $this->apiResponse404('User not found');
         }
