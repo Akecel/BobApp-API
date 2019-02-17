@@ -32,10 +32,14 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Folder $folder)
+    public function index(Request $request, Folder $folder)
     {
         $this->authorize('adminManage', $folder);
-        $folders = new FolderCollection(Folder::get());
+        $withs = [];
+        if ($request->has('include')) {
+            $withs = explode(',', $request->include);
+        }
+        $folders = new FolderCollection(Folder::with($withs)->get());
         if (is_null($folders)) {
             return $this->apiResponse404('No folder found');
         }

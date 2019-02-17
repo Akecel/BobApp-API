@@ -35,10 +35,14 @@ class FileController extends ApiController
      */
 
 
-    public function index(File $file)
+    public function index(Request $request, File $file)
     {
         $this->authorize('adminManage', $file);
-        $files = new FileCollection(File::get());
+        $withs = [];
+        if ($request->has('include')) {
+            $withs = explode(',', $request->include);
+        }
+        $files = new FileCollection(File::with($withs)->get());
         if (is_null($files)) {
             return $this->apiResponse404('No file found');
         }

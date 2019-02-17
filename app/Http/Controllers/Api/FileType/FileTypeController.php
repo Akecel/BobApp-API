@@ -33,9 +33,13 @@ class FileTypeController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $types = new FileTypeCollection(FileType::get());
+        $withs = [];
+        if ($request->has('include')) {
+            $withs = explode(',', $request->include);
+        }
+        $types = new FileTypeCollection(FileType::with($withs)->get());
         if (is_null($types)) {
             return $this->apiResponse404('No type found');
         }

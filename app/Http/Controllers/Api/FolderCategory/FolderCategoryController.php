@@ -33,9 +33,13 @@ class FolderCategoryController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $categories = new FolderCategoryCollection(FolderCategory::get());
+        $withs = [];
+        if ($request->has('include')) {
+            $withs = explode(',', $request->include);
+        }
+        $categories = new FolderCategoryCollection(FolderCategory::with($withs)->get());
         if (is_null($categories)) {
             return $this->apiResponse404('No category found');
         }
