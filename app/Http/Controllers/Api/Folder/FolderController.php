@@ -23,7 +23,7 @@ class FolderController extends ApiController
 
     protected $folderRepository;
 
-    public function __construct(FolderRepository $folderRepository)
+    public function __construct(Request $request, FolderRepository $folderRepository)
     {
         $this->folderRepository = $folderRepository;
 
@@ -41,11 +41,7 @@ class FolderController extends ApiController
     public function index(Request $request, Folder $folder)
     {
         $this->authorize('adminManage', $folder);
-        $folders = new FolderCollection(Folder::with($this->withs)->get());
-        if (is_null($folders)) {
-            return $this->apiResponse404('No folder found');
-        }
-        return $this->apiResponse200($folders);
+        return new FolderCollection(Folder::with($this->withs)->get());
     }
 
     /**
@@ -79,11 +75,7 @@ class FolderController extends ApiController
     public function show(Folder $folder)
     {
         $this->authorize('manage', $folder);
-        $folders = new FolderResource($folder);
-        if (is_null($folders)) {
-            return $this->apiResponse404('No folders found');
-        }
-        return $this->apiResponse200($folders);
+        return new FolderResource(Folder::with($this->withs)->find($folder->id));
     }
 
     /**
@@ -122,9 +114,6 @@ class FolderController extends ApiController
         $this->authorize('manage', $folder);
         $id = $folder->id;
         $folder = Folder::find($id);
-        if (is_null($folder)) {
-            return $this->apiResponse404('Folder do not exist');
-        }
         $this->folderRepository->destroy($id);
         return $this->apiResponse204();
     }

@@ -65,6 +65,7 @@ class User extends JsonResource
                 ]
             ];
         }
+        else return [];
     }
 
     /**
@@ -81,16 +82,13 @@ class User extends JsonResource
 
         if (!empty($relations)) {
             foreach ($relations as $nameRelation => $relation) {
-
-                if ($relation->count()) {
-                    $modelRelation = get_class($this->{$nameRelation}()->getRelated());
-                    if($nameRelation == "folders") {
-                        $relationships[$nameRelation][] = $relation->mapInto(FolderResource::class);
-                    } 
-                    elseif ($nameRelation == 'files') {
-                        $relationships[$nameRelation][] = $relation->mapInto(FileResource::class);
-                    }
-                }
+                $modelRelation = get_class($this->{$nameRelation}()->getRelated());
+                if($nameRelation == "folders") {
+                    $relationships[$nameRelation][] = $relation->mapInto(FolderResource::class);
+                } 
+                elseif ($nameRelation == 'files') {
+                    $relationships[$nameRelation][] = $relation->mapInto(FileResource::class);
+                } 
             }
         }
     return $relationships;

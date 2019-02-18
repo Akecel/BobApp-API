@@ -24,7 +24,7 @@ class FileTypeController extends ApiController
 
     protected $typeRepository;
   
-    public function __construct(TypeRepository $typeRepository)
+    public function __construct(Request $request, TypeRepository $typeRepository)
     {
         $this->typeRepository = $typeRepository;
 
@@ -39,13 +39,9 @@ class FileTypeController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index(Request $request)
+    public function index()
     {
-        $types = new FileTypeCollection(FileType::with($this->withs)->get());
-        if (is_null($types)) {
-            return $this->apiResponse404('No type found');
-        }
-        return $this->apiResponse200($types);
+        return new FileTypeCollection(FileType::with($this->withs)->get());
     }
 
     /**
@@ -79,11 +75,7 @@ class FileTypeController extends ApiController
 
     public function show(FileType $type)
     {
-        $type = new FileTypeResource($type);
-        if (is_null($type)) {
-            return $this->apiResponse404('No type found');
-        }
-        return $this->apiResponse200($type);
+        return new FileTypeResource(FileType::with($this->withs)->find($type->id));
     }
 
     /**
@@ -121,9 +113,6 @@ class FileTypeController extends ApiController
         $this->authorize('adminManage', $type);
         $id = $type->id;
         $filetype = FileType::find($id);
-        if (is_null($filetype)) {
-            return $this->apiResponse404('Type do not exist');
-        }
         $this->typeRepository->destroy($id);
         return $this->apiResponse204();
     }

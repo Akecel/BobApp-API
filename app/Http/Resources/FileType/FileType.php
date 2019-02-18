@@ -3,6 +3,8 @@
 namespace App\Http\Resources\FileType;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\File\File as FileResource;
+use App\Http\Resources\FolderCategory\FolderCategory as FolderCategoryResource;
 
 class FileType extends JsonResource
 {
@@ -27,5 +29,55 @@ class FileType extends JsonResource
                 'self' => route('type.show', ['type' => $this->id]),
             ],
         ];
+    }
+
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+
+    public function with($request) 
+    {
+        $included = [];
+
+        if ($request->has('include')) {
+            return [
+                'included' => [
+                    $this->withIncluded()
+                ],
+                'links' => [
+                    'self' => $request->fullUrl(),
+                ]
+            ];
+        }
+        else return [];
+    }
+
+    /**
+     * Retrieve the relationships that have been included.
+     *
+     * @return array
+     */
+
+    private function withIncluded(): array
+    {
+        $relationships = [];
+
+        $relations = $this->getRelations();
+
+        if (!empty($relations)) {
+            foreach ($relations as $nameRelation => $relation) {
+                $modelRelation = get_class($this->{$nameRelation}()->getRelated());
+                if($nameRelation == "folder_category") {
+                    $relationships[$nameRelation][] = new FolderCategoryResource($relation);
+                } 
+                elseif ($nameRelation == 'files') {
+                    $relationships[$nameRelation][] = $relation->mapInto(FileResource::class);
+                }
+            }
+        }
+        return $relationships;
     }
 }

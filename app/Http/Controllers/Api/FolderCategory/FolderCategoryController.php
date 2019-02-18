@@ -24,7 +24,7 @@ class FolderCategoryController extends ApiController
 
     protected $categoryRepository;
   
-    public function __construct(CategoryRepository $categoryRepository)
+    public function __construct(Request $request, CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
 
@@ -41,11 +41,7 @@ class FolderCategoryController extends ApiController
 
     public function index(Request $request)
     {
-        $categories = new FolderCategoryCollection(FolderCategory::with($this->withs)->get());
-        if (is_null($categories)) {
-            return $this->apiResponse404('No category found');
-        }
-        return $this->apiResponse200($categories);
+        return new FolderCategoryCollection(FolderCategory::with($this->withs)->get());
     }
 
     /**
@@ -78,11 +74,7 @@ class FolderCategoryController extends ApiController
 
     public function show(FolderCategory $category)
     {
-        $category = new FolderCategoryResource($category);
-        if (is_null($category)) {
-            return $this->apiResponse404('No category found');
-        }
-        return $this->apiResponse200($category);
+        return new FolderCategoryResource(FolderCategory::with($this->withs)->find($category->id));
     }
 
     /**
@@ -120,9 +112,6 @@ class FolderCategoryController extends ApiController
         $this->authorize('adminManage', $category);
         $id = $category->id;
         $category = FolderCategory::find($id);
-        if (is_null($category)) {
-            return $this->apiResponse404('Category do not exist');
-        }
         $this->categoryRepository->destroy($id);
         return $this->apiResponse204();
     }

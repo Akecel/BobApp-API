@@ -25,7 +25,7 @@ class FileController extends ApiController
 
     protected $fileRepository;
 
-    public function __construct(FileRepository $fileRepository)
+    public function __construct(Request $request, FileRepository $fileRepository)
     {
         $this->fileRepository = $fileRepository;
 
@@ -44,11 +44,7 @@ class FileController extends ApiController
     public function index(Request $request, File $file)
     {
         $this->authorize('adminManage', $file);
-        $files = new FileCollection(File::with($this->withs)->get());
-        if (is_null($files)) {
-            return $this->apiResponse404('No file found');
-        }
-        return $this->apiResponse200($files);
+        return new FileCollection(File::with($this->withs)->get());
     }
 
     /**
@@ -95,11 +91,7 @@ class FileController extends ApiController
     public function show(File $file)
     {
         $this->authorize('manage', $file);
-        $file = new FileResource($file);
-        if (is_null($file)) {
-            return $this->apiResponse404('No file found');
-        }
-        return $this->apiResponse200($file);
+        return new FileResource(File::with($this->withs)->find($file->id));
     }
 
     /**
@@ -134,9 +126,6 @@ class FileController extends ApiController
         $this->authorize('manage', $file);
         $id = $file->id;
         $file = File::find($id);
-        if (is_null($file)) {
-            return $this->apiResponse404('File do not exist');
-        }
         $url = explode($_ENV['APP_URL'] . "/storage/",decrypt($file['url']));
         Storage::disk('public')->delete($url[1]);
         $this->fileRepository->destroy($id);

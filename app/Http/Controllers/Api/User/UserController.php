@@ -81,11 +81,7 @@ class UserController extends ApiController
     public function show(Request $request, User $user)
     {
         $this->authorize('manage', $user);
-        $user = new UserResource(User::with($this->withs)->find($user->id));
-        if (is_null($user)) {
-            return $this->apiResponse404('User not found');
-        }
-        return $user;
+        return new UserResource(User::with($this->withs)->find($user->id));
     }
 
     /**
@@ -122,9 +118,6 @@ class UserController extends ApiController
         $this->authorize('manage', $user);
         $id = 
         $user = User::find($user->id);
-        if (is_null($user)) {
-            return $this->apiResponse404('User do not exist');
-        }
         Storage::deleteDirectory('user_files_' . $user->id);
         $this->userRepository->destroy($user->id);
         return $this->apiResponse204();

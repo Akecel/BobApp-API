@@ -3,6 +3,9 @@
 namespace App\Http\Resources\File;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\User\User as UserResource;
+use App\Http\Resources\Folder\Folder as FolderResource;
+use App\Http\Resources\FileType\FileType as FileTypeResource;
 
 class File extends JsonResource
 {
@@ -32,5 +35,58 @@ class File extends JsonResource
                 'self' => route('file.show', ['file' => $this->id]),
             ],
         ];
+    }
+
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+
+    public function with($request) 
+    {
+        $included = [];
+
+        if ($request->has('include')) {
+            return [
+                'included' => [
+                    $this->withIncluded()
+                ],
+                'links' => [
+                    'self' => $request->fullUrl(),
+                ]
+            ];
+        }
+        else return [];
+    }
+
+    /**
+     * Retrieve the relationships that have been included.
+     *
+     * @return array
+     */
+    
+    private function withIncluded(): array
+    {
+        $relationships = [];
+
+        $relations = $this->getRelations();
+
+        if (!empty($relations)) {
+            foreach ($relations as $nameRelation => $relation) {
+                $modelRelation = get_class($this->{$nameRelation}()->getRelated());
+                if($nameRelation == "user") {
+                    $relationships[$nameRelation][] = new UserResource($relation);
+                } 
+                elseif ($nameRelation == 'folders') {
+                    $relationships[$nameRelation][] = $relation->mapInto(FolderResource::class);
+                }
+                elseif ($nameRelation == 'file_type') {
+                    $relationships[$nameRelation][] = new FileTypeResource($relation);
+                }
+            }
+        }
+    return $relationships;
     }
 }
