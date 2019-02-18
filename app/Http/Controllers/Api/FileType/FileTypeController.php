@@ -39,8 +39,11 @@ class FileTypeController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(FileType $type)
     {
+        if (!isset($this->withs->files)) {
+            $this->authorize('adminManage', $type); 
+        }
         return new FileTypeCollection(FileType::with($this->withs)->get());
     }
 
@@ -75,6 +78,9 @@ class FileTypeController extends ApiController
 
     public function show(FileType $type)
     {
+        if (!isset($this->withs->files)) {
+            $this->authorize('adminManage', $type); 
+        }
         return new FileTypeResource(FileType::with($this->withs)->find($type->id));
     }
 
