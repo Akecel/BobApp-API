@@ -15,13 +15,6 @@ class ApiController extends Controller
      * @return array
      */
 
-    // 200 Ok
-
-    public function apiResponse200($result)
-    {
-        return response()->json($result, 200);
-    }
-
     // 201 Created
 
     public function apiResponse201($result)
