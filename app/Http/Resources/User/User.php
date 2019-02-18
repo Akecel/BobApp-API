@@ -56,14 +56,15 @@ class User extends JsonResource
         $included = [];
 
         if ($request->has('include')) {
-            $included = ['included' => $this->withIncluded()];
+            return [
+                'included' => [
+                    $this->withIncluded()
+                ],
+                'links' => [
+                    'self' => $request->fullUrl(),
+                ]
+            ];
         }
-
-        return [
-            'links' => [
-                'self' => $request->fullUrl(),
-            ],
-        ];
     }
 
     /**

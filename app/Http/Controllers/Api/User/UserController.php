@@ -43,8 +43,7 @@ class UserController extends ApiController
     public function index(Request $request, User $user)
     {
         $this->authorize('adminManage', $user);
-        $users = new UserCollection(User::with($this->withs)->get());
-        return $this->apiResponse200($users);
+        return new UserCollection(User::with($this->withs)->get());
     }
 
     /**
@@ -82,15 +81,11 @@ class UserController extends ApiController
     public function show(Request $request, User $user)
     {
         $this->authorize('manage', $user);
-        $withs = [];
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
         $user = new UserResource(User::with($this->withs)->find($user->id));
         if (is_null($user)) {
             return $this->apiResponse404('User not found');
         }
-        return $this->apiResponse200($user);
+        return $user;
     }
 
     /**
@@ -112,8 +107,7 @@ class UserController extends ApiController
         }
         $this->setAdmin($request, $user);
         $this->userRepository->update($user->id, $request->all());
-        $user = new UserResource(User::find($user->id));
-        return $this->apiResponse200($user);
+        return new UserResource(User::find($user->id));
     }
 
     /**
