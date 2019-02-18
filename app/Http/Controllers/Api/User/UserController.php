@@ -21,11 +21,17 @@ class UserController extends ApiController
      * Constructor
      */
 
+    public $withs = [];
+
     protected $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(Request $request, UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+
+        if ($request->has('include')) {
+            $this->withs = explode(',', $request->include);
+        }
     }
 
     /**
@@ -37,11 +43,7 @@ class UserController extends ApiController
     public function index(Request $request, User $user)
     {
         $this->authorize('adminManage', $user);
-        $withs = [];
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
-        $users = new UserCollection(User::with($withs)->get());
+        $users = new UserCollection(User::with($this->withs)->get());
         return $this->apiResponse200($users);
     }
 
@@ -84,7 +86,7 @@ class UserController extends ApiController
         if ($request->has('include')) {
             $withs = explode(',', $request->include);
         }
-        $user = new UserResource(User::with($withs)->find($user->id));
+        $user = new UserResource(User::with($this->withs)->find($user->id));
         if (is_null($user)) {
             return $this->apiResponse404('User not found');
         }
