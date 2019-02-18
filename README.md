@@ -263,7 +263,9 @@ Functions in ```app/User.php``` model :
     function validateToken($token)
 ```
 
-### API Securisation (Passport)
+### API Securisation
+
+#### Passport
 
 To secure the endpoints of the API and allow access only to previously authenticated users, Bob uses Passport which provides a full OAuth2 server implementation for Laravel's application. APIs typically use tokens to authenticate users and do not maintain session state between requests (Expept for the login with twilio). 
 There are some actions to perform to install and configure passport to use, you can find more informations on its use and its installation on the [Passport documentation.](https://laravel.com/docs/5.7/passport)
@@ -293,6 +295,13 @@ Passport assign a token to users who authenticate successfully (and keep it in f
 ```php
     $success['token'] =  $user->createToken('BobApp')->accessToken;
 ```
+
+#### Policies
+
+Endpoints are protected by their owner, example ```api/user/1``` can only be used by the user with id 1 or by an administrator.
+Endpoints type ```api/user``` are only accessible by the administrator
+For this the bob api uses the laravel policies.
+[See more](https://laravel.com/docs/5.7/authorization)
 
 ## Testing <a name="test"></a>
 
