@@ -19,11 +19,17 @@ class FolderController extends ApiController
      * Constructor
      */
 
+    protected $withs = [];
+
     protected $folderRepository;
 
     public function __construct(FolderRepository $folderRepository)
     {
         $this->folderRepository = $folderRepository;
+
+        if ($request->has('include')) {
+            $this->withs = explode(',', $request->include);
+        }
     }
 
     /**
@@ -35,11 +41,7 @@ class FolderController extends ApiController
     public function index(Request $request, Folder $folder)
     {
         $this->authorize('adminManage', $folder);
-        $withs = [];
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
-        $folders = new FolderCollection(Folder::with($withs)->get());
+        $folders = new FolderCollection(Folder::with($this->withs)->get());
         if (is_null($folders)) {
             return $this->apiResponse404('No folder found');
         }

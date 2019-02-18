@@ -20,11 +20,17 @@ class FileTypeController extends ApiController
      * Constructor
      */
 
+    protected $withs = [];
+
     protected $typeRepository;
   
     public function __construct(TypeRepository $typeRepository)
     {
         $this->typeRepository = $typeRepository;
+
+        if ($request->has('include')) {
+            $this->withs = explode(',', $request->include);
+        }
     }
 
     /**
@@ -35,11 +41,7 @@ class FileTypeController extends ApiController
 
     public function index(Request $request)
     {
-        $withs = [];
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
-        $types = new FileTypeCollection(FileType::with($withs)->get());
+        $types = new FileTypeCollection(FileType::with($this->withs)->get());
         if (is_null($types)) {
             return $this->apiResponse404('No type found');
         }

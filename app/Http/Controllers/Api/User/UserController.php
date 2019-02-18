@@ -21,7 +21,7 @@ class UserController extends ApiController
      * Constructor
      */
 
-    public $withs = [];
+    protected $withs = [];
 
     protected $userRepository;
 

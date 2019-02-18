@@ -21,11 +21,17 @@ class FileController extends ApiController
      * Constructor
      */
 
+    protected $withs = [];
+
     protected $fileRepository;
 
     public function __construct(FileRepository $fileRepository)
     {
         $this->fileRepository = $fileRepository;
+
+        if ($request->has('include')) {
+            $this->withs = explode(',', $request->include);
+        }
     }
 
     /**
@@ -38,11 +44,7 @@ class FileController extends ApiController
     public function index(Request $request, File $file)
     {
         $this->authorize('adminManage', $file);
-        $withs = [];
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
-        $files = new FileCollection(File::with($withs)->get());
+        $files = new FileCollection(File::with($this->withs)->get());
         if (is_null($files)) {
             return $this->apiResponse404('No file found');
         }

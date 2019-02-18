@@ -20,11 +20,17 @@ class FolderCategoryController extends ApiController
      * Constructor
      */
 
+    protected $withs = [];
+
     protected $categoryRepository;
   
     public function __construct(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
+
+        if ($request->has('include')) {
+            $this->withs = explode(',', $request->include);
+        }
     }
 
     /**
@@ -35,11 +41,7 @@ class FolderCategoryController extends ApiController
 
     public function index(Request $request)
     {
-        $withs = [];
-        if ($request->has('include')) {
-            $withs = explode(',', $request->include);
-        }
-        $categories = new FolderCategoryCollection(FolderCategory::with($withs)->get());
+        $categories = new FolderCategoryCollection(FolderCategory::with($this->withs)->get());
         if (is_null($categories)) {
             return $this->apiResponse404('No category found');
         }
