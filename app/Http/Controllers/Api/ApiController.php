@@ -9,21 +9,6 @@ class ApiController extends Controller
 {
 
     /**
-     * Get attibute of include in the request
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-
-    public function getIncluded(Request $request)
-    {
-        $withs = [];
-        if ($request->has('include')) {
-            return explode(',', $request->include);
-        }
-    }
-
-    /**
      * Response of the API
      *
      * @param  \Illuminate\Http\Request  $request
