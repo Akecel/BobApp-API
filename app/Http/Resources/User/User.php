@@ -31,9 +31,7 @@ class User extends JsonResource
                 'postcode' => $this->postcode,
                 'city' => $this->city,
                 'country' => $this->country,
-                'admin' => $this->when($this->admin, function () {
-                    return (string)$this->admin;
-                }),
+                'admin' => $this->when($this->admin, (string)$this->admin),
                 'created_at' => (string)$this->created_at,
                 'updated_at' => (string)$this->updated_at,
             ],
