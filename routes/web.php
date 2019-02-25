@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Inspiring;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +14,9 @@
 */
 
 Route::get('/', function () {
-    $laravel = app();
-    return $laravel::VERSION;
+    $laravel = app()::VERSION;
+    $quote = Inspiring::quote();
+    return $laravel . "<br> <br> <br>" . $quote; 
 });
 
 
