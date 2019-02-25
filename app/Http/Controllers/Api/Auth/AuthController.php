@@ -75,9 +75,14 @@ class AuthController extends ApiController {
 
     public function signin(Request $request){ 
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
-            $user = Auth::user(); 
-            $success['token'] =  $user->createToken('BobApp')->accessToken;
-            return $this->apiResponse200($success);
+            $user = Auth::user();
+            if ($user->admin == 1) {
+                $success['token'] =  $user->createToken('BobApp')->accessToken;
+                return $this->apiResponse200($success);
+            } 
+            else {
+                return $this->apiResponse403('Unautorized');
+            }
         } 
         else{ 
             return $this->apiResponse403('Wrong login or password');
