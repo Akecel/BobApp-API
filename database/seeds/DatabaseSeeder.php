@@ -29,7 +29,7 @@ class UserTableSeeder extends Seeder {
         'admin' => 1,
         'email' => 'admin@admin.com',
         'password' => bcrypt('password'),
-        'phone_number' => '+33601020304',
+        'phone_number' => '+33651520836',
         'lastName' => 'Admin',
         'firstName' => 'Admin',
         'birthdate' => '2000-01-01',
@@ -65,6 +65,12 @@ class UserTableSeeder extends Seeder {
         'id' => 4,
         'title' => 'Emploi'
       ]);
+
+      DB::table('folders_categories')->insert([
+        'id' => 5,
+        'title' => 'Supplémentaire'
+      ]);
+
     }
   }
 
@@ -184,6 +190,10 @@ class UserTableSeeder extends Seeder {
       'folder_categorie_id' => 4
     ]);
 
+    DB::table('files_types')->insert([
+      'title' => 'Autre',
+      'folder_categorie_id' => 5
+    ]);
 
     }
   }
