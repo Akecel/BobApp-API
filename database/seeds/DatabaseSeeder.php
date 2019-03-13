@@ -82,48 +82,48 @@ class UserTableSeeder extends Seeder {
 
       DB::table('files_types')->insert([
           'title' => "Pièce d'identité",
-          'folder_categorie_id' => 1
+          'folder_category_id' => 1
       ]);
 
       DB::table('files_types')->insert([
         'title' => 'Passeport',
-        'folder_categorie_id' => 1
+        'folder_category_id' => 1
       ]);
 
     DB::table('files_types')->insert([
       'title' => 'Permis de conduire',
-      'folder_categorie_id' => 1
+      'folder_category_id' => 1
     ]);
 
 
     DB::table('files_types')->insert([
       'title' => "Pièce d'identité",
-      'folder_categorie_id' => 2
+      'folder_category_id' => 2
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Justificatif de domicile',
-      'folder_categorie_id' => 2
+      'folder_category_id' => 2
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-1',
-      'folder_categorie_id' => 2
+      'folder_category_id' => 2
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-2',
-      'folder_categorie_id' => 2
+      'folder_category_id' => 2
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-3',
-      'folder_categorie_id' => 2
+      'folder_category_id' => 2
     ]);
 
     DB::table('files_types')->insert([
       'title' => "Dernier avis d'imposition / non imposition",
-      'folder_categorie_id' => 2
+      'folder_category_id' => 2
     ]);
 
 
