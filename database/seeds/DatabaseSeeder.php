@@ -133,27 +133,27 @@ class UserTableSeeder extends Seeder {
 
     DB::table('files_types')->insert([
       'title' => 'Quittance de loyer',
-      'folder_categorie_id' => 3
+      'folder_category_id' => 3
     ]);
 
     DB::table('files_types')->insert([
       'title' => "Attestation d'hébergement",
-      'folder_categorie_id' => 3
+      'folder_category_id' => 3
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Taxe foncière',
-      'folder_categorie_id' => 3
+      'folder_category_id' => 3
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Titre de propriété',
-      'folder_categorie_id' => 3
+      'folder_category_id' => 3
     ]);
 
     DB::table('files_types')->insert([
       'title' => "Facture d'eau / gaz / électricité",
-      'folder_categorie_id' => 3
+      'folder_category_id' => 3
     ]);
 
 
@@ -162,37 +162,37 @@ class UserTableSeeder extends Seeder {
 
     DB::table('files_types')->insert([
       'title' => "Contrat d'emploi",
-      'folder_categorie_id' => 4
+      'folder_category_id' => 4
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Carte professionnelle',
-      'folder_categorie_id' => 4
+      'folder_category_id' => 4
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Extrait de Kbis',
-      'folder_categorie_id' => 4
+      'folder_category_id' => 4
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-1',
-      'folder_categorie_id' => 4
+      'folder_category_id' => 4
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-2',
-      'folder_categorie_id' => 4
+      'folder_category_id' => 4
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-3',
-      'folder_categorie_id' => 4
+      'folder_category_id' => 4
     ]);
 
     DB::table('files_types')->insert([
       'title' => 'Autre',
-      'folder_categorie_id' => 5
+      'folder_category_id' => 5
     ]);
 
     }
