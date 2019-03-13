@@ -34,7 +34,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('cascade');
 		});
 		Schema::table('files_types', function(Blueprint $table) {
-			$table->foreign('folder_categorie_id')->references('id')->on('folders_categories')
+			$table->foreign('folder_category_id')->references('id')->on('folders_categories')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
