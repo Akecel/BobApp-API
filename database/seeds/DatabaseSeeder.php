@@ -49,31 +49,31 @@ class UserTableSeeder extends Seeder {
       DB::table('folders_categories')->insert([
         'id' => 1,
         'title' => 'Identité',
-        'icon' => $_ENV['APP_URL'] . '/public/assets/img/category/category_1.png'
+        'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_1.png'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 2,
         'title' => 'Garant',
-        'icon' => $_ENV['APP_URL'] . '/public/assets/img/category/category_2.png'
+        'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_2.png'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 3,
         'title' => 'Domicile',
-        'icon' => $_ENV['APP_URL'] . '/public/assets/img/category/category_3.png'
+        'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_3.png'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 4,
         'title' => 'Emploi',
-        'icon' => $_ENV['APP_URL'] . '/public/assets/img/category/category_4.png'
+        'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_4.png'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 5,
         'title' => 'Supplémentaire',
-        'icon' => $_ENV['APP_URL'] . '/public/assets/img/category/category_5.png'
+        'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_5.png'
       ]);
 
     }
