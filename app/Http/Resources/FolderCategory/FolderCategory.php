@@ -22,6 +22,7 @@ class FolderCategory extends JsonResource
             'id' => (string)$this->id,
             'attributes' => [
                 'title' => $this->title,
+                'icon' => $this->icon,
             ],
             'relationships' => new FolderCategoryRelationshipResource($this),
             'links' => [

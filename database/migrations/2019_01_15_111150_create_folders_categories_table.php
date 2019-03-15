@@ -10,6 +10,7 @@ class CreateFoldersCategoriesTable extends Migration {
 		Schema::create('folders_categories', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('title');
+			$table->string('icon');
 		});
 	}
 
