@@ -57,6 +57,7 @@ class FolderCategoryController extends ApiController
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'description' => 'required|max:255',
+            'extended_description' => 'required|max:255',
         ]);
         if($validator->fails()){
             return $this->apiResponse403('Validation Error', $validator->errors());       
@@ -93,6 +94,7 @@ class FolderCategoryController extends ApiController
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
             'description' => 'required|max:255',
+            'extended_description' => 'required|max:255',
         ]);
         if($validator->fails()){
             return $this->apiResponse403('Validation Error', $validator->errors());       

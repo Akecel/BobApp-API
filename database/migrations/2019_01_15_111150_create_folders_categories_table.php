@@ -12,6 +12,7 @@ class CreateFoldersCategoriesTable extends Migration {
 			$table->string('title');
 			$table->string('icon');
 			$table->string('description');
+			$table->string('extended_description');
 		});
 	}
 
