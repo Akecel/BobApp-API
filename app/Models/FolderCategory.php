@@ -9,7 +9,7 @@ class FolderCategory extends Model
 
     protected $table = 'folders_categories';
     public $timestamps = false;
-    protected $fillable = array('title');
+    protected $fillable = array('title','icon');
 
     public function files_types()
     {
