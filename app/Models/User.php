@@ -22,8 +22,8 @@ class User extends Authenticatable
 
     protected $table = 'users';
     public $timestamps = true;
-    protected $fillable = array('phone_number', 'email', 'admin','lastName', 'firstName', 'birthdate','address', 'postal_code', 'city', 'country');
-    protected $hidden = array('password', 'remember_token');
+    protected $fillable = array('phone_number', 'email', 'admin','lastName', 'firstName', 'birthdate','address', 'postal_code', 'city', 'country','password');
+    protected $hidden = array('remember_token');
 
     public function files()
     {

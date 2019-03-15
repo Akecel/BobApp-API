@@ -28,7 +28,7 @@ class User extends JsonResource
                 'lastName' => $this->lastName,
                 'birthdate' => $this->birthdate,
                 'address' => $this->address,
-                'postcode' => $this->postcode,
+                'postal_code' => $this->postal_code,
                 'city' => $this->city,
                 'country' => $this->country,
                 'admin' => $this->when($this->admin, (string)$this->admin),
