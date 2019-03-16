@@ -5,6 +5,8 @@
   <p align="center">Documentation • Backend PHP </p>
 </p>
 
+[![CircleCI](https://circleci.com/gh/DeathCoinOfTheDoom/Back-end.svg?style=svg)](https://circleci.com/gh/DeathCoinOfTheDoom/Back-end)
+
 
 ## Index :
 
