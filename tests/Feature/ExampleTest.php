@@ -14,6 +14,7 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
+        header("Origin: http://104.248.229.222");
         $response = $this->get('/');
 
         $response->assertStatus(200);
