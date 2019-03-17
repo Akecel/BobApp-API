@@ -15,14 +15,18 @@ class Cors
      */
     public function handle($request, Closure $next)
     {
-        header("Access-Control-Allow-Origin: *");
-        $headers = [
-            'Access-Control-Allow-Methods'=> '*',
-            'Access-Control-Allow-Headers'=> '*'
-        ];
         $response = $next($request);
-        foreach($headers as $key => $value) {
-            $response->header($key, $value);
+
+        if ($_ENV['APP_ENV'] != "testing") {
+            header("Access-Control-Allow-Origin: *");
+            $headers = [
+                'Access-Control-Allow-Methods'=> '*',
+                'Access-Control-Allow-Headers'=> '*'
+            ];
+            
+            foreach($headers as $key => $value) {
+                $response->header($key, $value);
+            }
         }
         return $response;
     }
