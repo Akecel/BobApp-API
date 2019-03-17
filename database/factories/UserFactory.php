@@ -18,7 +18,7 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'phone_number' => $faker->unique()->e164PhoneNumber,
         'password' => bcrypt('password'),
         'admin' => 1,
-        'fistname' => $faker->firstNameMale,
+        'firstname' => $faker->firstNameMale,
         'lastname' => $faker->lastName,
         'email' => $faker->safeEmail,
         'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now'),
