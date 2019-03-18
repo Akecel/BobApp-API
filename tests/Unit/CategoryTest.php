@@ -110,21 +110,19 @@ class CategoryTest extends TestCase
         ->assertStatus(200)
         ->assertJsonStructure([
             'data' => [ 
-                [
-                    'type', 'id', 
-                    'attributes' => [
-                        'title'
-                    ], 
-                    'relationships' => [
-                        'type' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ]
-                    ],
-                    'links' => ['self']
-                ]
+                'type', 'id', 
+                'attributes' => [
+                    'title'
+                ], 
+                'relationships' => [
+                    'type' => [
+                        'links' => [
+                            'self', 'related'
+                        ],
+                        'data' => []
+                    ]
+                ],
+                'links' => ['self']
             ],
             'links' => ['self']
         ]);
