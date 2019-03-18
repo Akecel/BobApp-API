@@ -61,8 +61,9 @@ class FolderController extends ApiController
             return $this->apiResponse403('Validation Error', $validator->errors());       
         }
         $store = $this->folderRepository->store($request->all());
-        $folder = new FolderResource($store);
-        return $this->apiResponse201($folder);
+        return (new FolderResource($store))
+        ->response()
+        ->setStatusCode(201);
     }
 
     /**
@@ -98,8 +99,7 @@ class FolderController extends ApiController
         }
         $folder = $this->folderRepository->update($id, $request->all());
         Folder::find($id)->files()->sync($request['files']);
-        $folder = new FolderResource(Folder::find($id));
-        return $this->apiResponse200($folder);
+        return new FolderResource(Folder::find($id));
     }
 
     /**
