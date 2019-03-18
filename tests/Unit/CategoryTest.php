@@ -36,12 +36,12 @@ class CategoryTest extends TestCase
         $this->get(route('category.index'))
         ->assertStatus(200)
         ->assertJsonStructure([
-            'data' =>   [
+            'data' =>   [ [
                 'type', 'id', 
                 'attributes' => ['title', 'icon', 'description', 'extended_description'], 
                 'relationships' => [],
                 'links' => ['self']
-            ],
+            ]],
             'links' => ['self']
         ]);
     }
