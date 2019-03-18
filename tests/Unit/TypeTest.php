@@ -167,35 +167,7 @@ class TypeTest extends TestCase
         $this->get(route('type.files', $type->id))
         ->assertStatus(200)
         ->assertJsonStructure([
-            'data' => [ 
-                [
-                    'type', 'id', 
-                    'attributes' => [
-                        'url'
-                    ], 
-                    'relationships' => [
-                        'user' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ],
-                        'type' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ],
-                        'folder' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ]
-                    ],
-                    'links' => ['self']
-                ]
-            ],
+            'data' => [],
             'links' => ['self']
         ]);
     }
