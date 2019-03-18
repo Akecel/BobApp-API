@@ -19,6 +19,6 @@ $factory->define(App\Models\File::class, function (Faker $faker) {
     return [
         'url' => bcrypt($faker->domainName),
         'user_id' => User::all(['id'])->random(),
-        'file_id' => FileType::all(['id'])->random(),
+        'file_type_id' => FileType::all(['id'])->random(),
     ];
 });
