@@ -96,12 +96,6 @@ class FileTypeController extends ApiController
     {
         $this->authorize('adminManage', $type);
         $id = $type->id;
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-        ]);
-        if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
-        }
         $this->typeRepository->update($id, $request->all());
         $type = new FileTypeResource(FileType::find($id));
         return $this->apiResponse200($type);

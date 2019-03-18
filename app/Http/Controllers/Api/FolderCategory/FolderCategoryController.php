@@ -91,14 +91,6 @@ class FolderCategoryController extends ApiController
     {
         $this->authorize('adminManage', $category);
         $id = $category->id;
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'description' => 'required|max:255',
-            'extended_description' => 'required|max:255',
-        ]);
-        if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
-        }
         $this->categoryRepository->update($id, $request->all());
         $category = new FolderCategoryResource(FolderCategory::find($id));
         return $this->apiResponse200($category);
