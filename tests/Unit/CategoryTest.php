@@ -185,6 +185,6 @@ class CategoryTest extends TestCase
             'extended_description' => 'This is a longer description test because if for the extended description'
         ];
         $this->put(route('category.update', $category->id), $data)
-            ->assertStatus(401);
+            ->assertStatus(403);
     }
 }
