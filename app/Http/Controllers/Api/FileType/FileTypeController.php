@@ -84,5 +84,4 @@ class FileTypeController extends ApiController
         return  new FileTypeResource(FileType::find($id));
     }
     
-
 }

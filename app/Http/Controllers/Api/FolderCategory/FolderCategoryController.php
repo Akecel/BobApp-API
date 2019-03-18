@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\CategoryRepository;
 use App\Http\Resources\FolderCategory\FolderCategory as FolderCategoryResource;
 use App\Http\Resources\FolderCategory\FolderCategoryCollection;
-use App\Models\FolderCategory;
+use App\Models\FolderCategory; 
 
 class FolderCategoryController extends ApiController
 {
