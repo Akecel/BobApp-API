@@ -23,9 +23,20 @@ class CategoryTest extends TestCase
         $this->get(route('category.show', $category->id))
         ->assertStatus(200)
         ->assertJsonStructure([
-            'data' => [ 'type', 'id', 
-                'attributes' => ['title', 'icon', 'description', 'extended_description'], 
-                'relationships' => [],
+            'data' => [ 
+                'type', 
+                'id '=> $category->id, 
+                'attributes' => [
+                    'title', 'icon', 'description', 'extended_description'
+                ], 
+                'relationships' => [
+                    'type' => [
+                        'links' => [
+                            'self', 'related'
+                        ],
+                        'data' => []
+                    ]
+                ],
                 'links' => ['self']
             ]
         ]);
@@ -36,12 +47,24 @@ class CategoryTest extends TestCase
         $this->get(route('category.index'))
         ->assertStatus(200)
         ->assertJsonStructure([
-            'data' =>   [ [
-                'type', 'id', 
-                'attributes' => ['title', 'icon', 'description', 'extended_description'], 
-                'relationships' => [],
-                'links' => ['self']
-            ]],
+            'data' =>   [ 
+                [
+                    'type', 
+                    'id', 
+                    'attributes' => [
+                        'title', 'icon', 'description', 'extended_description'
+                    ], 
+                    'relationships' => [
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
+                    ],
+                    'links' => ['self']
+                ]
+            ],
             'links' => ['self']
         ]);
     }
@@ -59,9 +82,20 @@ class CategoryTest extends TestCase
         $this->put(route('category.update', $category->id), $data)
             ->assertStatus(200)
             ->assertJsonStructure([
-                'data' => [ 'type', 'id', 
-                    'attributes' => ['title', 'icon', 'description', 'extended_description'], 
-                    'relationships' => [],
+                'data' => [ 
+                    'type', 
+                    'id' =>$category->id , 
+                    'attributes' => [
+                        'title', 'icon', 'description', 'extended_description'
+                    ], 
+                    'relationships' => [
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
+                    ],
                     'links' => ['self']
                 ]
             ]);
