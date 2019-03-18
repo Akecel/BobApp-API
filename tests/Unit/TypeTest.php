@@ -163,6 +163,8 @@ class TypeTest extends TestCase
 
     public function test_can_show_type_file()
     {
+        $user = factory(User::class)->create();
+        $this->actingAs($user, 'api');
         $type = FileType::all(['id'])->random();
         $file = factory(File::class)->create();
         $file->file_type_id = $type->id;
