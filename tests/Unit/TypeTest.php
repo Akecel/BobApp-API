@@ -140,7 +140,7 @@ class TypeTest extends TestCase
             'data' => [ 
                 'type', 'id', 
                 'attributes' => [
-                    'title'
+                    'title', 'icon', 'description', 'extended_description'
                 ], 
                 'relationships' => [
                     'type' => [
@@ -151,8 +151,7 @@ class TypeTest extends TestCase
                     ]
                 ],
                 'links' => ['self']
-            ],
-            'links' => ['self']
+            ]
         ]);
     }
 
@@ -172,25 +171,33 @@ class TypeTest extends TestCase
         ->assertStatus(200)
         ->assertJsonStructure([
             'data' => [ 
-                'type', 'id', 
-                'attributes' => [
-                    'title'
-                ], 
-                'relationships' => [
-                    'category' => [
-                        'links' => [
-                            'self', 'related'
+                [
+                    'type', 'id', 
+                    'attributes' => [
+                        'url'
+                    ], 
+                    'relationships' => [
+                        'user' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
                         ],
-                        'data' => []
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ],
+                        'folder' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
                     ],
-                    'files' => [
-                        'links' => [
-                            'self', 'related'
-                        ],
-                        'data' => []
-                    ]
-                ],
-                'links' => ['self']
+                    'links' => ['self']
+                ]
             ],
             'links' => ['self']
         ]);
