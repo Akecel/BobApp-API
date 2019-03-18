@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use Faker\Factory;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\FolderCategory;
@@ -115,31 +116,6 @@ class CategoryTest extends TestCase
     }
 
     /**
-     * Test policy.
-     *
-     * @return void
-     */
-
-    public function test_cant_update_category() {
-        $this->faker = Factory::create();
-        $user = factory(User::class)->create();
-        $user->admin = 0;
-        $user->save();
-        $this->actingAs($user, 'api');
-        $categories = FolderCategory::all();
-        $numberOf = 0;
-        foreach ($categories as $values) { $numberOf++; }
-        $category = FolderCategory::find(rand(1, $numberOf));
-        $data = [
-            'title' => 'Test Title',
-            'description' => 'This is a description test',
-            'extended_description' => 'This is a longer description test because if for the extended description'
-        ];
-        $this->put(route('category.update', $category->id), $data)
-            ->assertStatus(401);
-    }
-
-    /**
      * Test if can show a relationship resource.
      *
      * @return void
@@ -179,5 +155,36 @@ class CategoryTest extends TestCase
             ],
             'links' => ['self']
         ]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Security Test
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * adminManage Policy test.
+     *
+     * @return void
+     */
+
+    public function test_cant_update_category() {
+        $this->faker = Factory::create();
+        $user = factory(User::class)->create();
+        $user->admin = 0;
+        $user->save();
+        $this->actingAs($user, 'api');
+        $categories = FolderCategory::all();
+        $numberOf = 0;
+        foreach ($categories as $values) { $numberOf++; }
+        $category = FolderCategory::find(rand(1, $numberOf));
+        $data = [
+            'title' => 'Test Title',
+            'description' => 'This is a description test',
+            'extended_description' => 'This is a longer description test because if for the extended description'
+        ];
+        $this->put(route('category.update', $category->id), $data)
+            ->assertStatus(401);
     }
 }
