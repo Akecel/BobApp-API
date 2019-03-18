@@ -23,7 +23,7 @@ class CategoryTest extends TestCase
         $this->get(route('category.show', $category->id))
         ->assertStatus(200)
         ->assertJsonStructure([
-            [ 'type', 'id', 
+            '*' => [ 'type', 'id', 
                 'attributes' => ['title', 'icon', 'description', 'extended_description'], 
                 'relationships' => ['*'],
                 'links' => ['self']
@@ -36,12 +36,7 @@ class CategoryTest extends TestCase
         $this->get(route('category.index'))
         ->assertStatus(200)
         ->assertJsonStructure([
-            '*' =>                 
-                [ 'type', 'id', 
-                'attributes' => ['title', 'icon', 'description', 'extended_description'], 
-                'relationships' => ['*'],
-                'links' => ['self']
-            ],
+            'data' =>   ['*'],
             'links' => ['self']
         ]);
     }
