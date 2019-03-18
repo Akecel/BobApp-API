@@ -22,7 +22,7 @@ class CategoryTest extends TestCase
         $category = FolderCategory::find(rand(1, $numberOf));
         $this->get(route('category.show', $category->id))
         ->assertStatus(200)
-        ->assertJson($category->id)
+        ->assertJson(['id' => $category->id])
         ->assertJsonStructure([
             'data' => [ 
                 'type', 'id', 
@@ -80,7 +80,7 @@ class CategoryTest extends TestCase
         ];
         $this->put(route('category.update', $category->id), $data)
             ->assertStatus(200)
-            ->assertJson($category->id)
+            ->assertJson(['id' => $category->id])
             ->assertJsonStructure([
                 'data' => [ 
                     'type', 'id', 
