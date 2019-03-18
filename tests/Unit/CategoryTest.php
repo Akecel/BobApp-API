@@ -122,7 +122,7 @@ class CategoryTest extends TestCase
                             ],
                             'data' => []
                         ],
-                        'file' => [
+                        'files' => [
                             'links' => [
                                 'self', 'related'
                             ],
