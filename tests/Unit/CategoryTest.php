@@ -116,7 +116,13 @@ class CategoryTest extends TestCase
                         'title'
                     ], 
                     'relationships' => [
-                        'type' => [
+                        'category' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ],
+                        'file' => [
                             'links' => [
                                 'self', 'related'
                             ],
