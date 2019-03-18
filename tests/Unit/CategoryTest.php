@@ -40,14 +40,14 @@ class CategoryTest extends TestCase
                 'links' => ['self']
             ]
         ]);
-    }
+    } 
 
     public function test_can_list_category() 
     {
         $this->get(route('category.index'))
         ->assertStatus(200)
         ->assertJsonStructure([
-            'data' =>   [ 
+            'data' => [ 
                 [
                     'type', 'id', 
                     'attributes' => [
@@ -98,5 +98,35 @@ class CategoryTest extends TestCase
                     'links' => ['self']
                 ]
             ]);
+    }
+
+    public function test_can_show_categroy_type()
+    {
+        $categories = FolderCategory::all();
+        $numberOf = 0;
+        foreach ($categories as $values) { $numberOf++; }
+        $category = FolderCategory::find(rand(1, $numberOf));
+        $this->get(route('category.types', $category->id))
+        ->assertStatus(200)
+        ->assertJsonStructure([
+            'data' => [ 
+                [
+                    'type', 'id', 
+                    'attributes' => [
+                        'title'
+                    ], 
+                    'relationships' => [
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
+                    ],
+                    'links' => ['self']
+                ]
+            ],
+            'links' => ['self']
+        ]);
     }
 }
