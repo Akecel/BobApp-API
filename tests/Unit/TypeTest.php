@@ -143,13 +143,7 @@ class TypeTest extends TestCase
                     'title'
                 ], 
                 'relationships' => [
-                    'category' => [
-                        'links' => [
-                            'self', 'related'
-                        ],
-                        'data' => []
-                    ],
-                    'files' => [
+                    'type' => [
                         'links' => [
                             'self', 'related'
                         ],
@@ -214,7 +208,7 @@ class TypeTest extends TestCase
      * @return void
      */
 
-    public function test_cant_update_category() {
+    public function test_cant_update_type() {
         $user = factory(User::class)->create();
         $user->admin = 0;
         $user->save();
@@ -222,10 +216,8 @@ class TypeTest extends TestCase
         $type = FileType::all(['id'])->random();
         $data = [
             'title' => 'Test Title',
-            'description' => 'This is a description test',
-            'extended_description' => 'This is a longer description test because if for the extended description'
         ];
-        $this->put(route('category.update', $type->id), $data)
+        $this->put(route('type.update', $type->id), $data)
             ->assertStatus(403);
     }
 }
