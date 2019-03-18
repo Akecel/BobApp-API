@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Faker\Factory;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\FolderCategory;
@@ -19,10 +18,7 @@ class CategoryTest extends TestCase
 
     public function test_can_show_categroy()
     {
-        $categories = FolderCategory::all();
-        $numberOf = 0;
-        foreach ($categories as $values) { $numberOf++; }
-        $category = FolderCategory::find(rand(1, $numberOf));
+        $category = FolderCategory::all(['id'])->random();
         $this->get(route('category.show', $category->id))
         ->assertStatus(200)
         ->assertJson([ 'data' => ['id' => (string)$category->id]])
@@ -84,10 +80,7 @@ class CategoryTest extends TestCase
      */
 
     public function test_can_update_category() {
-        $categories = FolderCategory::all();
-        $numberOf = 0;
-        foreach ($categories as $values) { $numberOf++; }
-        $category = FolderCategory::find(rand(1, $numberOf));
+        $category = FolderCategory::all(['id'])->random();
         $data = [
             'title' => 'Test Title',
             'description' => 'This is a description test',
@@ -123,10 +116,7 @@ class CategoryTest extends TestCase
 
     public function test_can_show_categroy_type()
     {
-        $categories = FolderCategory::all();
-        $numberOf = 0;
-        foreach ($categories as $values) { $numberOf++; }
-        $category = FolderCategory::find(rand(1, $numberOf));
+        $category = FolderCategory::all(['id'])->random();
         $this->get(route('category.types', $category->id))
         ->assertStatus(200)
         ->assertJsonStructure([
@@ -170,15 +160,11 @@ class CategoryTest extends TestCase
      */
 
     public function test_cant_update_category() {
-        $this->faker = Factory::create();
         $user = factory(User::class)->create();
         $user->admin = 0;
         $user->save();
         $this->actingAs($user, 'api');
-        $categories = FolderCategory::all();
-        $numberOf = 0;
-        foreach ($categories as $values) { $numberOf++; }
-        $category = FolderCategory::find(rand(1, $numberOf));
+        $category = FolderCategory::all(['id'])->random();
         $data = [
             'title' => 'Test Title',
             'description' => 'This is a description test',
