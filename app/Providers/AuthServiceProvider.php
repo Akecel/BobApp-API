@@ -22,7 +22,7 @@ class AuthServiceProvider extends ServiceProvider
         File::class => FilePolicy::class,
         Folder::class => FolderPolicy::class,
         FileType::class => FileTypePolicy::class,
-        FolderCategory::class => FolderCategory::class,
+        FolderCategory::class => FolderCategoryPolicy::class,
     ];
 
     /**

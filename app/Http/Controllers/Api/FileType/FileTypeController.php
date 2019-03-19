@@ -48,28 +48,6 @@ class FileTypeController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    public function store(Request $request, FileType $type)
-    {
-        $this->authorize('adminManage', $type);
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
-            'folder_category_id' => 'required|max:255',
-        ]);
-        if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
-        }
-        $store = $this->typeRepository->store($request->all());
-        $type = new FileTypeResource($store);
-        return $this->apiResponse201($type);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -94,34 +72,16 @@ class FileTypeController extends ApiController
 
     public function update(Request $request, FileType $type)
     {
-        $this->authorize('adminManage', $type);
-        $id = $type->id;
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
             return $this->apiResponse403('Validation Error', $validator->errors());       
         }
-        $this->typeRepository->update($id, $request->all());
-        $type = new FileTypeResource(FileType::find($id));
-        return $this->apiResponse200($type);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function destroy(FileType $type)
-    {
         $this->authorize('adminManage', $type);
         $id = $type->id;
-        $filetype = FileType::find($id);
-        $this->typeRepository->destroy($id);
-        return $this->apiResponse204();
+        $this->typeRepository->update($id, $request->all());
+        return  new FileTypeResource(FileType::find($id));
     }
     
-
 }

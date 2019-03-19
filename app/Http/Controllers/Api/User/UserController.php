@@ -67,8 +67,9 @@ class UserController extends ApiController
         $id = $store['id'];
         $directory = "/user_files_" . $id;
         Storage::disk('public')->makeDirectory($directory);
-        $user = new UserResource($store);
-        return $this->apiResponse201($user);
+        return (new UserResource($store))
+        ->response()
+        ->setStatusCode(201);
     }
 
     /**
