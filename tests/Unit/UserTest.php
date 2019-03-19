@@ -93,7 +93,7 @@ class UserTest extends TestCase
 
     public function test_can_store_files() {
         $data = [
-            'phone_number' => $faker->unique()->e164PhoneNumber,
+            'phone_number' => $this->faker->unique()->e164PhoneNumber,
         ];
         $this->post(route('user.store'), $data)
             ->assertStatus(201)
@@ -131,7 +131,7 @@ class UserTest extends TestCase
     public function test_can_update_user() {
         $user = factory(User::class)->create();
         $data = [
-            'phone_number' => $faker->unique()->e164PhoneNumber,
+            'phone_number' => $this->faker->unique()->e164PhoneNumber,
         ];
         $this->put(route('user.update', $user->id), $data)
             ->assertStatus(200)
@@ -233,7 +233,7 @@ class UserTest extends TestCase
         $user->admin = 0;
         $user->save();
         $this->actingAs($user, 'api');
-        $this->get(route('user.show', $user->id + 1 ))
+        $this->get(route('user.show', 1 ))
         ->assertStatus(403);
     }
 }
