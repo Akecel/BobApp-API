@@ -109,7 +109,7 @@ class FileTest extends TestCase
 
     public function test_can_store_files() {
         $data = [
-            'file_input' => $this->faker->imageUrl($width = 640, $height = 480),
+            'file_input' => $this->faker->image($dir = '/tmp', $width = 640, $height = 480),
             'user_id' => User::all(['id'])->random(),
             'file_type_id' => FileType::all(['id'])->random(),
         ];
