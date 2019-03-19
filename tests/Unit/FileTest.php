@@ -194,7 +194,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test if can update a resource.
+     * Test if can delete a resource.
      *
      * @return void
      */
