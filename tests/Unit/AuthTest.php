@@ -85,7 +85,7 @@ class AuthTest extends TestCase
 
    public function test_cant_request()
    {
-    $this->actingAs();
+    $this->actingAs('guest');
     $this->get(route('user.index'))
     ->assertStatus(403);
    }
