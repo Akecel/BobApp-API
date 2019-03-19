@@ -5,10 +5,11 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Folder;
+use App\Models\FileType;
+use App\Models\File;
 use App\Models\User;
 
-class FolderTest extends TestCase
+class FileTest extends TestCase
 {
     /**
      * Test if can show a resource.
@@ -16,17 +17,17 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_show_folder()
+    public function test_can_show_file()
     {
-        $folder = factory(Folder::class)->create();
-        $this->get(route('folder.show', $folder->id))
+        $file = factory(File::class)->create();
+        $this->get(route('file.show', $file->id))
         ->assertStatus(200)
-        ->assertJson([ 'data' => ['id' => (string)$folder->id]])
+        ->assertJson([ 'data' => ['id' => (string)$file->id]])
         ->assertJsonStructure([
             'data' => [ 
                 'type', 'id', 
                 'attributes' => [
-                    'title'
+                    'url'
                 ], 
                 'relationships' => [
                     'user' => [
@@ -35,7 +36,14 @@ class FolderTest extends TestCase
                         ],
                         'data' => []
                     ],
-                    'files' => [
+                    'type' => [
+                        'links' => [
+                            'self', 'related'
+                        ],
+                        'data' => []
+                    ]
+                    ,
+                    'folders' => [
                         'links' => [
                             'self', 'related'
                         ],
@@ -53,17 +61,17 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_list_folder() 
+    public function test_can_list_file() 
     {
-        factory(Folder::class, 2)->create();
-        $this->get(route('folder.index'))
+        factory(File::class, 2)->create();
+        $this->get(route('file.index'))
         ->assertStatus(200)
         ->assertJsonStructure([
             'data' => [ 
                 [
                     'type', 'id', 
                     'attributes' => [
-                        'title'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -72,7 +80,14 @@ class FolderTest extends TestCase
                             ],
                             'data' => []
                         ],
-                        'files' => [
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
+                        ,
+                        'folders' => [
                             'links' => [
                                 'self', 'related'
                             ],
@@ -92,18 +107,19 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_store_folder() {
+    public function test_can_store_files() {
         $data = [
-            'title' => $this->faker->streetName,
-            'user_id' => User::all(['id'])->random()
+            'url' => bcrypt($this->faker->domainName),
+            'user_id' => User::all(['id'])->random(),
+            'file_type_id' => FileType::all(['id'])->random(),
         ];
-        $this->post(route('folder.store'), $data)
+        $this->post(route('file.store'), $data)
             ->assertStatus(201)
             ->assertJsonStructure([
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'title'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -112,7 +128,14 @@ class FolderTest extends TestCase
                             ],
                             'data' => []
                         ],
-                        'files' => [
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
+                        ,
+                        'folders' => [
                             'links' => [
                                 'self', 'related'
                             ],
@@ -131,18 +154,18 @@ class FolderTest extends TestCase
      */
 
     public function test_can_update_folder() {
-        $folder = factory(Folder::class)->create();
+        $file = factory(File::class)->create();
         $data = [
-            'title' => $this->faker->streetName,
+            'url' => bcrypt($this->faker->domainName),
         ];
-        $this->put(route('folder.update', $folder->id), $data)
+        $this->put(route('file.update', $file->id), $data)
             ->assertStatus(200)
-            ->assertJson([ 'data' => ['id' => (string)$folder->id]])
+            ->assertJson([ 'data' => ['id' => (string)$file->id]])
             ->assertJsonStructure([
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'title'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -151,7 +174,14 @@ class FolderTest extends TestCase
                             ],
                             'data' => []
                         ],
-                        'files' => [
+                        'type' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ]
+                        ,
+                        'folders' => [
                             'links' => [
                                 'self', 'related'
                             ],
@@ -169,9 +199,9 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_delete_folder() {
-        $folder = factory(Folder::class)->create();
-        $this->delete(route('folder.destroy', $folder->id))
+    public function test_can_delete_file() {
+        $file = factory(File::class)->create();
+        $this->delete(route('file.destroy', $file->id))
             ->assertStatus(204);
     }
 
@@ -181,10 +211,10 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_show_folder_user()
+    public function test_can_show_file_user()
     {
-        $folder = factory(Folder::class)->create();
-        $this->get(route('folder.user', $folder->id))
+        $file = factory(File::class)->create();
+        $this->get(route('file.user', $file->id))
         ->assertStatus(200)
         ->assertJsonStructure([
             'data' => []
@@ -197,10 +227,26 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_show_folder_files()
+    public function test_can_show_file_type()
     {
-        $folder = factory(Folder::class)->create();
-        $this->get(route('folder.files', $folder->id))
+        $file = factory(File::class)->create();
+        $this->get(route('file.type', $file->id))
+        ->assertStatus(200)
+        ->assertJsonStructure([
+            'data' => []
+        ]);
+    }
+
+    /**
+     * Test if can show a relationship resource.
+     *
+     * @return void
+     */
+
+    public function test_can_show_file_folders()
+    {
+        $file = factory(File::class)->create();
+        $this->get(route('file.folders', $file->id))
         ->assertStatus(200)
         ->assertJsonStructure([
             'data' => [],
@@ -220,25 +266,25 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_cant_list_folder() {
+    public function test_cant_list_file() {
         $user = factory(User::class)->create();
         $user->admin = 0;
         $user->save();
         $this->actingAs($user, 'api');
-        $folder = factory(Folder::class)->create();
-        $this->get(route('folder.index'))
+        $file = factory(File::class)->create();
+        $this->get(route('file.index'))
         ->assertStatus(403);
     }
 
-    public function test_cant_show_folder() {
+    public function test_cant_show_file() {
         $user = factory(User::class)->create();
         $user->admin = 0;
         $user->save();
         $this->actingAs($user, 'api');
-        $folder = factory(Folder::class)->create();
-        $folder->user_id = $user->id + 1;
-        $folder->save();
-        $this->get(route('folder.show', $folder->id))
+        $file = factory(File::class)->create();
+        $file->user_id = $user->id + 1;
+        $file->save();
+        $this->get(route('file.show', $file->id))
         ->assertStatus(403);
     }
 }
