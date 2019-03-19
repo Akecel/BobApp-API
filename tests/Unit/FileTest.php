@@ -204,8 +204,15 @@ class FileTest extends TestCase
      */
 
     public function test_can_delete_file() {
-        $file = factory(File::class)->create();
-        $this->delete(route('file.destroy', $file->id))
+        Storage::fake('avatars');
+        $fileInput = UploadedFile::fake()->image('avatar.jpg');
+        $data = [
+            'file_input' => $fileInput,
+            'user_id' => User::all(['id'])->random(),
+            'file_type_id' => FileType::all(['id'])->random(),
+        ];
+        $file= $this->post(route('file.store'), $data);
+        $this->delete(route('file.destroy', $file->data->id))
             ->assertStatus(204);
     }
 
