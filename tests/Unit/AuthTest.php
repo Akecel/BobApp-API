@@ -17,15 +17,13 @@ class AuthTest extends TestCase
 
     public function test_can_auth_mobile()
     {
-        $data = [
+        $dataValidation = [
             'phone_num' => $this->faker->unique()->e164PhoneNumber,
         ];
-        $token = $this->post(route('validation'), $data);
-
-        $data = [
-            'token' => $token,
+        $dataToken = [
+            'token' => json_decode($this->post(route('validation'), $dataValidation))
         ];
-        $token = $this->post(route('login'), $data)
+        $this->post(route('login'), $dataToken)
         ->assertStatus(200)
         ->assertJson(['token'])
         ->assertJsonStructure([
@@ -66,7 +64,7 @@ class AuthTest extends TestCase
     $user = factory(User::class)->create();
     $data = [
         'email' => $user->email,
-        'password' => $user->password
+        'password' => 'password'
     ];
     $token = $this->post(route('signin'), $data)
     ->assertStatus(200)
@@ -87,7 +85,7 @@ class AuthTest extends TestCase
 
    public function test_cant_request()
    {
-    $this->actingAs(factory(User::class)->create(),['']);
+    $this->actingAs(factory(User::class)->create(),['nothing']);
     $this->get(route('user.index'))
     ->assertStatus(403);
    }
@@ -106,7 +104,7 @@ class AuthTest extends TestCase
         $this->actingAs($user, 'api');
      $data = [
          'email' => $user->email,
-         'password' => $user->password
+         'password' => 'password'
      ];
      $token = $this->post(route('signin'), $data)
      ->assertStatus(403);
