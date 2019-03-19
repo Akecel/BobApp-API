@@ -66,7 +66,7 @@ class AuthTest extends TestCase
         'email' => $user->email,
         'password' => 'password'
     ];
-    $token = $this->post(route('signin'), $data)
+    $this->post(route('signin'), $data)
     ->assertStatus(200)
     ->assertJson(['token']);
    }
@@ -106,7 +106,7 @@ class AuthTest extends TestCase
          'email' => $user->email,
          'password' => 'password'
      ];
-     $token = $this->post(route('signin'), $data)
+     $this->post(route('signin'), $data)
      ->assertStatus(403);
     }
 
