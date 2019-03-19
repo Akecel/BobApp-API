@@ -21,8 +21,9 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev && sudo apt-get install php7.1-gd
+      - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev
       - run: sudo docker-php-ext-install zip
+      - run: sudo docker-php-ext-install php7.1-gd
 
       # Download and cache dependencies
 
