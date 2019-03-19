@@ -17,7 +17,7 @@ use App\Models\FileType;
 
 $factory->define(App\Models\File::class, function (Faker $faker) {
     return [
-        'url' => encrypt($faker->domainName),
+        'file_input' => $this->faker->imageUrl($width = 640, $height = 480),
         'user_id' => User::all(['id'])->random(),
         'file_type_id' => FileType::all(['id'])->random(),
     ];
