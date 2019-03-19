@@ -16,7 +16,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'phone_number' => $faker->unique()->e164PhoneNumber,
-        'password' => 'password',
+        'password' => bcrypt('password'),
         'admin' => 1,
         'firstname' => $faker->firstNameMale,
         'lastname' => $faker->lastName,
