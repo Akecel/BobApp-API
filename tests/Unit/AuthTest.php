@@ -78,19 +78,6 @@ class AuthTest extends TestCase
     */
 
     /**
-    * Test passport.
-    *
-    * @return void
-    */
-
-   public function test_cant_request()
-   {
-    $this->actingAs('guest');
-    $this->get(route('user.index'))
-    ->assertStatus(403);
-   }
-
-    /**
     * Test if cant auth from backoffice if not admin.
     *
     * @return void
