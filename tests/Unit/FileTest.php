@@ -109,7 +109,7 @@ class FileTest extends TestCase
 
     public function test_can_store_files() {
         $data = [
-            'url' => bcrypt($this->faker->domainName),
+            'url' => encrypt($this->faker->domainName),
             'user_id' => User::all(['id'])->random(),
             'file_type_id' => FileType::all(['id'])->random(),
         ];
@@ -156,7 +156,7 @@ class FileTest extends TestCase
     public function test_can_update_folder() {
         $file = factory(File::class)->create();
         $data = [
-            'url' => bcrypt($this->faker->domainName),
+            'url' => encrypt($this->faker->domainName),
         ];
         $this->put(route('file.update', $file->id), $data)
             ->assertStatus(200)
