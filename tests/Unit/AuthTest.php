@@ -21,7 +21,7 @@ class AuthTest extends TestCase
             'phone_num' => $this->faker->unique()->e164PhoneNumber,
         ];
         $dataToken = [
-            'token' => json_decode($this->post(route('validation'), $dataValidation))
+            'token' => json_decode(json_encode($this->post(route('validation'), $dataValidation), true )),
         ];
         $this->post(route('login'), $dataToken)
         ->assertStatus(200)
@@ -85,7 +85,7 @@ class AuthTest extends TestCase
 
    public function test_cant_request()
    {
-    $this->actingAs(factory(User::class)->create(),['nothing']);
+    $this->actingAs();
     $this->get(route('user.index'))
     ->assertStatus(403);
    }
