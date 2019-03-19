@@ -212,8 +212,9 @@ class FileTest extends TestCase
             'user_id' => User::all(['id'])->random(),
             'file_type_id' => FileType::all(['id'])->random(),
         ];
-        $file= $this->post(route('file.store'), $data);
-        $this->delete(route('file.destroy', 357))
+        $this->post(route('file.store'), $data);
+        $file = File::all()->last();
+        $this->delete(route('file.destroy', $file->id))
             ->assertStatus(204);
     }
 
