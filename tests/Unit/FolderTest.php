@@ -96,7 +96,7 @@ class FolderTest extends TestCase
             'title' => $this->faker->streetName,
             'user_id' => User::all(['id'])->random()
         ];
-        $this->post(route('category.store'), $data)
+        $this->post(route('folder.store'), $data)
             ->assertStatus(201)
             ->assertJsonStructure([
                 'data' => [ 
