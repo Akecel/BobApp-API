@@ -207,12 +207,13 @@ class FileTest extends TestCase
         Storage::fake('avatars');
         $fileInput = UploadedFile::fake()->image('avatar.jpg');
         $data = [
+            'id' => 357,
             'file_input' => $fileInput,
             'user_id' => User::all(['id'])->random(),
             'file_type_id' => FileType::all(['id'])->random(),
         ];
         $file= $this->post(route('file.store'), $data);
-        $this->delete(route('file.destroy', $file->id))
+        $this->delete(route('file.destroy', 357))
             ->assertStatus(204);
     }
 
