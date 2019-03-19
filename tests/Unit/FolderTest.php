@@ -170,7 +170,7 @@ class FolderTest extends TestCase
 
     public function test_can_delete_folder() {
         $folder = factory(Folder::class)->create();
-        $this->delete(route('folder.delete', $folder->id))
+        $this->delete(route('folder.destroy', $folder->id))
             ->assertStatus(204);
     }
 
