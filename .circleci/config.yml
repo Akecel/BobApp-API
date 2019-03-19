@@ -21,10 +21,11 @@ jobs:
     steps:
       - checkout
 
-      - run: sudo apt-get update && sudo apt-get install zlib1g-dev libsqlite3-dev && sudo apt-get install libgd-dev && sudo apt-get install libjpeg62-turbo-dev
-      - run: sudo docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+      - run: sudo apt-get update && sudo apt-get install zlib1g-dev libsqlite3-dev \ libfreetype6-dev libjpeg62-turbo-dev \ libgd-dev libpng12-dev
+      - run: sudo docker-php-ext-configure gd \ --with-freetype-dir=/usr/include/ \ --with-jpeg-dir=/usr/include/
+      - run: sudo docker-php-ext-install gd
       - run: sudo docker-php-ext-install zip
-      - run: sudo docker-php-ext-install -j$(nproc) gd
+
 
       # Download and cache dependencies
 
