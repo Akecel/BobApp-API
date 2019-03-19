@@ -105,7 +105,13 @@ class FolderTest extends TestCase
                         'title'
                     ], 
                     'relationships' => [
-                        'type' => [
+                        'user' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ],
+                        'files' => [
                             'links' => [
                                 'self', 'related'
                             ],
@@ -123,7 +129,7 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_update_category() {
+    public function test_can_update_folder() {
         $folder = factory(Folder::class)->create();
         $data = [
             'title' => $this->faker->streetName,
@@ -138,7 +144,13 @@ class FolderTest extends TestCase
                         'title'
                     ], 
                     'relationships' => [
-                        'type' => [
+                        'user' => [
+                            'links' => [
+                                'self', 'related'
+                            ],
+                            'data' => []
+                        ],
+                        'files' => [
                             'links' => [
                                 'self', 'related'
                             ],
@@ -156,9 +168,9 @@ class FolderTest extends TestCase
      * @return void
      */
 
-    public function test_can_delete_category() {
+    public function test_can_delete_folder() {
         $folder = factory(Folder::class)->create();
-        $this->put(route('folder.delete', $folder->id))
+        $this->delete(route('folder.delete', $folder->id))
             ->assertStatus(204);
     }
 
