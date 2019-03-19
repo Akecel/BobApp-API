@@ -24,7 +24,7 @@ jobs:
       - run: sudo apt update && sudo apt install zlib1g-dev libsqlite3-dev && sudo apt install libgd-dev && sudo apt install libjpeg-dev
       - run: sudo docker-php-ext-configure gd --with-jpeg-dir=/usr/include/
       - run: sudo docker-php-ext-install zip
-      - run: sudo docker-php-ext-install gd
+      - run: sudo docker-php-ext-install -j$(nproc) gd
 
       # Download and cache dependencies
 
