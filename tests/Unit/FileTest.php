@@ -3,6 +3,8 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\FileType;
@@ -108,8 +110,10 @@ class FileTest extends TestCase
      */
 
     public function test_can_store_files() {
+        Storage::fake('avatars');
+        $fileInput = UploadedFile::fake()->image('avatar.jpg');
         $data = [
-            'file_input' => $this->faker->image($dir = '/tmp', $width = 640, $height = 480),
+            'file_input' => $fileInput,
             'user_id' => User::all(['id'])->random(),
             'file_type_id' => FileType::all(['id'])->random(),
         ];
