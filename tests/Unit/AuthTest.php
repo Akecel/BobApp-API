@@ -43,15 +43,4 @@ class AuthTest extends TestCase
         ]);
     }
 
-    /**
-     * Test to logout user.
-     *
-     * @return void
-     */
-
-    public function test_can_logout()
-    {
-        $this->get(route('auth.logout'))
-        ->assertStatus(204);
-    }
 }
