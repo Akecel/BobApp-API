@@ -44,7 +44,7 @@ class AuthController extends ApiController {
 
     /**
      * 
-     * Login user (Mobile).
+     * Log user (Mobile).
      *
      */
 
@@ -68,10 +68,9 @@ class AuthController extends ApiController {
 
     /**
      * 
-     * Login user (Backoffice).
+     * Log user (Backoffice).
      *
      */
-
 
     public function signin(Request $request){ 
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
@@ -87,6 +86,29 @@ class AuthController extends ApiController {
         else{ 
             return $this->apiResponse403('Wrong login or password');
         } 
+    }
+
+    /**
+     * 
+     * Logout user.
+     *
+     */
+
+    public function logout(Request $request) { 
+        $user = Auth::user()->token();
+        $user->revoke();
+        return $this->apiResponse204();
+    }
+
+    /**
+     * 
+     * Auth user resource.
+     *
+     */
+
+    public function user(Request $request) { 
+        $user = Auth::user();
+        return new UserResource($user);
     }
 
 }

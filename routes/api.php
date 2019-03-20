@@ -19,12 +19,16 @@ Route::namespace('Api')->group(function ($id) {
     * Authentification.
     */
 
-    Route::post('validation', 'Auth\AuthController@validation')->name('validation');
-    Route::post('login', 'Auth\AuthController@login')->name('login');
-    Route::post('signin', 'Auth\AuthController@signin')->name('signin');
+    Route::post('auth/sms', 'Auth\AuthController@validation');
+    Route::post('auth/login', 'Auth\AuthController@login');
+    Route::post('auth/signin', 'Auth\AuthController@signin');
 
 
     Route::middleware('auth:api')->group(function ($id) {
+
+
+        Route::get('auth/logout', 'Auth\AuthController@logout');
+        Route::get('auth/user', 'Auth\AuthController@user');
 
         /**
         * Api Resource.
