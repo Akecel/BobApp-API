@@ -26,6 +26,12 @@ class AuthController extends ApiController {
 
     function validation(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'phone_num' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return $this->apiResponse403('Validation Error', $validator->errors());       
+        }
         $input = $request->all();
         $phoneNum = $input['phone_num'];
         $user = User::firstOrCreate(['phone_number' => $phoneNum]);
@@ -50,6 +56,12 @@ class AuthController extends ApiController {
 
     function login(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'token' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return $this->apiResponse403('Validation Error', $validator->errors());       
+        }
         $input = $request->all();
         $token = $input['token'];
         $phoneNum = Session::get('phoneNum');
@@ -72,7 +84,14 @@ class AuthController extends ApiController {
      *
      */
 
-    public function signin(Request $request){ 
+    public function signin(Request $request){
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|max:255',
+            'password' => 'required|max:255',
+        ]);
+        if($validator->fails()){
+            return $this->apiResponse403('Validation Error', $validator->errors());       
+        } 
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
             $user = Auth::user();
             if ($user->admin == 1) {
