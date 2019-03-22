@@ -46,40 +46,40 @@ class UserTableSeeder extends Seeder {
         'id' => 1,
         'title' => 'Identité',
         'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_1.png',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit viverra fusce.',
-        'extended_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed nulla in erat pulvinar pellentesque quis quis metus. Pellentesque sit amet auctor ex metus. '
+        'description' => 'Entreposez ici vous documents relatifs à votre identité',
+        'extended_description' => 'Une pièce d’identité est une première étape obligatoire pour la constitution d’un dossier locatif. L’ajout de pièces supplémentaires peut solidifier un dossier fragile'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 2,
         'title' => 'Garant',
         'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_2.png',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit viverra fusce.',
-        'extended_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed nulla in erat pulvinar pellentesque quis quis metus. Pellentesque sit amet auctor ex metus. '
+        'description' => 'Entreposez ici vous documents relatifs à vos garants',
+        'extended_description' => 'Un garant est toujours une marque de confiance supplémentaire pour un propriétaire, il est donc nécessaire de justifier son identité et ses revenus'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 3,
         'title' => 'Domicile',
         'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_3.png',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit viverra fusce.',
-        'extended_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed nulla in erat pulvinar pellentesque quis quis metus. Pellentesque sit amet auctor ex metus. '
+        'description' => 'Entreposez ici vous documents relatifs à votre domicile actuel',
+        'extended_description' => 'Un propriétaire favorisera toujours un candidat dont il connaît parfaitement la situation, justifier votre domiciliation actuelle vous démarquera des autres candidats'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 4,
         'title' => 'Emploi',
         'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_4.png',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit viverra fusce.',
-        'extended_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed nulla in erat pulvinar pellentesque quis quis metus. Pellentesque sit amet auctor ex metus. '
+        'description' => 'Entreposez ici vous documents relatifs à votre emploi',
+        'extended_description' => 'Bien sur, vos revenus et votre situation professionnelle seront des éléments déterminants dans le choix de votre propriétaire, mettez toutes les chances de votre côté'
       ]);
 
       DB::table('folders_categories')->insert([
         'id' => 5,
         'title' => 'Supplémentaire',
         'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_5.png',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit viverra fusce.',
-        'extended_description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed nulla in erat pulvinar pellentesque quis quis metus. Pellentesque sit amet auctor ex metus. '
+        'description' => 'Entreposez ici vous documents personnalisés',
+        'extended_description' => 'Il est toujours possible que votre propriétaire demande des documents qui ne sont pas prédéfinis chez Bob, pour cela créez les vous même ici'
       ]);
 
     }
@@ -133,7 +133,7 @@ class UserTableSeeder extends Seeder {
     ]);
 
     DB::table('files_types')->insert([
-      'title' => "Dernier avis d'imposition / non imposition",
+      'title' => "Dernier avis d'imposition",
       'folder_category_id' => 2
     ]);
 
@@ -153,7 +153,12 @@ class UserTableSeeder extends Seeder {
     ]);
 
     DB::table('files_types')->insert([
-      'title' => 'Taxe foncière',
+      'title' => "Pièce d'identité de l'hébergeur",
+      'folder_category_id' => 3
+    ]);
+
+    DB::table('files_types')->insert([
+      'title' => 'Avis de taxe foncière',
       'folder_category_id' => 3
     ]);
 
@@ -163,7 +168,7 @@ class UserTableSeeder extends Seeder {
     ]);
 
     DB::table('files_types')->insert([
-      'title' => "Facture d'eau / gaz / électricité",
+      'title' => "Justificatif de domicile",
       'folder_category_id' => 3
     ]);
 
@@ -172,7 +177,7 @@ class UserTableSeeder extends Seeder {
 
 
     DB::table('files_types')->insert([
-      'title' => "Contrat d'emploi",
+      'title' => "Contrat de travail",
       'folder_category_id' => 4
     ]);
 
