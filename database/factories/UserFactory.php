@@ -21,10 +21,6 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
         'firstname' => $faker->firstNameMale,
         'lastname' => $faker->lastName,
         'email' => $faker->safeEmail,
-        'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'address' => $faker->streetAddress,
-        'postal_code' => $faker->postcode,
-        'city' => $faker->city,
-        'country' => $faker->country
+        'birthdate' => $faker->date($format = 'Y-m-d', $max = 'now')
     ];
 });

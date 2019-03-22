@@ -25,7 +25,7 @@ class UserTest extends TestCase
             'data' => [ 
                 'type', 'id', 
                 'attributes' => [
-                    'phone_number', 'email', 'firstName', 'lastName', 'birthdate', 'address', 'postal_code', 'city', 'country'
+                    'phone_number', 'email', 'firstName', 'lastName', 'birthdate'
                 ], 
                 'relationships' => [
                     'folders' => [
@@ -62,7 +62,7 @@ class UserTest extends TestCase
                 [
                     'type', 'id', 
                     'attributes' => [
-                        'phone_number', 'email', 'firstName', 'lastName', 'birthdate', 'address', 'postal_code', 'city', 'country'
+                        'phone_number', 'email', 'firstName', 'lastName', 'birthdate'
                     ], 
                     'relationships' => [
                         'folders' => [
@@ -101,7 +101,7 @@ class UserTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'phone_number', 'email', 'firstName', 'lastName', 'birthdate', 'address', 'postal_code', 'city', 'country'
+                        'phone_number', 'email', 'firstName', 'lastName', 'birthdate'
                     ], 
                     'relationships' => [
                         'folders' => [
@@ -140,7 +140,7 @@ class UserTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'phone_number', 'email', 'firstName', 'lastName', 'birthdate', 'address', 'postal_code', 'city', 'country'
+                        'phone_number', 'email', 'firstName', 'lastName', 'birthdate'
                     ], 
                     'relationships' => [
                         'folders' => [
