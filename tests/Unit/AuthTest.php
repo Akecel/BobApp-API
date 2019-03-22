@@ -22,7 +22,7 @@ class AuthTest extends TestCase
             'data' => [ 
                 'type', 'id', 
                 'attributes' => [
-                    'phone_number', 'email', 'firstName', 'lastName', 'birthdate', 'address', 'postal_code', 'city', 'country'
+                    'phone_number', 'email', 'firstName', 'lastName', 'birthdate'
                 ], 
                 'relationships' => [
                     'folders' => [
