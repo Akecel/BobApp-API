@@ -10,7 +10,7 @@ class FilePolicy extends ResourcePolicy
     use HandlesAuthorization;
 
     /**
-     * Determine if the given post can be updated by the user.
+     * Determine if the given file can be updated by the user.
      *
      * @param  \App\User  $user
      * @param  \App\File  $file
