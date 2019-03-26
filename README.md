@@ -26,7 +26,7 @@
 
 The Bob mobile app is a personal assistant offering the ability to easily create and personalize complete rental records as well as formatting them to stand out from other candidates. This is the Backend documentation for this application.
 
-For a full documentation, look into ```_docs/index.html```
+For a full documentation, look into ```docs/index.html```
 
 ### Framework PHP :
 
