@@ -26,6 +26,8 @@
 
 The Bob mobile app is a personal assistant offering the ability to easily create and personalize complete rental records as well as formatting them to stand out from other candidates. This is the Backend documentation for this application.
 
+For a full documentation, look into ```_docs/index.html```
+
 ### Framework PHP :
 
 <strong> Bob's Backend </strong>  is writed in PHP & developed with Laravel 5.
@@ -90,30 +92,6 @@ DB_USERNAME=user
 DB_PASSWORD=pswd
 ```
 
-### htaccess
-
-Laravel includes a public/.htaccess file that is used to provide URLs without the index.php front controller in the path. Before serving Laravel with Apache, be sure to enable the mod_rewrite module so the .htaccess file will be honored by the server.
-If the .htaccess file that ships with Laravel does not work with your Apache installation, try this alternative:
-
-```
-Options +FollowSymLinks -Indexes
-RewriteEngine On
-
-RewriteCond %{HTTP:Authorization} .
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]
-```
-
-If you are using Nginx, the following directive in your site configuration will direct all requests to the index.php front controller:
-
-```php
-location / {
-    try_files $uri $uri/ /index.php?$query_string;
-}
-```
 
 ### Files Gestions
 
@@ -243,30 +221,6 @@ To send an SMS from the backend backend have to use an external library. The one
 
 You can find twilio documentation here : [Twilio Doc](https://www.twilio.com/docs/quickstart)
 
-#### Configuration
-
-Install Twilio PHP library using composer: 
-
-```
-composer require twilio/sdk
-```
-
-Dotenv configuration : 
-
-```
-TWILIO_ACCOUNT_SID=SID
-TWILIO_AUTH_TOKEN=TKEN
-TWILIO_NUMBER=+NUMBER
-```
-
-Functions in ```app/User.php``` model :
-
-```php
-    function sendToken()
-
-    function validateToken($token)
-```
-
 ### API Securisation
 
 #### Passport
@@ -294,11 +248,7 @@ For this passport requires certain conditions during the request to the API, fir
     Accept : application/json
     Authorization : Bearer $accessToken (The token given by passport when authenticating a user)
 ```
-Passport assign a token to users who authenticate successfully (and keep it in front):
 
-```php
-    $success['token'] =  $user->createToken('BobApp')->accessToken;
-```
 
 #### Policies
 
