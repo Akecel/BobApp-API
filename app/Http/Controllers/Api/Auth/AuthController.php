@@ -19,9 +19,9 @@ use App\Http\Resources\User\User as UserResource;
 class AuthController extends ApiController {
 
     /**
-     * 
-     * Select or create user and send token
-     *
+     * Send sms token
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
 
     function validation(Request $request)
@@ -49,9 +49,9 @@ class AuthController extends ApiController {
     }
 
     /**
-     * 
-     * Log user (Mobile).
-     *
+     * Log the user
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
 
     function login(Request $request)
@@ -79,9 +79,9 @@ class AuthController extends ApiController {
     }
 
     /**
-     * 
-     * Log user (Backoffice).
-     *
+     * Log the user with email and password
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
 
     public function signin(Request $request){
@@ -108,9 +108,8 @@ class AuthController extends ApiController {
     }
 
     /**
-     * 
-     * Logout user.
-     *
+     * Logout user
+     * @return \Illuminate\Http\Response
      */
 
     public function logout() { 
@@ -120,9 +119,8 @@ class AuthController extends ApiController {
     }
 
     /**
-     * 
-     * Auth user resource.
-     *
+     * Display auth user resource
+     * @return \Illuminate\Http\Response
      */
 
     public function user() { 

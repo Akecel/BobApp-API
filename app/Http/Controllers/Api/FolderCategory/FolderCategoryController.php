@@ -16,13 +16,22 @@ use App\Models\FolderCategory;
 class FolderCategoryController extends ApiController
 {
     /**
-     * Set User Repository.
-     * Constructor
+     * The with request instance.
      */
 
     protected $withs = [];
 
+    /**
+     * The category repository instance.
+     */
+
     protected $categoryRepository;
+
+    /**
+     * Controller instance
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Repositories\CategoryRepository $categoryRepository
+     */
   
     public function __construct(Request $request, CategoryRepository $categoryRepository)
     {
@@ -34,8 +43,8 @@ class FolderCategoryController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
+     * Display a listing of resource.
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
 
@@ -45,9 +54,8 @@ class FolderCategoryController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * Display given resource
+     * @param  App\Models\FolderCategory $category
      * @return \Illuminate\Http\Response
      */
 
@@ -57,10 +65,9 @@ class FolderCategoryController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
+     * Update given resource
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Models\FolderCategory $category
      * @return \Illuminate\Http\Response
      */
 

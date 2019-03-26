@@ -12,9 +12,9 @@ class UserRelationshipController extends Controller
 {
 
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\User $user
+     * @return \Illuminate\Http\Response
      */
 
     public function folders(User $user)
@@ -24,9 +24,9 @@ class UserRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\User $user
+     * @return \Illuminate\Http\Response
      */
 
     public function userRelationshipFolder(User $user)
@@ -37,9 +37,9 @@ class UserRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\User $user
+     * @return \Illuminate\Http\Response
      */
 
     public function files(User $user)
@@ -49,9 +49,9 @@ class UserRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\User $user
+     * @return \Illuminate\Http\Response
      */
 
     public function userRelationshipFile(User $user)

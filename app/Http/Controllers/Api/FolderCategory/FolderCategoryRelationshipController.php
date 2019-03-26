@@ -10,9 +10,9 @@ use App\Models\FolderCategory;
 class FolderCategoryRelationshipController extends Controller
 {
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\FolderCategory $category
+     * @return \Illuminate\Http\Response
      */
 
     public function types(FolderCategory $category)
@@ -21,9 +21,9 @@ class FolderCategoryRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\FolderCategory $category
+     * @return \Illuminate\Http\Response
      */
 
     public function categoryRelationshipType(FolderCategory $category)

@@ -9,42 +9,59 @@ class ApiController extends Controller
 {
 
     /**
-     * Response of the API
+     * Response of the API with 200
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  $result
      * @return array
      */
-
-     
-    // 200 Ok
 
     public function apiResponse200($result)
     {
         return response()->json($result, 200);
     }
 
-    // 201 Created
+    /**
+     * Response of the API with 201
+     *
+     * @param  $result
+     * @return array
+     */
 
     public function apiResponse201($result)
     {
         return response()->json($result, 201);
     }
 
-    // 202 Accepted
+    /**
+     * Response of the API with 202
+     *
+     * @param  $result
+     * @return array
+     */
 
     public function apiResponse202($result)
     {
         return response()->json($result, 202);
     }
 
-    // 204 No Content
+    /**
+     * Response of the API with 204
+     *
+     * @param  $result
+     * @return array
+     */
 
     public function apiResponse204()
     {
         return response()->json(null, 204);
     }
 
-    // 403 Forbidden
+    /**
+     * Response of the API with 403
+     *
+     * @param  $error $msgError $code
+     * @return array
+     */
 
     public function apiResponse403($error, $msgError = [], $code = 403)
     {
@@ -63,7 +80,12 @@ class ApiController extends Controller
           return response()->json($response, $code);
     }
 
-    // 404 Not Found
+    /**
+     * Response of the API with 404
+     *
+     * @param  $error $msgError $code
+     * @return array
+     */
 
     public function apiResponse404($error, $msgError = [], $code = 404)
     {
@@ -82,7 +104,12 @@ class ApiController extends Controller
         return response()->json($response, $code);
     }
 
-    // 409 Conflict
+    /**
+     * Response of the API with 409
+     *
+     * @param  $error $msgError $code
+     * @return array
+     */
 
     public function apiResponse409($error, $msgError = [], $code = 409)
     {

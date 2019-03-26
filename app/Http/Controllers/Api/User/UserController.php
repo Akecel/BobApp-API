@@ -16,14 +16,24 @@ use App\Models\User;
 
 class UserController extends ApiController
 {
+
     /**
-     * Set User Repository.
-     * Constructor
+     * The with request instance.
      */
 
     protected $withs = [];
 
+    /**
+     * The user repository instance.
+     */
+
     protected $userRepository;
+
+    /**
+     * Controller instance
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Repositories\UserRepository $userRepository
+     */
 
     public function __construct(Request $request, UserRepository $userRepository)
     {
@@ -35,8 +45,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
+     * Display a listing of resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
      */
 
@@ -47,9 +58,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * Store a new resource.
      * @param  \Illuminate\Http\Request  $request
+     * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
      */
 
@@ -73,9 +84,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * Display given resource
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
      */
 
@@ -86,10 +97,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
+     * Update given resource
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
      */
 
@@ -108,9 +118,8 @@ class UserController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * Remove given resource
+     * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
      */
 
@@ -124,7 +133,9 @@ class UserController extends ApiController
     }
 
     /**
-     * Set user as Admin.
+     * Set given user to admin
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Models\User $user
      */
 
     private function setAdmin(Request $request, User $user)

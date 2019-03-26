@@ -17,13 +17,22 @@ use App\Models\{File, User};
 class FileController extends ApiController
 {
     /**
-     * Set User Repository.
-     * Constructor
+     * The with request instance.
      */
 
     protected $withs = [];
 
+    /**
+     * The folder repository instance.
+     */
+
     protected $fileRepository;
+
+    /**
+     * Controller instance
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Repositories\FileRepository $fileRepository
+     */
 
     public function __construct(Request $request, FileRepository $fileRepository)
     {
@@ -35,8 +44,9 @@ class FileController extends ApiController
     }
 
     /**
-     * Display a listing of the resource.
-     *
+     * Display a listing of resource.
+     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Models\Folder $folder
      * @return \Illuminate\Http\Response
      */
 
@@ -48,8 +58,7 @@ class FileController extends ApiController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * Store a new resource.
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -83,9 +92,8 @@ class FileController extends ApiController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
+     * Display given resource
+     * @param  App\Models\File $file
      * @return \Illuminate\Http\Response
      */
 
@@ -96,10 +104,9 @@ class FileController extends ApiController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
+     * Update given resource
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  App\Models\File $file
      * @return \Illuminate\Http\Response
      */
 
@@ -115,9 +122,8 @@ class FileController extends ApiController
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
+     * Remove given resource
+     * @param  App\Models\File $file
      * @return \Illuminate\Http\Response
      */
 

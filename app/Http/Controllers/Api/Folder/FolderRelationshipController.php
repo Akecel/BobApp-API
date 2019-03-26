@@ -11,9 +11,9 @@ use App\Models\Folder;
 class FolderRelationshipController extends Controller
 {
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\Folder $folder
+     * @return \Illuminate\Http\Response
      */
 
     public function user(Folder $folder)
@@ -23,9 +23,9 @@ class FolderRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\Folder $folder
+     * @return \Illuminate\Http\Response
      */
 
     public function folderRelationshipUser(Folder $folder)
@@ -36,9 +36,9 @@ class FolderRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\Folder $folder
+     * @return \Illuminate\Http\Response
      */
 
     public function files(Folder $folder)
@@ -48,9 +48,9 @@ class FolderRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\Folder $folder
+     * @return \Illuminate\Http\Response
      */
 
     public function folderRelationshipFile(Folder $folder)

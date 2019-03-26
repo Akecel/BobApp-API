@@ -12,9 +12,9 @@ use App\Models\File;
 class FileRelationshipController extends Controller
 {
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\File $file
+     * @return \Illuminate\Http\Response
      */
 
     public function user(File $file)
@@ -24,9 +24,9 @@ class FileRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\File $file
+     * @return \Illuminate\Http\Response
      */
 
     public function fileRelationshipUser(File $file)
@@ -37,9 +37,9 @@ class FileRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\File $file
+     * @return \Illuminate\Http\Response
      */
 
     public function folders(File $file)
@@ -49,9 +49,9 @@ class FileRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\File $file
+     * @return \Illuminate\Http\Response
      */
 
     public function fileRelationshipFolder(File $file)
@@ -62,9 +62,9 @@ class FileRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display all relationships of resources.
-     *
+     * Display relationships resources
+     * @param  App\Models\File $file
+     * @return \Illuminate\Http\Response
      */
 
     public function type(File $file)
@@ -74,9 +74,9 @@ class FileRelationshipController extends Controller
     }
 
     /**
-     * 
-     * Display specified relationship of resources.
-     *
+     * Display specified relationships resources
+     * @param  App\Models\File $file
+     * @return \Illuminate\Http\Response
      */
 
     public function fileRelationshipType(File $file)
