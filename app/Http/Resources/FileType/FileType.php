@@ -40,8 +40,6 @@ class FileType extends JsonResource
 
     public function with($request) 
     {
-        $included = [];
-
         if ($request->has('include')) {
             return [
                 'included' => [
@@ -69,7 +67,7 @@ class FileType extends JsonResource
 
         if (!empty($relations)) {
             foreach ($relations as $nameRelation => $relation) {
-                $modelRelation = get_class($this->{$nameRelation}()->getRelated());
+                get_class($this->{$nameRelation}()->getRelated());
                 if($nameRelation == "folder_category") {
                     $relationships[$nameRelation][] = new FolderCategoryResource($relation);
                 } 

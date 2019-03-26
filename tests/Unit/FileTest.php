@@ -284,7 +284,7 @@ class FileTest extends TestCase
         $user->admin = 0;
         $user->save();
         $this->actingAs($user, 'api');
-        $file = factory(File::class)->create();
+        factory(File::class)->create();
         $this->get(route('file.index'))
         ->assertStatus(403);
     }

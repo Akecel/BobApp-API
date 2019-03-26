@@ -225,7 +225,7 @@ class FolderTest extends TestCase
         $user->admin = 0;
         $user->save();
         $this->actingAs($user, 'api');
-        $folder = factory(Folder::class)->create();
+        factory(Folder::class)->create();
         $this->get(route('folder.index'))
         ->assertStatus(403);
     }

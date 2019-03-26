@@ -49,7 +49,7 @@ class FolderCollection extends ResourceCollection
                 foreach ($relations as $nameRelation => $relation) {
 
                     if ($relation->count()) {
-                        $modelRelation = get_class($resource->{$nameRelation}()->getRelated());
+                        get_class($resource->{$nameRelation}()->getRelated());
                         if($nameRelation == "user") {
                             $relationships[$nameRelation][] = new UserResource($relation);
                         } 

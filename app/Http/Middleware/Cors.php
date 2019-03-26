@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\App;
 
 class Cors
 {
@@ -17,7 +18,7 @@ class Cors
     {
         $response = $next($request);
 
-        if ($_ENV['APP_ENV'] != "testing") {
+        if (!App::environment('testing')) {
             header("Access-Control-Allow-Origin: *");
             $headers = [
                 'Access-Control-Allow-Methods'=> '*',

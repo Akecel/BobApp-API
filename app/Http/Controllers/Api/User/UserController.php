@@ -117,7 +117,6 @@ class UserController extends ApiController
     public function destroy(User $user)
     {
         $this->authorize('manage', $user);
-        $id = 
         $user = User::find($user->id);
         Storage::deleteDirectory('user_files_' . $user->id);
         $this->userRepository->destroy($user->id);

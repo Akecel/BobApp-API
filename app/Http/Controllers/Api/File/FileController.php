@@ -70,7 +70,7 @@ class FileController extends ApiController
         $image = $request->file('file_input');
         $name = $file_type_id . '.' . $user['lastName'] . $user['firstName'] . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
         $destinationPath = "storage/user_files_" . $user_id;
-        $request['url'] = encrypt($_ENV['APP_URL'] . "/" . $destinationPath . "/" . $name);
+        $request['url'] = encrypt(config('app.url') . "/" . $destinationPath . "/" . $name);
         $store = $this->fileRepository->store($request->all());
         $image->move($destinationPath, $name);
         if($request->has('name')) {
@@ -107,7 +107,7 @@ class FileController extends ApiController
     {
         $this->authorize('manage', $file);
         $id = $file->id;
-        $update = $this->fileRepository->update($id, $request->all());
+        $this->fileRepository->update($id, $request->all());
         if($request->has('name')) {
         $this->fileRepository->updateOtherFile($id,$request->only('name'));
         }
@@ -126,7 +126,7 @@ class FileController extends ApiController
         $this->authorize('manage', $file);
         $id = $file->id;
         $file = File::find($id);
-        $url = explode($_ENV['APP_URL'] . "/storage/",decrypt($file['url']));
+        $url = explode(config('app.url') . "/storage/",decrypt($file['url']));
         Storage::disk('public')->delete($url[1]);
         $this->fileRepository->destroy($id);
         return $this->apiResponse204();

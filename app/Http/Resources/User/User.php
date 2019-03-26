@@ -47,8 +47,6 @@ class User extends JsonResource
 
     public function with($request) 
     {
-        $included = [];
-
         if ($request->has('include')) {
             return [
                 'included' => [
@@ -76,7 +74,7 @@ class User extends JsonResource
 
         if (!empty($relations)) {
             foreach ($relations as $nameRelation => $relation) {
-                $modelRelation = get_class($this->{$nameRelation}()->getRelated());
+                get_class($this->{$nameRelation}()->getRelated());
                 if($nameRelation == "folders") {
                     $relationships[$nameRelation][] = $relation->mapInto(FolderResource::class);
                 } 

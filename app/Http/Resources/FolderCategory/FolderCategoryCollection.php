@@ -48,7 +48,7 @@ class FolderCategoryCollection extends ResourceCollection
                 foreach ($relations as $nameRelation => $relation) {
 
                     if ($relation->count()) {
-                        $modelRelation = get_class($resource->{$nameRelation}()->getRelated());
+                        get_class($resource->{$nameRelation}()->getRelated());
                         if($nameRelation == "files_types") {
                             $relationships[$nameRelation][] = $relation->mapInto(FileTypeResource::class);
                         } 

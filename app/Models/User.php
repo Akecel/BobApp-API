@@ -45,14 +45,14 @@ class User extends Authenticatable
     {
         $token = mt_rand(100000, 999999);
         Session::put('token', $token);
-        $sid = $_ENV['TWILIO_ACCOUNT_SID'];
-        $tokenTwillo = $_ENV['TWILIO_AUTH_TOKEN'];
+        $sid = config('app.twilio_sid');
+        $tokenTwillo = config('app.twilio_token');
         $client = new Client($sid, $tokenTwillo);
         /*
         $client->messages->create(
             $this->phone_number,
             array(
-                'from' => $_ENV['TWILIO_NUMBER'],
+                'from' => config('app.twilio_number'),
                 'body' => "Votre code secret est : " . $token
             )
         );*/

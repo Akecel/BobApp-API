@@ -49,7 +49,7 @@ class FileTypeCollection extends ResourceCollection
                 foreach ($relations as $nameRelation => $relation) {
 
                     if ($relation->count()) {
-                        $modelRelation = get_class($resource->{$nameRelation}()->getRelated());
+                        get_class($resource->{$nameRelation}()->getRelated());
                         if($nameRelation == "folder_category") {
                             $relationships[$nameRelation][] = new FolderCategoryResource($relation);
                         } 
