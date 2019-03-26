@@ -1,0 +1,340 @@
+{
+    "name": "App\\Providers\\AuthServiceProvider",
+    "line": 12,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Providers",
+    "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Providers\/AuthServiceProvider.php",
+    "relative_file": null,
+    "hash": "ce9f0c24113f70e58b01e24d4233fa63b36fc99f",
+    "parent": "Illuminate\\Foundation\\Support\\Providers\\AuthServiceProvider",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "Passport": "Laravel\\Passport\\Passport",
+        "Gate": "Illuminate\\Support\\Facades\\Gate",
+        "ServiceProvider": "Illuminate\\Foundation\\Support\\Providers\\AuthServiceProvider"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": {
+        "policies": {
+            "name": "policies",
+            "line": 19,
+            "short_desc": "The policy mappings for the application.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 2,
+            "default": {
+                "nodeType": "Expr_Array",
+                "items": [
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": {
+                            "nodeType": "Scalar_String",
+                            "value": "App\\Model",
+                            "attributes": {
+                                "startLine": 20,
+                                "endLine": 20,
+                                "kind": 1
+                            }
+                        },
+                        "value": {
+                            "nodeType": "Scalar_String",
+                            "value": "App\\Policies\\ModelPolicy",
+                            "attributes": {
+                                "startLine": 20,
+                                "endLine": 20,
+                                "kind": 1
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 20,
+                            "endLine": 20
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Models",
+                                    "User"
+                                ],
+                                "attributes": {
+                                    "startLine": 21,
+                                    "endLine": 21
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 21,
+                                "endLine": 21
+                            }
+                        },
+                        "value": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Policies",
+                                    "UserPolicy"
+                                ],
+                                "attributes": {
+                                    "startLine": 21,
+                                    "endLine": 21
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 21,
+                                "endLine": 21
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 21,
+                            "endLine": 21
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Models",
+                                    "File"
+                                ],
+                                "attributes": {
+                                    "startLine": 22,
+                                    "endLine": 22
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 22,
+                                "endLine": 22
+                            }
+                        },
+                        "value": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Policies",
+                                    "FilePolicy"
+                                ],
+                                "attributes": {
+                                    "startLine": 22,
+                                    "endLine": 22
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 22,
+                                "endLine": 22
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 22,
+                            "endLine": 22
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Models",
+                                    "Folder"
+                                ],
+                                "attributes": {
+                                    "startLine": 23,
+                                    "endLine": 23
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23
+                            }
+                        },
+                        "value": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Policies",
+                                    "FolderPolicy"
+                                ],
+                                "attributes": {
+                                    "startLine": 23,
+                                    "endLine": 23
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 23,
+                                "endLine": 23
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 23,
+                            "endLine": 23
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Models",
+                                    "FileType"
+                                ],
+                                "attributes": {
+                                    "startLine": 24,
+                                    "endLine": 24
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 24,
+                                "endLine": 24
+                            }
+                        },
+                        "value": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Policies",
+                                    "FileTypePolicy"
+                                ],
+                                "attributes": {
+                                    "startLine": 24,
+                                    "endLine": 24
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 24,
+                                "endLine": 24
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 24,
+                            "endLine": 24
+                        }
+                    },
+                    {
+                        "nodeType": "Expr_ArrayItem",
+                        "key": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Models",
+                                    "FolderCategory"
+                                ],
+                                "attributes": {
+                                    "startLine": 25,
+                                    "endLine": 25
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25
+                            }
+                        },
+                        "value": {
+                            "nodeType": "Expr_ClassConstFetch",
+                            "class": {
+                                "nodeType": "Name_FullyQualified",
+                                "parts": [
+                                    "App",
+                                    "Policies",
+                                    "FolderCategoryPolicy"
+                                ],
+                                "attributes": {
+                                    "startLine": 25,
+                                    "endLine": 25
+                                }
+                            },
+                            "name": "class",
+                            "attributes": {
+                                "startLine": 25,
+                                "endLine": 25
+                            }
+                        },
+                        "byRef": false,
+                        "attributes": {
+                            "startLine": 25,
+                            "endLine": 25
+                        }
+                    }
+                ],
+                "attributes": {
+                    "startLine": 19,
+                    "endLine": 26,
+                    "kind": 2
+                }
+            },
+            "errors": []
+        }
+    },
+    "methods": {
+        "boot": {
+            "name": "boot",
+            "line": 33,
+            "short_desc": "Register any authentication \/ authorization services.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "void",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

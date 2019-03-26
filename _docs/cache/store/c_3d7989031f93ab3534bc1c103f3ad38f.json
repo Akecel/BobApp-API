@@ -1,0 +1,67 @@
+{
+    "name": "App\\Http\\Resources\\File\\FileCollection",
+    "line": 11,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Resources\\File",
+    "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Resources\/File\/FileCollection.php",
+    "relative_file": null,
+    "hash": "1e6c1a0299be92bea059ea2099177c59359a66f6",
+    "parent": "Illuminate\\Http\\Resources\\Json\\ResourceCollection",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "ResourceCollection": "Illuminate\\Http\\Resources\\Json\\ResourceCollection",
+        "Collection": "Illuminate\\Support\\Collection",
+        "UserResource": "App\\Http\\Resources\\User\\User",
+        "FolderResource": "App\\Http\\Resources\\Folder\\Folder",
+        "FileTypeResource": "App\\Http\\Resources\\FileType\\FileType"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "toArray": {
+            "name": "toArray",
+            "line": 19,
+            "short_desc": "Transform the resource collection into an array.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 19,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Illuminate\\Http\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}

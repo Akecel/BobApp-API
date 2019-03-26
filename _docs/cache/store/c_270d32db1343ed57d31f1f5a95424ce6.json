@@ -1,0 +1,66 @@
+{
+    "name": "App\\Http\\Resources\\File\\FileRelationshipResource",
+    "line": 9,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Http\\Resources\\File",
+    "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Resources\/File\/FileRelationshipResource.php",
+    "relative_file": null,
+    "hash": "7d4c90303fad2c7866e3b233da69d11a50ba34bb",
+    "parent": "Illuminate\\Http\\Resources\\Json\\JsonResource",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": {
+        "UserIdentifierResource": "App\\Http\\Resources\\User\\UserIdentifierResource",
+        "FileTypeIdentifierResource": "App\\Http\\Resources\\FileType\\FileTypeIdentifierResource",
+        "FolderIdentifierResource": "App\\Http\\Resources\\Folder\\FolderIdentifierResource",
+        "JsonResource": "Illuminate\\Http\\Resources\\Json\\JsonResource"
+    },
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "toArray": {
+            "name": "toArray",
+            "line": 17,
+            "short_desc": "Transform the resource into an array.",
+            "long_desc": "",
+            "hint": [
+                [
+                    "array",
+                    false
+                ]
+            ],
+            "hint_desc": "",
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": {
+                "request": {
+                    "name": "request",
+                    "line": 17,
+                    "short_desc": "",
+                    "long_desc": null,
+                    "hint": [
+                        [
+                            "\\Illuminate\\Http\\Request",
+                            false
+                        ]
+                    ],
+                    "tags": [],
+                    "modifiers": null,
+                    "default": null,
+                    "variadic": false,
+                    "is_by_ref": false
+                }
+            }
+        }
+    },
+    "constants": []
+}
