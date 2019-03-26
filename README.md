@@ -6,6 +6,7 @@
 </p>
 
 [![CircleCI](https://circleci.com/gh/DeathCoinOfTheDoom/Back-end.svg?style=svg)](https://circleci.com/gh/DeathCoinOfTheDoom/Back-end)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6081254e0ba24392a40ad83ceaefcfde)](https://www.codacy.com/app/Akecel/Back-end?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeathCoinOfTheDoom/Back-end&amp;utm_campaign=Badge_Grade)
 
 
 ## Index :
