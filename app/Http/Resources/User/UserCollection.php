@@ -17,8 +17,6 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $included = $this->withIncluded($this);
-
         return[
             'data' => $this->collection,
             'links' => [

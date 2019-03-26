@@ -113,7 +113,7 @@ class AuthController extends ApiController {
      *
      */
 
-    public function logout(Request $request) { 
+    public function logout() { 
         $user = Auth::user()->token();
         $user->revoke();
         return $this->apiResponse204();
@@ -125,7 +125,7 @@ class AuthController extends ApiController {
      *
      */
 
-    public function user(Request $request) { 
+    public function user() { 
         $user = Auth::user();
         return new UserResource($user);
     }
