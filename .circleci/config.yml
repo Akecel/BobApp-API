@@ -73,3 +73,24 @@ jobs:
           path: tests/_output
       - store_artifacts:
           path: tests/_output
+
+  deploy:
+      machine:
+        enabled: true
+      steps:
+        - run:
+            name: Deploy Over SSH
+            command: |
+              ssh $SSH_USER@$SSH_HOST "<cd /var/www/html/Back-end/git pull>"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
