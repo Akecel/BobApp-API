@@ -31,6 +31,7 @@ class FolderCategoryController extends ApiController
      * Controller instance
      * @param  \Illuminate\Http\Request  $request
      * @param  App\Repositories\CategoryRepository $categoryRepository
+     * @codeCoverageIgnore
      */
   
     public function __construct(Request $request, CategoryRepository $categoryRepository)

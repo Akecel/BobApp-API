@@ -27,6 +27,7 @@ class UserRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function userRelationshipFolder(User $user)
@@ -52,6 +53,7 @@ class UserRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\User $user
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function userRelationshipFile(User $user)

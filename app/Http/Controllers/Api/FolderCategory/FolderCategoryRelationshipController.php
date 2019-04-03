@@ -24,6 +24,7 @@ class FolderCategoryRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\FolderCategory $category
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function categoryRelationshipType(FolderCategory $category)

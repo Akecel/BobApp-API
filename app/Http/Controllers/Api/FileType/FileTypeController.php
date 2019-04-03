@@ -31,6 +31,7 @@ class FileTypeController extends ApiController
      * Controller instance
      * @param  \Illuminate\Http\Request  $request
      * @param  App\Repositories\TypeRepository $typeRepository
+     * @codeCoverageIgnore
      */
   
     public function __construct(Request $request, TypeRepository $typeRepository)

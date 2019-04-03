@@ -26,6 +26,7 @@ class FolderRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\Folder $folder
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function folderRelationshipUser(Folder $folder)
@@ -51,6 +52,7 @@ class FolderRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\Folder $folder
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function folderRelationshipFile(Folder $folder)

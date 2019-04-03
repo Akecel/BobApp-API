@@ -25,6 +25,7 @@ class FileTypeRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\FileType $type
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function typeRelationshipCategory(FileType $type)
@@ -49,6 +50,7 @@ class FileTypeRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\FileType $type
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function typeRelationshipFile(FileType $type)

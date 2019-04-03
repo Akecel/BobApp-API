@@ -33,6 +33,7 @@ class UserController extends ApiController
      * Controller instance
      * @param  \Illuminate\Http\Request  $request
      * @param  App\Repositories\UserRepository $userRepository
+     * @codeCoverageIgnore
      */
 
     public function __construct(Request $request, UserRepository $userRepository)
@@ -136,6 +137,7 @@ class UserController extends ApiController
      * Set given user to admin
      * @param  \Illuminate\Http\Request  $request
      * @param  App\Models\User $user
+     * @codeCoverageIgnore
      */
 
     private function setAdmin(Request $request, User $user)

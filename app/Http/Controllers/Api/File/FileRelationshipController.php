@@ -27,6 +27,7 @@ class FileRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\File $file
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function fileRelationshipUser(File $file)
@@ -52,6 +53,7 @@ class FileRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\File $file
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function fileRelationshipFolder(File $file)
@@ -77,6 +79,7 @@ class FileRelationshipController extends Controller
      * Display specified relationships resources
      * @param  App\Models\File $file
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     public function fileRelationshipType(File $file)

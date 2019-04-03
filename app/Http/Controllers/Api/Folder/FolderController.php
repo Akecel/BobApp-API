@@ -30,6 +30,7 @@ class FolderController extends ApiController
      * Controller instance
      * @param  \Illuminate\Http\Request  $request
      * @param  App\Repositories\FolderRepository $folderRepository
+     * @codeCoverageIgnore
      */
   
 
