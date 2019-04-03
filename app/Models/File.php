@@ -25,9 +25,4 @@ class File extends Model
     {
         return $this->belongsTo('App\Models\FileType');
     }
-
-    public function other_file()
-    {
-        return $this->hasOne('App\Models\OtherFile');
-    }
 }

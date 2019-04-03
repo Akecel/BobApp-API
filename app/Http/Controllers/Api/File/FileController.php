@@ -82,9 +82,6 @@ class FileController extends ApiController
         $request['url'] = encrypt(config('app.url') . "/" . $destinationPath . "/" . $name);
         $store = $this->fileRepository->store($request->all());
         $image->move($destinationPath, $name);
-        if($request->has('name')) {
-        $this->fileRepository->saveOtherFile($store,$request->only('name'));
-        }
         return (new FileResource($store))
         ->response()
         ->setStatusCode(201);
@@ -115,9 +112,6 @@ class FileController extends ApiController
         $this->authorize('manage', $file);
         $id = $file->id;
         $this->fileRepository->update($id, $request->all());
-        if($request->has('name')) {
-        $this->fileRepository->updateOtherFile($id,$request->only('name'));
-        }
         return new FileResource(File::find($id));
     }
 

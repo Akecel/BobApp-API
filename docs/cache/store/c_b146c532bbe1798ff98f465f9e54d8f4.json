@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Resources\\File",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Resources\/File\/File.php",
     "relative_file": null,
-    "hash": "a22dd8727921aa6d6f043f52735231039344688e",
+    "hash": "790593a150aff10088463a58e4e0ba8da8ff6208",
     "parent": "Illuminate\\Http\\Resources\\Json\\JsonResource",
     "modifiers": 0,
     "is_trait": false,
@@ -63,7 +63,7 @@
         },
         "with": {
             "name": "with",
-            "line": 47,
+            "line": 44,
             "short_desc": "Get additional data that should be returned with the resource array.",
             "long_desc": "",
             "hint": [
@@ -81,7 +81,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 47,
+                    "line": 44,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
