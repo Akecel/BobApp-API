@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\FolderCategory",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/FolderCategory\/FolderCategoryController.php",
     "relative_file": null,
-    "hash": "c704381c3ecbb84b0f87900e6373c90e1cd335f3",
+    "hash": "106e991fa5857540352eaed07789be0762ba5485",
     "parent": "App\\Http\\Controllers\\Api\\ApiController",
     "modifiers": 0,
     "is_trait": false,
@@ -68,7 +68,13 @@
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],

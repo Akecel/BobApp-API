@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\File",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/File\/FileRelationshipController.php",
     "relative_file": null,
-    "hash": "ec01199d88c74c3b0df985d28db285a5c853e9c3",
+    "hash": "0f0bd6888bafb6ac1d2b01173b8c2827b5987054",
     "parent": "App\\Http\\Controllers\\Controller",
     "modifiers": 0,
     "is_trait": false,
@@ -86,7 +86,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -182,7 +188,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -278,7 +290,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],

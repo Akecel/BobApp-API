@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\Auth",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/Auth\/AuthController.php",
     "relative_file": null,
-    "hash": "b8f75d7e555d827b23e2fec2eaa9eb65b1a29fa3",
+    "hash": "a01d973a7b3e533a20d18494c14dec648786631d",
     "parent": "App\\Http\\Controllers\\Api\\ApiController",
     "modifiers": 0,
     "is_trait": false,
@@ -33,7 +33,7 @@
         "validation": {
             "name": "validation",
             "line": 27,
-            "short_desc": "Send sms token",
+            "short_desc": "Send Sms",
             "long_desc": "",
             "hint": [
                 [
@@ -42,7 +42,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -90,7 +96,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -138,7 +150,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -186,7 +204,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],

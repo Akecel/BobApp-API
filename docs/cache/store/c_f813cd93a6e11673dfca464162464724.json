@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\User",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/User\/UserRelationshipController.php",
     "relative_file": null,
-    "hash": "5f0691272656b395c6285ee5ad2d53e392a901b4",
+    "hash": "3f45edb48b45c94b04ac00762b45b5eb853d1ea0",
     "parent": "App\\Http\\Controllers\\Controller",
     "modifiers": 0,
     "is_trait": false,
@@ -85,7 +85,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -181,7 +187,13 @@
                 ]
             ],
             "hint_desc": "",
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],

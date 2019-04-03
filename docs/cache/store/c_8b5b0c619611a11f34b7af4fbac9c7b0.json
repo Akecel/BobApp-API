@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\File",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/File\/FileController.php",
     "relative_file": null,
-    "hash": "6eaf9f196dba37b0e415c81cf834d34ae247e5f3",
+    "hash": "e5dd44b051bc4f9f6e69a029f93ed06ebe826da8",
     "parent": "App\\Http\\Controllers\\Api\\ApiController",
     "modifiers": 0,
     "is_trait": false,
@@ -68,7 +68,13 @@
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -260,7 +266,7 @@
         },
         "show": {
             "name": "show",
-            "line": 97,
+            "line": 99,
             "short_desc": "Display given resource",
             "long_desc": "",
             "hint": [
@@ -278,7 +284,7 @@
             "parameters": {
                 "file": {
                     "name": "file",
-                    "line": 97,
+                    "line": 99,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -296,8 +302,8 @@
                             "File"
                         ],
                         "attributes": {
-                            "startLine": 97,
-                            "endLine": 97
+                            "startLine": 99,
+                            "endLine": 99
                         }
                     },
                     "default": null,
@@ -308,7 +314,7 @@
         },
         "update": {
             "name": "update",
-            "line": 110,
+            "line": 112,
             "short_desc": "Update given resource",
             "long_desc": "",
             "hint": [
@@ -326,7 +332,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 110,
+                    "line": 112,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -344,8 +350,8 @@
                             "Request"
                         ],
                         "attributes": {
-                            "startLine": 110,
-                            "endLine": 110
+                            "startLine": 112,
+                            "endLine": 112
                         }
                     },
                     "default": null,
@@ -354,7 +360,7 @@
                 },
                 "file": {
                     "name": "file",
-                    "line": 110,
+                    "line": 112,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -372,8 +378,8 @@
                             "File"
                         ],
                         "attributes": {
-                            "startLine": 110,
-                            "endLine": 110
+                            "startLine": 112,
+                            "endLine": 112
                         }
                     },
                     "default": null,
@@ -384,7 +390,7 @@
         },
         "destroy": {
             "name": "destroy",
-            "line": 124,
+            "line": 126,
             "short_desc": "Remove given resource",
             "long_desc": "",
             "hint": [
@@ -402,7 +408,7 @@
             "parameters": {
                 "file": {
                     "name": "file",
-                    "line": 124,
+                    "line": 126,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -420,8 +426,8 @@
                             "File"
                         ],
                         "attributes": {
-                            "startLine": 124,
-                            "endLine": 124
+                            "startLine": 126,
+                            "endLine": 126
                         }
                     },
                     "default": null,

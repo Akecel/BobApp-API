@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\User",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/User\/UserController.php",
     "relative_file": null,
-    "hash": "1a811094eab797855c81df6be2fb4da67f052c77",
+    "hash": "ff2432185f592cb3b78fadb36bb8b0208c744513",
     "parent": "App\\Http\\Controllers\\Api\\ApiController",
     "modifiers": 0,
     "is_trait": false,
@@ -69,7 +69,13 @@
             "long_desc": "",
             "hint": null,
             "hint_desc": null,
-            "tags": [],
+            "tags": {
+                "codeCoverageIgnore": [
+                    [
+                        ""
+                    ]
+                ]
+            },
             "modifiers": 1,
             "is_by_ref": "",
             "exceptions": [],
@@ -287,7 +293,7 @@
         },
         "show": {
             "name": "show",
-            "line": 93,
+            "line": 95,
             "short_desc": "Display given resource",
             "long_desc": "",
             "hint": [
@@ -305,7 +311,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 93,
+                    "line": 95,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -323,8 +329,8 @@
                             "Request"
                         ],
                         "attributes": {
-                            "startLine": 93,
-                            "endLine": 93
+                            "startLine": 95,
+                            "endLine": 95
                         }
                     },
                     "default": null,
@@ -333,7 +339,7 @@
                 },
                 "user": {
                     "name": "user",
-                    "line": 93,
+                    "line": 95,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -351,8 +357,8 @@
                             "User"
                         ],
                         "attributes": {
-                            "startLine": 93,
-                            "endLine": 93
+                            "startLine": 95,
+                            "endLine": 95
                         }
                     },
                     "default": null,
@@ -363,7 +369,7 @@
         },
         "update": {
             "name": "update",
-            "line": 106,
+            "line": 108,
             "short_desc": "Update given resource",
             "long_desc": "",
             "hint": [
@@ -381,7 +387,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 106,
+                    "line": 108,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -399,8 +405,8 @@
                             "Request"
                         ],
                         "attributes": {
-                            "startLine": 106,
-                            "endLine": 106
+                            "startLine": 108,
+                            "endLine": 108
                         }
                     },
                     "default": null,
@@ -409,7 +415,7 @@
                 },
                 "user": {
                     "name": "user",
-                    "line": 106,
+                    "line": 108,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -427,8 +433,8 @@
                             "User"
                         ],
                         "attributes": {
-                            "startLine": 106,
-                            "endLine": 106
+                            "startLine": 108,
+                            "endLine": 108
                         }
                     },
                     "default": null,
@@ -439,7 +445,7 @@
         },
         "destroy": {
             "name": "destroy",
-            "line": 126,
+            "line": 130,
             "short_desc": "Remove given resource",
             "long_desc": "",
             "hint": [
@@ -457,7 +463,7 @@
             "parameters": {
                 "user": {
                     "name": "user",
-                    "line": 126,
+                    "line": 130,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -475,8 +481,8 @@
                             "User"
                         ],
                         "attributes": {
-                            "startLine": 126,
-                            "endLine": 126
+                            "startLine": 130,
+                            "endLine": 130
                         }
                     },
                     "default": null,
