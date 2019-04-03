@@ -82,6 +82,7 @@ class AuthController extends ApiController {
      * Log the user with email and password
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
     public function signin(Request $request){
         $validator = Validator::make($request->all(), [
@@ -109,6 +110,7 @@ class AuthController extends ApiController {
     /**
      * Logout user
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
     public function logout() { 
         $user = Auth::user()->token();

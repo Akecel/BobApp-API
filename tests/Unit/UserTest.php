@@ -166,6 +166,7 @@ class UserTest extends TestCase
     /**
      * @covers App\Http\Controllers\Api\User\UserRelationshipController::files
      */
+
     public function test_can_show_user_file()
     {
         $user = factory(User::class)->create();
@@ -180,6 +181,7 @@ class UserTest extends TestCase
     /**
      * @covers App\Http\Controllers\Api\User\UserRelationshipController::folders
      */
+
     public function test_can_show_user_folder()
     {
         $user = factory(User::class)->create();
