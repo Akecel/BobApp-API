@@ -67,7 +67,9 @@ class FolderController extends ApiController
             'user_id' => 'required|max:255'
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors());
+            // @codeCoverageIgnoreEnd      
         }
         $store = $this->folderRepository->store($request->all());
         return (new FolderResource($store))
