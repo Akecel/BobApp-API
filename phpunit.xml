@@ -21,7 +21,7 @@
     <whitelist>
       <directory suffix=".php">app/Http/Controllers/Api</directory>
         <exclude>
-            <file>ApiController.php</file>
+            <file>app/Http/Controllers/Api/ApiController.php</file>
         </exclude>
     </whitelist>
   </filter>
