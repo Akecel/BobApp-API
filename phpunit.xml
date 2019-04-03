@@ -21,6 +21,12 @@
     <whitelist>
       <directory suffix=".php">app/Http/Controllers/Api</directory>
     </whitelist>
+      <blacklist>
+        <exclude>
+            <directory suffix=".php">app/Http/Controllers/Api</directory>
+            <file>ApiController</file>
+        </exclude>
+  </blacklist>
   </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
