@@ -73,15 +73,6 @@ class UserTableSeeder extends Seeder {
         'description' => 'Entreposez ici vous documents relatifs à votre emploi',
         'extended_description' => 'Bien sur, vos revenus et votre situation professionnelle seront des éléments déterminants dans le choix de votre propriétaire, mettez toutes les chances de votre côté'
       ]);
-
-      DB::table('folders_categories')->insert([
-        'id' => 5,
-        'title' => 'Supplémentaire',
-        'icon' => $_ENV['APP_URL'] . '/assets/img/category/category_5.png',
-        'description' => 'Entreposez ici vous documents personnalisés',
-        'extended_description' => 'Il est toujours possible que votre propriétaire demande des documents qui ne sont pas prédéfinis chez Bob, pour cela créez les vous même ici'
-      ]);
-
     }
   }
 
@@ -204,11 +195,6 @@ class UserTableSeeder extends Seeder {
     DB::table('files_types')->insert([
       'title' => 'Bulletin de salaire M-3',
       'folder_category_id' => 4
-    ]);
-
-    DB::table('files_types')->insert([
-      'title' => 'Autre',
-      'folder_category_id' => 5
     ]);
 
     }

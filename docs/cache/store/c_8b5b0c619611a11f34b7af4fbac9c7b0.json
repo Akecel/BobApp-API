@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\File",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/File\/FileController.php",
     "relative_file": null,
-    "hash": "6e6333733abbb2e944626386853033dc5037ca11",
+    "hash": "6eaf9f196dba37b0e415c81cf834d34ae247e5f3",
     "parent": "App\\Http\\Controllers\\Api\\ApiController",
     "modifiers": 0,
     "is_trait": false,
@@ -260,7 +260,7 @@
         },
         "show": {
             "name": "show",
-            "line": 100,
+            "line": 97,
             "short_desc": "Display given resource",
             "long_desc": "",
             "hint": [
@@ -278,7 +278,7 @@
             "parameters": {
                 "file": {
                     "name": "file",
-                    "line": 100,
+                    "line": 97,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -296,8 +296,8 @@
                             "File"
                         ],
                         "attributes": {
-                            "startLine": 100,
-                            "endLine": 100
+                            "startLine": 97,
+                            "endLine": 97
                         }
                     },
                     "default": null,
@@ -308,7 +308,7 @@
         },
         "update": {
             "name": "update",
-            "line": 113,
+            "line": 110,
             "short_desc": "Update given resource",
             "long_desc": "",
             "hint": [
@@ -326,7 +326,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 113,
+                    "line": 110,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -344,8 +344,8 @@
                             "Request"
                         ],
                         "attributes": {
-                            "startLine": 113,
-                            "endLine": 113
+                            "startLine": 110,
+                            "endLine": 110
                         }
                     },
                     "default": null,
@@ -354,7 +354,7 @@
                 },
                 "file": {
                     "name": "file",
-                    "line": 113,
+                    "line": 110,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -372,8 +372,8 @@
                             "File"
                         ],
                         "attributes": {
-                            "startLine": 113,
-                            "endLine": 113
+                            "startLine": 110,
+                            "endLine": 110
                         }
                     },
                     "default": null,
@@ -384,7 +384,7 @@
         },
         "destroy": {
             "name": "destroy",
-            "line": 130,
+            "line": 124,
             "short_desc": "Remove given resource",
             "long_desc": "",
             "hint": [
@@ -402,7 +402,7 @@
             "parameters": {
                 "file": {
                     "name": "file",
-                    "line": 130,
+                    "line": 124,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -420,8 +420,8 @@
                             "File"
                         ],
                         "attributes": {
-                            "startLine": 130,
-                            "endLine": 130
+                            "startLine": 124,
+                            "endLine": 124
                         }
                     },
                     "default": null,

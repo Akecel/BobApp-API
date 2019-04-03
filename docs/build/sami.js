@@ -202,7 +202,6 @@ window.projectVersion = 'master';
                                                         {"type": "Method", "fromName": "App\\Models\\File", "fromLink": "App/Models/File.html", "link": "App/Models/File.html#method_user", "name": "App\\Models\\File::user", "doc": "&quot;&quot;"},
                     {"type": "Method", "fromName": "App\\Models\\File", "fromLink": "App/Models/File.html", "link": "App/Models/File.html#method_folders", "name": "App\\Models\\File::folders", "doc": "&quot;&quot;"},
                     {"type": "Method", "fromName": "App\\Models\\File", "fromLink": "App/Models/File.html", "link": "App/Models/File.html#method_file_type", "name": "App\\Models\\File::file_type", "doc": "&quot;&quot;"},
-                    {"type": "Method", "fromName": "App\\Models\\File", "fromLink": "App/Models/File.html", "link": "App/Models/File.html#method_other_file", "name": "App\\Models\\File::other_file", "doc": "&quot;&quot;"},
             
             {"type": "Class", "fromName": "App\\Models", "fromLink": "App/Models.html", "link": "App/Models/FileFolder.html", "name": "App\\Models\\FileFolder", "doc": "&quot;&quot;"},
                     
@@ -216,9 +215,6 @@ window.projectVersion = 'master';
             
             {"type": "Class", "fromName": "App\\Models", "fromLink": "App/Models.html", "link": "App/Models/FolderCategory.html", "name": "App\\Models\\FolderCategory", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "App\\Models\\FolderCategory", "fromLink": "App/Models/FolderCategory.html", "link": "App/Models/FolderCategory.html#method_files_types", "name": "App\\Models\\FolderCategory::files_types", "doc": "&quot;&quot;"},
-            
-            {"type": "Class", "fromName": "App\\Models", "fromLink": "App/Models.html", "link": "App/Models/OtherFile.html", "name": "App\\Models\\OtherFile", "doc": "&quot;&quot;"},
-                                                        {"type": "Method", "fromName": "App\\Models\\OtherFile", "fromLink": "App/Models/OtherFile.html", "link": "App/Models/OtherFile.html#method_file", "name": "App\\Models\\OtherFile::file", "doc": "&quot;&quot;"},
             
             {"type": "Class", "fromName": "App\\Models", "fromLink": "App/Models.html", "link": "App/Models/User.html", "name": "App\\Models\\User", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "App\\Models\\User", "fromLink": "App/Models/User.html", "link": "App/Models/User.html#method_setPasswordAttribute", "name": "App\\Models\\User::setPasswordAttribute", "doc": "&quot;&quot;"},
@@ -271,8 +267,6 @@ window.projectVersion = 'master';
             
             {"type": "Class", "fromName": "App\\Repositories", "fromLink": "App/Repositories.html", "link": "App/Repositories/FileRepository.html", "name": "App\\Repositories\\FileRepository", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "App\\Repositories\\FileRepository", "fromLink": "App/Repositories/FileRepository.html", "link": "App/Repositories/FileRepository.html#method___construct", "name": "App\\Repositories\\FileRepository::__construct", "doc": "&quot;&quot;"},
-                    {"type": "Method", "fromName": "App\\Repositories\\FileRepository", "fromLink": "App/Repositories/FileRepository.html", "link": "App/Repositories/FileRepository.html#method_saveOtherFile", "name": "App\\Repositories\\FileRepository::saveOtherFile", "doc": "&quot;&quot;"},
-                    {"type": "Method", "fromName": "App\\Repositories\\FileRepository", "fromLink": "App/Repositories/FileRepository.html", "link": "App/Repositories/FileRepository.html#method_updateOtherFile", "name": "App\\Repositories\\FileRepository::updateOtherFile", "doc": "&quot;&quot;"},
             
             {"type": "Class", "fromName": "App\\Repositories", "fromLink": "App/Repositories.html", "link": "App/Repositories/FolderRepository.html", "name": "App\\Repositories\\FolderRepository", "doc": "&quot;&quot;"},
                                                         {"type": "Method", "fromName": "App\\Repositories\\FolderRepository", "fromLink": "App/Repositories/FolderRepository.html", "link": "App/Repositories/FolderRepository.html#method___construct", "name": "App\\Repositories\\FolderRepository::__construct", "doc": "&quot;&quot;"},
