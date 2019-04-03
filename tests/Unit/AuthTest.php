@@ -9,11 +9,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class AuthTest extends TestCase
 {
     /**
-     * Test to show auth user resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Auth\AuthController::user
      */
-
     public function test_can_show_auth_user()
     {
         $this->get(route('auth.user'))

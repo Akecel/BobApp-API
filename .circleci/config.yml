@@ -67,9 +67,11 @@ jobs:
       - run: touch database/database.sqlite
       - run: php artisan migrate --seed --env=testing --database=sqlite --force
 
-      # run tests with phpunit or codecept
+      # run tests with phpunit
       #- run: ./vendor/bin/phpunit
-      - run: phpdbg -qrr vendor/bin/phpunit --coverage-html tests/logs/coverage-report
+      - run: phpdbg -qrr vendor/bin/phpunit --coverage-clover build/logs/coverage.xml
+      - run: wget https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
+      - run: php coveralls.phar --verbose
       - store_test_results:
           path: tests/_output
       - store_artifacts:
