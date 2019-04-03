@@ -11,9 +11,7 @@ use App\Models\User;
 class CategoryTest extends TestCase
 {
     /**
-     * Test if can show a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FolderCategory\FolderCategoryController::show
      */
 
     public function test_can_show_categroy()
@@ -42,9 +40,7 @@ class CategoryTest extends TestCase
     } 
 
     /**
-     * Test if can show a collection.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FolderCategory\FolderCategoryController::index
      */
 
     public function test_can_list_category() 
@@ -74,9 +70,7 @@ class CategoryTest extends TestCase
     }
 
     /**
-     * Test if can update a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FolderCategory\FolderCategoryController::update
      */
 
     public function test_can_update_category() {
@@ -109,9 +103,7 @@ class CategoryTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FolderCategory\FolderCategoryRelationshipController::type
      */
 
     public function test_can_show_categroy_type()

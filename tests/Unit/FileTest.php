@@ -14,9 +14,7 @@ use App\Models\User;
 class FileTest extends TestCase
 {
     /**
-     * Test if can show a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileController::show
      */
 
     public function test_can_show_file()
@@ -58,9 +56,7 @@ class FileTest extends TestCase
     } 
 
     /**
-     * Test if can show a collection.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileController::index
      */
 
     public function test_can_list_file() 
@@ -103,10 +99,8 @@ class FileTest extends TestCase
         ]);
     }
 
-        /**
-     * Test if can store a resource.
-     *
-     * @return void
+    /**
+     * @covers App\Http\Controllers\Api\File\FileController::store
      */
 
     public function test_can_store_files() {
@@ -152,9 +146,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test if can update a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileController::update
      */
 
     public function test_can_update_folder() {
@@ -198,9 +190,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test if can delete a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileController::delete
      */
 
     public function test_can_delete_file() {
@@ -219,9 +209,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileRelationshipController::user
      */
 
     public function test_can_show_file_user()
@@ -235,9 +223,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileRelationshipController::type
      */
 
     public function test_can_show_file_type()
@@ -251,9 +237,7 @@ class FileTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\File\FileRelationshipController::folders
      */
 
     public function test_can_show_file_folders()

@@ -12,9 +12,7 @@ use App\Models\User;
 class TypeTest extends TestCase
 {
     /**
-     * Test if can show a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FileType\FileTypeController::show
      */
 
     public function test_can_show_type()
@@ -49,9 +47,7 @@ class TypeTest extends TestCase
     } 
 
     /**
-     * Test if can show a collection.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FileType\FileTypeController::index
      */
 
     public function test_can_list_category() 
@@ -87,9 +83,7 @@ class TypeTest extends TestCase
     }
 
     /**
-     * Test if can update a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FileType\FileTypeController::update
      */
 
     public function test_can_update_category() {
@@ -126,9 +120,7 @@ class TypeTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FileType\FileTypeRelationshipController::category
      */
 
     public function test_can_show_type_category()
@@ -142,9 +134,7 @@ class TypeTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\FileType\FileTypeRelationshipController::files
      */
 
     public function test_can_show_type_file()

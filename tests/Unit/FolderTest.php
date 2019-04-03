@@ -11,9 +11,7 @@ use App\Models\User;
 class FolderTest extends TestCase
 {
     /**
-     * Test if can show a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Folder\FolderController::show
      */
 
     public function test_can_show_folder()
@@ -48,9 +46,7 @@ class FolderTest extends TestCase
     } 
 
     /**
-     * Test if can show a collection.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Folder\FolderController::index
      */
 
     public function test_can_list_folder() 
@@ -86,10 +82,8 @@ class FolderTest extends TestCase
         ]);
     }
 
-        /**
-     * Test if can store a resource.
-     *
-     * @return void
+    /**
+     * @covers App\Http\Controllers\Api\Folder\FolderController::store
      */
 
     public function test_can_store_folder() {
@@ -125,9 +119,7 @@ class FolderTest extends TestCase
     }
 
     /**
-     * Test if can update a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Folder\FolderController::update
      */
 
     public function test_can_update_folder() {
@@ -164,9 +156,7 @@ class FolderTest extends TestCase
     }
 
     /**
-     * Test if can delete a resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Folder\FolderController::delete
      */
 
     public function test_can_delete_folder() {
@@ -176,9 +166,7 @@ class FolderTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Folder\FolderRelationshipController::user
      */
 
     public function test_can_show_folder_user()
@@ -192,9 +180,7 @@ class FolderTest extends TestCase
     }
 
     /**
-     * Test if can show a relationship resource.
-     *
-     * @return void
+     * @covers App\Http\Controllers\Api\Folder\FolderRelationshipController::files
      */
 
     public function test_can_show_folder_files()
