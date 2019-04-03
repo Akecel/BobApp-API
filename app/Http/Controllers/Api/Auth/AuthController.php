@@ -19,9 +19,6 @@ use App\Http\Resources\User\User as UserResource;
 class AuthController extends ApiController {
 
     /**
-     * Send sms token
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
 
@@ -50,10 +47,10 @@ class AuthController extends ApiController {
     }
 
     /**
+     * @codeCoverageIgnore
      * Log the user
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     * @codeCoverageIgnore
      */
 
     function login(Request $request)
@@ -84,6 +81,10 @@ class AuthController extends ApiController {
      * Log the user with email and password
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
+     */
+
+    /**
      * @codeCoverageIgnore
      */
 
