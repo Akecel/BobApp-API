@@ -79,9 +79,13 @@ jobs:
         enabled: true
       steps:
         - run:
-            name: Deploy Over SSH
+            name: Path to repo
             command: |
-              ssh $SSH_USER@$SSH_HOST "/var/www/html/Back-end/git pull"
+              ssh $SSH_USER@$SSH_HOST "cd /var/www/html/Back-end/"
+        - run:
+            name: Deploy
+            command: |
+              git pull
 
 workflows:
   version: 2
