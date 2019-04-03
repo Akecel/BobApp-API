@@ -68,7 +68,8 @@ jobs:
       - run: php artisan migrate --seed --env=testing --database=sqlite --force
 
       # run tests with phpunit or codecept
-      - run: ./vendor/bin/phpunit
+      #- run: ./vendor/bin/phpunit
+      - run: phpdbg -qrr vendor/bin/phpunit --coverage-html tests/logs/coverage-report
       - store_test_results:
           path: tests/_output
       - store_artifacts:
