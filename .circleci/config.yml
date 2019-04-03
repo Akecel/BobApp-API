@@ -81,7 +81,7 @@ jobs:
         - run:
             name: Path to repo
             command: |
-              ssh $SSH_USER@$SSH_HOST "cd /var/www/html/Back-end/"
+              ssh $SSH_USER@$SSH_HOST cd /var/www/html/Back-end/
         - run:
             name: Deploy
             command: |
