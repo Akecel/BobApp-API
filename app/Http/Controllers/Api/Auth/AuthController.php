@@ -21,7 +21,6 @@ class AuthController extends ApiController {
     /**
      * @codeCoverageIgnore
      */
-
     function validation(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -52,7 +51,6 @@ class AuthController extends ApiController {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     function login(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -87,7 +85,6 @@ class AuthController extends ApiController {
     /**
      * @codeCoverageIgnore
      */
-
     public function signin(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => 'required|max:255',
