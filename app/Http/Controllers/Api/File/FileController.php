@@ -34,7 +34,6 @@ class FileController extends ApiController
      * @param  App\Repositories\FileRepository $fileRepository
      * @codeCoverageIgnore
      */
-
     public function __construct(Request $request, FileRepository $fileRepository)
     {
         $this->fileRepository = $fileRepository;
@@ -72,7 +71,9 @@ class FileController extends ApiController
             'file_input' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors()); 
+            // @codeCoverageIgnoreEnd      
         }
         $user_id = $request['user_id'];
         $file_type_id = $request['file_type_id'];

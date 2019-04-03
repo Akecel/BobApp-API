@@ -33,7 +33,6 @@ class FolderCategoryController extends ApiController
      * @param  App\Repositories\CategoryRepository $categoryRepository
      * @codeCoverageIgnore
      */
-  
     public function __construct(Request $request, CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
@@ -79,7 +78,9 @@ class FolderCategoryController extends ApiController
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors());    
+            // @codeCoverageIgnoreEnd   
         }
         $id = $category->id;
         $this->categoryRepository->update($id, $request->all());

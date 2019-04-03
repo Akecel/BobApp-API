@@ -29,7 +29,6 @@ class FileRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function fileRelationshipUser(File $file)
     {
         $this->authorize('manage', $file);
@@ -55,7 +54,6 @@ class FileRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function fileRelationshipFolder(File $file)
     {
         $this->authorize('manage', $file);
@@ -81,7 +79,6 @@ class FileRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function fileRelationshipType(File $file)
     {
         $this->authorize('manage', $file);

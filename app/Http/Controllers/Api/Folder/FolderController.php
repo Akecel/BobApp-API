@@ -32,8 +32,6 @@ class FolderController extends ApiController
      * @param  App\Repositories\FolderRepository $folderRepository
      * @codeCoverageIgnore
      */
-  
-
     public function __construct(Request $request, FolderRepository $folderRepository)
     {
         $this->folderRepository = $folderRepository;
@@ -104,7 +102,9 @@ class FolderController extends ApiController
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors());  
+            // @codeCoverageIgnoreEnd     
         }
         $folder = $this->folderRepository->update($id, $request->all());
         Folder::find($id)->files()->sync($request['files']);

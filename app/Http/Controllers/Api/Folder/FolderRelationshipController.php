@@ -28,7 +28,6 @@ class FolderRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function folderRelationshipUser(Folder $folder)
     {
         $this->authorize('manage', $folder);
@@ -54,7 +53,6 @@ class FolderRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function folderRelationshipFile(Folder $folder)
     {
         $this->authorize('manage', $folder);

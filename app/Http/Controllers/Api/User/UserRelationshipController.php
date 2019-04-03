@@ -29,7 +29,6 @@ class UserRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function userRelationshipFolder(User $user)
     {
         $this->authorize('manage', $user);
@@ -55,7 +54,6 @@ class UserRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function userRelationshipFile(User $user)
     {
         $this->authorize('manage', $user);

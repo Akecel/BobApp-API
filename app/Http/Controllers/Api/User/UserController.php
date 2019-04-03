@@ -35,7 +35,6 @@ class UserController extends ApiController
      * @param  App\Repositories\UserRepository $userRepository
      * @codeCoverageIgnore
      */
-
     public function __construct(Request $request, UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
@@ -72,7 +71,9 @@ class UserController extends ApiController
             'phone_number' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors()); 
+            // @codeCoverageIgnoreEnd      
         }
         $this->setAdmin($request,$user);
         $store = $this->userRepository->store($request->all());
@@ -111,7 +112,9 @@ class UserController extends ApiController
             'phone_number' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors());     
+            // @codeCoverageIgnoreEnd  
         }
         $this->setAdmin($request, $user);
         $this->userRepository->update($user->id, $request->all());
@@ -139,7 +142,6 @@ class UserController extends ApiController
      * @param  App\Models\User $user
      * @codeCoverageIgnore
      */
-
     private function setAdmin(Request $request, User $user)
     {
         $this->authorize('adminManage', $user);

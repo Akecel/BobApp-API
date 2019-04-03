@@ -33,7 +33,6 @@ class FileTypeController extends ApiController
      * @param  App\Repositories\TypeRepository $typeRepository
      * @codeCoverageIgnore
      */
-  
     public function __construct(Request $request, TypeRepository $typeRepository)
     {
         $this->typeRepository = $typeRepository;
@@ -84,7 +83,9 @@ class FileTypeController extends ApiController
             'title' => 'required|max:255',
         ]);
         if($validator->fails()){
-            return $this->apiResponse403('Validation Error', $validator->errors());       
+            // @codeCoverageIgnoreStart
+            return $this->apiResponse403('Validation Error', $validator->errors()); 
+            // @codeCoverageIgnoreEnd      
         }
         $this->authorize('adminManage', $type);
         $id = $type->id;

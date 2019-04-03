@@ -26,7 +26,6 @@ class FolderCategoryRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function categoryRelationshipType(FolderCategory $category)
     {
         $relationship = (new FolderCategoryRelationshipResource($category))->jsonSerialize();

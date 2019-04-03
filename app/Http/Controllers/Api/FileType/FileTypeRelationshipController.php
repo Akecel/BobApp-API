@@ -27,7 +27,6 @@ class FileTypeRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function typeRelationshipCategory(FileType $type)
     {
         $relationship = (new FileTypeRelationshipResource($type))->jsonSerialize();
@@ -52,7 +51,6 @@ class FileTypeRelationshipController extends Controller
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     public function typeRelationshipFile(FileType $type)
     {
         $this->authorize('adminManage', $type);
