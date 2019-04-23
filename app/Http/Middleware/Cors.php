@@ -22,7 +22,7 @@ class Cors
             header("Access-Control-Allow-Origin: *");
             $headers = [
                 'Access-Control-Allow-Methods'=> '*',
-                'Access-Control-Allow-Headers'=> 'Content-Type' ,'content-type', 'Accept', 'accept', '*'
+                'Access-Control-Allow-Headers'=> 'Content-Type', 'Accept', 'Authorization','*'
             ];
             
             foreach($headers as $key => $value) {
