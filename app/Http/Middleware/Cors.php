@@ -21,7 +21,7 @@ class Cors
         if (!App::environment('testing')) {
             header("Access-Control-Allow-Origin: *");
             $headers = [
-                'Access-Control-Allow-Methods'=> '*',
+                'Access-Control-Allow-Methods'=> 'GET, POST, PUT, DELETE, OPTION, HEAD, *',
                 'Access-Control-Allow-Headers'=> 'Content-Type, Accept, Authorization, *'
             ];
             
