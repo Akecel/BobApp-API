@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function sendToken()
     {
-        $token = mt_rand(100000, 999999);
+        $token = mt_rand(10000, 99999);
         Session::put('token', $token);
         $sid = config('app.twilio_sid');
         $tokenTwillo = config('app.twilio_token');

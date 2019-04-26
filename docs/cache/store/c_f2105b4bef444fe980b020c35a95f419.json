@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Api\\Folder",
     "file": "\/Users\/akecel\/Development\/0 - Web Project\/Server\/hyra-php-backoffice\/app\/Http\/Controllers\/Api\/Folder\/FolderController.php",
     "relative_file": null,
-    "hash": "6c86b750102f8eea63f528f002b4ff5467f5ae16",
+    "hash": "6f3a1ed60347e7ec59ee394cb0be838562952718",
     "parent": "App\\Http\\Controllers\\Api\\ApiController",
     "modifiers": 0,
     "is_trait": false,
@@ -20,8 +20,7 @@
         "ApiController": "App\\Http\\Controllers\\Api\\ApiController",
         "FolderRepository": "App\\Repositories\\FolderRepository",
         "FolderResource": "App\\Http\\Resources\\Folder\\Folder",
-        "FolderCollection": "App\\Http\\Resources\\Folder\\FolderCollection",
-        "Folder": "App\\Models\\Folder"
+        "FolderCollection": "App\\Http\\Resources\\Folder\\FolderCollection"
     },
     "errors": [],
     "interfaces": [],
@@ -264,7 +263,7 @@
         },
         "show": {
             "name": "show",
-            "line": 86,
+            "line": 96,
             "short_desc": "Display given resource",
             "long_desc": "",
             "hint": [
@@ -282,7 +281,7 @@
             "parameters": {
                 "folder": {
                     "name": "folder",
-                    "line": 86,
+                    "line": 96,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -300,8 +299,8 @@
                             "Folder"
                         ],
                         "attributes": {
-                            "startLine": 86,
-                            "endLine": 86
+                            "startLine": 96,
+                            "endLine": 96
                         }
                     },
                     "default": null,
@@ -312,7 +311,7 @@
         },
         "update": {
             "name": "update",
-            "line": 99,
+            "line": 109,
             "short_desc": "Update given resource",
             "long_desc": "",
             "hint": [
@@ -330,7 +329,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 99,
+                    "line": 109,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -348,8 +347,8 @@
                             "Request"
                         ],
                         "attributes": {
-                            "startLine": 99,
-                            "endLine": 99
+                            "startLine": 109,
+                            "endLine": 109
                         }
                     },
                     "default": null,
@@ -358,7 +357,7 @@
                 },
                 "folder": {
                     "name": "folder",
-                    "line": 99,
+                    "line": 109,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -376,8 +375,8 @@
                             "Folder"
                         ],
                         "attributes": {
-                            "startLine": 99,
-                            "endLine": 99
+                            "startLine": 109,
+                            "endLine": 109
                         }
                     },
                     "default": null,
@@ -388,7 +387,7 @@
         },
         "destroy": {
             "name": "destroy",
-            "line": 122,
+            "line": 132,
             "short_desc": "Remove given resource",
             "long_desc": "",
             "hint": [
@@ -406,7 +405,7 @@
             "parameters": {
                 "folder": {
                     "name": "folder",
-                    "line": 122,
+                    "line": 132,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -424,8 +423,8 @@
                             "Folder"
                         ],
                         "attributes": {
-                            "startLine": 122,
-                            "endLine": 122
+                            "startLine": 132,
+                            "endLine": 132
                         }
                     },
                     "default": null,
