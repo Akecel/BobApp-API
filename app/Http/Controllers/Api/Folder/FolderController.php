@@ -138,6 +138,12 @@ class FolderController extends ApiController
         return $this->apiResponse204();
     }
 
+    /**
+     * Get id of required file
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
     private function getRequiredFile(Request $request)
     {
         foreach(File::where('user_id', $request['user_id'])->get() as $file) {
