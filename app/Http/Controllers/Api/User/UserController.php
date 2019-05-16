@@ -66,7 +66,6 @@ class UserController extends ApiController
 
     public function store(Request $request, User $user)
     {
-        $this->authorize('adminManage', $user);
         $validator = Validator::make($request->all(), [
             'phone_number' => 'required|max:255',
         ]);
