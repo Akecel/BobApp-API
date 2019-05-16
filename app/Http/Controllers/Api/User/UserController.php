@@ -143,7 +143,6 @@ class UserController extends ApiController
      */
     private function setAdmin(Request $request, User $user)
     {
-        $this->authorize('adminManage', $user);
         if(!$request->has('admin'))
         {
             $request->merge(['admin' => 0]);
