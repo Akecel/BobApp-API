@@ -156,7 +156,6 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     private function getRequiredFile(Request $request)
     {
         foreach(File::where('user_id', $request['user_id'])->get() as $file) {
@@ -186,7 +185,6 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      * @codeCoverageIgnore
      */
-
     private function getZippedFiles(Folder $folder)
     {
         $user = User::find($folder->user_id);
