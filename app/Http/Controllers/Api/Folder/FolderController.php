@@ -188,7 +188,8 @@ class FolderController extends ApiController
     private function getZippedFiles(Folder $folder)
     {
         $user = User::find($folder->user_id);
-        foreach(Folder::find($folder->id)->files()->get() as $file) {
+        $allFiles = Folder::find($folder->id)->files()->get();
+        foreach($allFiles as $file) {
             $files[] = substr(parse_url(decrypt($file->url))['path'], 1);
         };
         Zipper::make('storage/user_files_' . $user->id . "/" . $user->lastName . "-" . $folder->title . ".zip")->add($files)->close();
