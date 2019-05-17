@@ -10,7 +10,9 @@ use App\Http\Controllers\Api\ApiController as ApiController;
 use App\Repositories\FolderRepository;
 use App\Http\Resources\Folder\Folder as FolderResource;
 use App\Http\Resources\Folder\FolderCollection;
-use App\Models\{File, Folder, FileType};
+use App\Models\{File, Folder, FileType, User};
+use Illuminate\Support\Facades\Storage;
+use Chumper\Zipper\Facades\Zipper;
 
 class FolderController extends ApiController
 {
@@ -93,10 +95,18 @@ class FolderController extends ApiController
      * @return \Illuminate\Http\Response
      */
 
-    public function show(Folder $folder)
+    public function show(Request $request, Folder $folder)
     {
         $this->authorize('manage', $folder);
-        return new FolderResource(Folder::with($this->withs)->find($folder->id));
+        $getFolder = new FolderResource(Folder::with($this->withs)->find($folder->id));
+        if($request->has('zip')) {
+            $getFolder->additional([
+                'meta' => [
+                  'zip' =>  $this->getZippedFiles($folder),
+                ]
+            ]);
+        } 
+        return $getFolder;
     }
 
     /**
@@ -165,6 +175,23 @@ class FolderController extends ApiController
         $requiredFiles = array_merge($requiredFiles, $anySortedFile[2], array_filter($anySortedFile[3]), array_filter($anySortedFile[4]));
 
         return $requiredFiles;
+    }
+
+    /**
+     * URL Zipped
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
+     */
+
+    private function getZippedFiles(Folder $folder)
+    {
+        $user = User::find($folder->user_id);
+        foreach(Folder::find($folder->id)->files()->where('folder_id', $folder->id)->get() as $file) {
+            $files[] = substr(parse_url(decrypt($file->url))['path'], 1);
+        };
+        Zipper::make('storage/user_files_' . $user->id . "/" . $user->name . "-" . $folder->title . ".zip")->add($files)->close();
+        return Storage::disk('public')->url("user_files_" . $user->id . "/" . $user->lastName . "-" . $folder->title . ".zip");
     }
     
 }
