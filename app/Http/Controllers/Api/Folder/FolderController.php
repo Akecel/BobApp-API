@@ -192,8 +192,8 @@ class FolderController extends ApiController
         foreach($allFiles as $file) {
             $files[] = substr(parse_url(decrypt($file->url))['path'], 1);
         };
-        Zipper::make('storage/user_files_' . $user->id . "/" . $user->lastName . "-" . str_replace(' ', '-', $folder->title) . ".zip")->add($files)->close();
-        return Storage::disk('public')->url("user_files_" . $user->id . "/" . $user->lastName . "-" . str_replace(' ', '-', $folder->title) . ".zip");
+        Zipper::make('storage/user_files_' . $user->id . "/" . str_replace(' ', '-', $user->lastName) . "-" . str_replace(' ', '-', $folder->title) . ".zip")->add($files)->close();
+        return Storage::disk('public')->url("user_files_" . $user->id . "/" . str_replace(' ', '-', $user->lastName) . "-" . str_replace(' ', '-', $folder->title) . ".zip");
     }
     
 }

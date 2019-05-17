@@ -79,7 +79,7 @@ class FileController extends ApiController
         $file_type_id = $request['file_type_id'];
         $user = User::where('id', $user_id)->first();
         $image = $request->file('file_input');
-        $name = $file_type_id . '.' . $user['lastName'] . $user['firstName'] . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
+        $name = $file_type_id . '.' . str_replace(' ', '-', $user['lastName']) . str_replace(' ', '-', $user['firstName']) . '.' . mt_rand(100000, 999999) . '.'  . $image->getClientOriginalExtension();
         $destinationPath = "storage/user_files_" . $user_id;
         $request['url'] = encrypt(config('app.url') . "/" . $destinationPath . "/" . $name);
         $store = $this->fileRepository->store($request->all());
