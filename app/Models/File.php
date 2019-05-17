@@ -18,7 +18,7 @@ class File extends Model
 
     public function folders()
     {
-        return $this->belongsToMany('App\Models\Folder');
+        return $this->belongsToMany('App\Models\Folder')->withPivot('folder_id');;
     }
 
     public function file_type()

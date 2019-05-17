@@ -18,7 +18,7 @@ class Folder extends Model
 
     public function files()
     {
-        return $this->belongsToMany('App\Models\File');
+        return $this->belongsToMany('App\Models\File')->withPivot('folder_id');;
     }
     
 
