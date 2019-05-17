@@ -99,6 +99,7 @@ class FolderController extends ApiController
     {
         $this->authorize('manage', $folder);
         $getFolder = new FolderResource(Folder::with($this->withs)->find($folder->id));
+        // @codeCoverageIgnoreStart
         if($request->has('zip')) {
             $getFolder->additional([
                 'meta' => [
@@ -106,6 +107,7 @@ class FolderController extends ApiController
                 ]
             ]);
         } 
+        // @codeCoverageIgnoreEnd
         return $getFolder;
     }
 
@@ -152,6 +154,7 @@ class FolderController extends ApiController
      * Get id of required file
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @codeCoverageIgnore
      */
 
     private function getRequiredFile(Request $request)
@@ -187,10 +190,10 @@ class FolderController extends ApiController
     private function getZippedFiles(Folder $folder)
     {
         $user = User::find($folder->user_id);
-        foreach(Folder::find($folder->id)->files()->where('folder_id', $folder->id)->get() as $file) {
+        foreach(Folder::find($folder->id)->files()->get() as $file) {
             $files[] = substr(parse_url(decrypt($file->url))['path'], 1);
         };
-        Zipper::make('storage/user_files_' . $user->id . "/" . $user->name . "-" . $folder->title . ".zip")->add($files)->close();
+        Zipper::make('storage/user_files_' . $user->id . "/" . $user->lastName . "-" . $folder->title . ".zip")->add($files)->close();
         return Storage::disk('public')->url("user_files_" . $user->id . "/" . $user->lastName . "-" . $folder->title . ".zip");
     }
     
