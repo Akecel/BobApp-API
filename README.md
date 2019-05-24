@@ -70,6 +70,10 @@ And use this command :
 composer update
 ```
 
+<p align="center">
+    <img src="public/assets/img/server.png" style="width : 18px;">
+</p>
+
 ## Configuration : <a name="config"></a>
 
 ### DotEnv :
