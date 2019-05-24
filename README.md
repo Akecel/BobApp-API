@@ -116,6 +116,9 @@ Bob's backoffice use the migration system of laravel, after created and connecti
 ```
 php artisan migrate --seed
 ```
+<p align="center">
+    <img src="public/assets/img/MCD.png" style="width : 18px;">
+</p>
 
 You can check : 
 * [Laravel database documentation](https://laravel.com/docs/5.7/database)
