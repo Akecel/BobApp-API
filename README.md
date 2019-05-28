@@ -8,6 +8,7 @@
 [![CircleCI](https://circleci.com/gh/DeathCoinOfTheDoom/Back-end.svg?style=svg)](https://circleci.com/gh/DeathCoinOfTheDoom/Back-end)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6081254e0ba24392a40ad83ceaefcfde)](https://www.codacy.com/app/Akecel/Back-end?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DeathCoinOfTheDoom/Back-end&amp;utm_campaign=Badge_Grade)
 [![Coverage Status](https://coveralls.io/repos/github/DeathCoinOfTheDoom/Back-end/badge.svg?branch=master)](https://coveralls.io/github/DeathCoinOfTheDoom/Back-end?branch=master&service=github)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=DeathCoinOfTheDoom/Back-end)](https://dependabot.com)
 
 
 
