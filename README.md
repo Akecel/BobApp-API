@@ -74,6 +74,7 @@ composer update
 <p align="center">
     <img src="public/assets/img/server.png" style="width : 18px;">
 </p>
+Modélisation de l'architecture serveur
 
 ## Configuration : <a name="config"></a>
 
