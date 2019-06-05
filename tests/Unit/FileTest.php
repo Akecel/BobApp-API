@@ -27,7 +27,7 @@ class FileTest extends TestCase
             'data' => [ 
                 'type', 'id', 
                 'attributes' => [
-                    'url'
+                    'title', 'url'
                 ], 
                 'relationships' => [
                     'user' => [
@@ -69,7 +69,7 @@ class FileTest extends TestCase
                 [
                     'type', 'id', 
                     'attributes' => [
-                        'url'
+                        'title', 'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -117,7 +117,7 @@ class FileTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'url'
+                        'title', 'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -161,7 +161,7 @@ class FileTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'url'
+                        'title', 'url'
                     ], 
                     'relationships' => [
                         'user' => [
