@@ -48,14 +48,13 @@ class User extends Authenticatable
         $sid = config('app.twilio_sid');
         $tokenTwillo = config('app.twilio_token');
         $client = new Client($sid, $tokenTwillo);
-        /*
         $client->messages->create(
             $this->phone_number,
             array(
                 'from' => config('app.twilio_number'),
                 'body' => "Votre code secret est : " . $token
             )
-        );*/
+        );
 
     }
 
