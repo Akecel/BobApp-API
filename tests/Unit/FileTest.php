@@ -117,7 +117,7 @@ class FileTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'title', 'url'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
