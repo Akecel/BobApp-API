@@ -99,51 +99,51 @@ class FileTest extends TestCase
         ]);
     }
 
-    /**
-     * @covers App\Http\Controllers\Api\File\FileController::store
-     */
+    // /**
+    //  * @covers App\Http\Controllers\Api\File\FileController::store
+    //  */
 
-    public function test_can_store_files() {
-        // Storage::fake('avatars');
-        $fileInput = UploadedFile::fake()->image('avatar.jpg');
-        $data = [
-            'file_input' => $fileInput,
-            'user_id' => User::all(['id'])->random(),
-            'file_type_id' => FileType::all(['id'])->random(),
-        ];
-        $this->post(route('file.store'), $data)
-            ->assertStatus(201)
-            ->assertJsonStructure([
-                'data' => [ 
-                    'type', 'id', 
-                    'attributes' => [
-                        'url'
-                    ], 
-                    'relationships' => [
-                        'user' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ],
-                        'type' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ]
-                        ,
-                        'folders' => [
-                            'links' => [
-                                'self', 'related'
-                            ],
-                            'data' => []
-                        ]
-                    ],
-                    'links' => ['self']
-                ]
-            ]);
-    }
+    // public function test_can_store_files() {
+    //     // Storage::fake('avatars');
+    //     $fileInput = UploadedFile::fake()->image('avatar.jpg');
+    //     $data = [
+    //         'file_input' => $fileInput,
+    //         'user_id' => User::all(['id'])->random(),
+    //         'file_type_id' => FileType::all(['id'])->random(),
+    //     ];
+    //     $this->post(route('file.store'), $data)
+    //         ->assertStatus(201)
+    //         ->assertJsonStructure([
+    //             'data' => [ 
+    //                 'type', 'id', 
+    //                 'attributes' => [
+    //                     'url'
+    //                 ], 
+    //                 'relationships' => [
+    //                     'user' => [
+    //                         'links' => [
+    //                             'self', 'related'
+    //                         ],
+    //                         'data' => []
+    //                     ],
+    //                     'type' => [
+    //                         'links' => [
+    //                             'self', 'related'
+    //                         ],
+    //                         'data' => []
+    //                     ]
+    //                     ,
+    //                     'folders' => [
+    //                         'links' => [
+    //                             'self', 'related'
+    //                         ],
+    //                         'data' => []
+    //                     ]
+    //                 ],
+    //                 'links' => ['self']
+    //             ]
+    //         ]);
+    // }
 
     /**
      * @covers App\Http\Controllers\Api\File\FileController::update
