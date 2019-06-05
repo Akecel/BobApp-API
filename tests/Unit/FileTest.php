@@ -27,7 +27,7 @@ class FileTest extends TestCase
             'data' => [ 
                 'type', 'id', 
                 'attributes' => [
-                    'title', 'url'
+                    'url'
                 ], 
                 'relationships' => [
                     'user' => [
@@ -69,7 +69,7 @@ class FileTest extends TestCase
                 [
                     'type', 'id', 
                     'attributes' => [
-                        'title', 'url'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -104,7 +104,7 @@ class FileTest extends TestCase
      */
 
     public function test_can_store_files() {
-        Storage::fake('avatars');
+        // Storage::fake('avatars');
         $fileInput = UploadedFile::fake()->image('avatar.jpg');
         $data = [
             'file_input' => $fileInput,
@@ -117,7 +117,7 @@ class FileTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'title', 'url'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
@@ -161,7 +161,7 @@ class FileTest extends TestCase
                 'data' => [ 
                     'type', 'id', 
                     'attributes' => [
-                        'title', 'url'
+                        'url'
                     ], 
                     'relationships' => [
                         'user' => [
