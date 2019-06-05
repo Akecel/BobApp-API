@@ -23,6 +23,7 @@ class File extends JsonResource
             'type' => 'file',
             'id' => (string)$this->id,
             'attributes' => [
+                'title' => $this->file_type->title,
                 'url' => decrypt($this->url),
                 'created_at' => (string)$this->created_at,
                 'updated_at' => (string)$this->updated_at,
