@@ -17,7 +17,3 @@ yarn-error.log
 .DS_Store
 public/.DS_Store
 public/assets/.DS_Store
-docker-compose.yml 
-dockerfile
-sami.phar
-sami.config.php
