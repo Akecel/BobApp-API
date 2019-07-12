@@ -81,7 +81,8 @@ jobs:
         - run:
             name: Deploy over SSH
             command: |
-              ssh $SSH_USER@$SSH_HOST 'cd /var/www/html/Back-end && git pull'
+              echo 'No deployment today'
+              # ssh $SSH_USER@$SSH_HOST 'cd /var/www/html/Back-end && git pull'
 
 workflows:
   version: 2
