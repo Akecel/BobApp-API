@@ -1,3 +1,7 @@
+<p align="center">
+    <h1 align="center"> Warning: This directory is the archive of a school project and is no longer maintained. Dependencies are no longer updated and will no longer be.</h1>
+</p>
+
 
 <p align="center">
     <img src="public/assets/img/bob.png" style="width : 18px;">
