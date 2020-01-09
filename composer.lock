@@ -1320,7 +1320,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -3197,7 +3197,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -3835,16 +3835,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.32.0",
+            "version": "5.42.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "ebdc82a11e86021fa54821c4aa9e4df5c6ee75a4"
+                "reference": "e1ea30f30e424ae76de01cfd8d582a5d29b13267"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/ebdc82a11e86021fa54821c4aa9e4df5c6ee75a4",
-                "reference": "ebdc82a11e86021fa54821c4aa9e4df5c6ee75a4",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/e1ea30f30e424ae76de01cfd8d582a5d29b13267",
+                "reference": "e1ea30f30e424ae76de01cfd8d582a5d29b13267",
                 "shasum": ""
             },
             "require": {
@@ -3852,12 +3852,16 @@
             },
             "require-dev": {
                 "apigen/apigen": "^4.1",
-                "phpunit/phpunit": "4.5.*"
+                "guzzlehttp/guzzle": "^6.3",
+                "phpunit/phpunit": ">=4.5"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Twilio\\": "Twilio/"
+                    "Twilio\\": "src/Twilio/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3877,7 +3881,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2019-05-15T19:17:51+00:00"
+            "time": "2020-01-08T21:00:51+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3994,6 +3998,7 @@
                 "psr",
                 "psr-7"
             ],
+            "abandoned": "laminas/laminas-diactoros",
             "time": "2019-04-29T21:11:00+00:00"
         }
     ],
