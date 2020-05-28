@@ -14,7 +14,7 @@
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
-        "twilio/sdk": "^5.27",
+        "twilio/sdk": "^6.6",
         "chumper/zipper": "1.0.x"
     },
     "require-dev": {
